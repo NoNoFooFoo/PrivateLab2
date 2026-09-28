@@ -1,0 +1,1586 @@
+<html><head>
+<script type="text/javascript">
+(function(){
+window.UfzW=!!window.UfzW;try{(function(){(function JI(){var l=!1;function O(l){for(var O=0;l--;)O+=s(document.documentElement,null);return O}function s(l,O){var _="vi";O=O||new S;return lI(l,function(l){l.setAttribute("data-"+_,O.j2());return s(l,O)},null)}function S(){this.Sj=1;this.jI=0;this._s=this.Sj;this.s_=null;this.j2=function(){this.s_=this.jI+this._s;if(!isFinite(this.s_))return this.reset(),this.j2();this.jI=this._s;this._s=this.s_;this.s_=null;return this._s};this.reset=function(){this.Sj++;this.jI=0;this._s=this.Sj}}var _=!1;
+function II(l,O){var s=document.createElement(l);O=O||document.body;O.appendChild(s);s&&s.style&&(s.style.display="none")}function jI(O,s){s=s||O;var S="|";function II(l){l=l.split(S);var O=[];for(var s=0;s<l.length;++s){var _="",jI=l[s].split(",");for(var oI=0;oI<jI.length;++oI)_+=jI[oI][oI];O.push(_)}return O}var jI=0,lI="datalist,details,embed,figure,hrimg,strong,article,formaddress|audio,blockquote,area,source,input|canvas,form,link,tbase,option,details,article";lI.split(S);lI=II(lI);lI=new RegExp(lI.join(S),
+"g");while(lI.exec(O))lI=new RegExp((""+new Date)[8],"g"),l&&(_=!0),++jI;return s(jI&&1)}function lI(l,O,s){(s=s||_)&&II("div",l);l=l.children;var S=0;for(var jI in l){s=l[jI];try{s instanceof HTMLElement&&(O(s),++S)}catch(lI){}}return S}jI(JI,O)})();var LI=28;try{var OI,ZI,SI=J(926)?0:1;for(var Ij=(J(729),0);Ij<ZI;++Ij)SI+=J(962)?2:3;OI=SI;window.Ss===OI&&(window.Ss=++OI)}catch(lj){window.Ss=OI}var Lj=!0;function L(I,l){I+=l;return I.toString(36)}
+function Zj(I){var l=26;!I||document[z(l,144,131,141,131,124,131,134,131,142,147,109,142,123,142,127)]&&document[z(l,144,131,141,131,124,131,134,131,142,147,109,142,123,142,127)]!==Z(l,144,131,141,131,124,134,127)||(Lj=!1);return Lj}function Sj(){}Zj(window[Sj[L(1086826,LI)]]===Sj);Zj(typeof ie9rgb4!==Z(LI,130,145,138,127,144,133,139,138));Zj(RegExp("\x3c")[L(1372177,LI)](function(){return"\x3c"})&!RegExp(L(42861,LI))[Z(LI,144,129,143,144)](function(){return"'x3'+'d';"}));
+var _j=window[z(LI,125,144,144,125,127,132,97,146,129,138,144)]||RegExp(Z(LI,137,139,126,133,152,125,138,128,142,139,133,128),Z(LI,133))[L(1372177,LI)](window["\x6e\x61vi\x67a\x74\x6f\x72"]["\x75\x73e\x72A\x67\x65\x6et"]),IJ=+new Date+(J(416)?6E5:630719),jJ,lJ,oJ,OJ=window[z(LI,143,129,144,112,133,137,129,139,145,144)],sJ=_j?J(23)?3E4:18346:J(279)?6E3:3222;
+document[z(LI,125,128,128,97,146,129,138,144,104,133,143,144,129,138,129,142)]&&document[Z(LI,125,128,128,97,146,129,138,144,104,133,143,144,129,138,129,142)](z(LI,146,133,143,133,126,133,136,133,144,149,127,132,125,138,131,129),function(I){var l=86;document[z(l,204,191,201,191,184,191,194,191,202,207,169,202,183,202,187)]&&(document[z(l,204,191,201,191,184,191,194,191,202,207,169,202,183,202,187)]===L(1058781897,l)&&I[Z(l,191,201,170,200,203,201,202,187,186)]?oJ=!0:document[Z(l,204,191,201,191,184,
+191,194,191,202,207,169,202,183,202,187)]===L(68616527580,l)&&(jJ=+new Date,oJ=!1,SJ()))});function Z(I){var l=arguments.length,O=[];for(var s=1;s<l;++s)O.push(arguments[s]-I);return String.fromCharCode.apply(String,O)}function SJ(){if(!document[z(35,148,152,136,149,156,118,136,143,136,134,151,146,149)])return!0;var I=+new Date;if(I>IJ&&(J(72)?6E5:615411)>I-jJ)return Zj(!1);var l=Zj(lJ&&!oJ&&jJ+sJ<I);jJ=I;lJ||(lJ=!0,OJ(function(){lJ=!1},J(417)?1:0));return l}SJ();
+var _J=[J(356)?17795081:17338432,J(578)?27611931586:2147483647,J(623)?1558153217:1626353141];function z(I){var l=arguments.length,O=[],s=1;while(s<l)O[s-1]=arguments[s++]-I;return String.fromCharCode.apply(String,O)}
+function jl(I){var l=57;I=typeof I===L(1743045619,l)?I:I[Z(l,173,168,140,173,171,162,167,160)](J(303)?36:40);var O=window[I];if(!O||!O[Z(l,173,168,140,173,171,162,167,160)])return;var s=""+O;window[I]=function(I,l){lJ=!1;return O(I,l)};window[I][z(l,173,168,140,173,171,162,167,160)]=function(){return s}}for(var Jl=(J(168),0);Jl<_J[L(1294399177,LI)];++Jl)jl(_J[Jl]);Zj(!1!==window[z(LI,113,130,150,115)]);window.IZ=window.IZ||{};window.IZ.Oj="08e862140f1940007d01299928fa20b57b4f0a775bc1c3062e8cedd38fd009326215316690d1e9622dd739c3127def8a4b8d0da2f383b1dd701452a6203d33d6f2d4d3be34c296ff";
+function ll(I){var l=+new Date,O;!document[z(36,149,153,137,150,157,119,137,144,137,135,152,147,150,101,144,144)]||l>IJ&&(J(384)?6E5:440439)>l-jJ?O=Zj(!1):(O=Zj(lJ&&!oJ&&jJ+sJ<l),jJ=l,lJ||(lJ=!0,OJ(function(){lJ=!1},J(864)?0:1)));return!(arguments[I]^O)}function J(I){return 678>I}(function ol(l){return l?0:ol(l)*ol(l)})(!0);})();}catch(x){}finally{ie9rgb4=void(0);};function ie9rgb4(a,b){return a>>b>>0};
+
+})();
+
+</script>
+
+<script type="text/javascript" src="/TSPD/08553781f9ab20007c6408456c0176ac05b0f1c02e10c794e4893cd05f70e51cf9f6b84099939e28?type=9"></script>
+
+<script type="text/javascript">
+(function(){
+window.UfzW=!!window.UfzW;try{(function(){(function(){var I={decrypt:function(I){try{return JSON.parse(function(I){I=I.split("l");var l="";for(var O=0;O<I.length;++O)l+=String.fromCharCode(I[O]);return l}(I))}catch(O){}}};return I={configuration:I.decrypt("123l34l97l99l116l105l118l101l34l58l34l110l111l34l44l34l100l101l98l117l103l103l105l110l103l34l58l34l110l111l34l44l34l109l111l100l117l108l101l49l34l58l34l101l110l97l98l108l101l100l34l44l34l109l111l100l117l108l101l50l34l58l34l101l110l97l98l108l101l100l34l44l34l109l111l100l117l108l101l51l34l58l34l101l110l97l98l108l101l100l34l44l34l109l111l100l117l108l101l52l34l58l34l101l110l97l98l108l101l100l34l125")}})();
+var LI=28;try{var OI,ZI,SI=J(30)?1:0,Ol=J(554)?1:0,zl=J(752)?0:1;for(var Ij=(J(634),0);Ij<ZI;++Ij)SI+=J(86)?2:1,Ol+=(J(780),2),zl+=J(41)?3:2;OI=SI+Ol+zl;window.Ss===OI&&(window.Ss=++OI)}catch(lj){window.Ss=OI}var Lj=!0;function L(I,l){I+=l;return I.toString(36)}function Zj(I){var l=58;!I||document[z(l,176,163,173,163,156,163,166,163,174,179,141,174,155,174,159)]&&document[Z(l,176,163,173,163,156,163,166,163,174,179,141,174,155,174,159)]!==L(68616527608,l)||(Lj=!1);return Lj}
+function Z(I){var l=arguments.length,O=[];for(var s=1;s<l;++s)O.push(arguments[s]-I);return String.fromCharCode.apply(String,O)}function z(I){var l=arguments.length,O=[],s=1;while(s<l)O[s-1]=arguments[s++]-I;return String.fromCharCode.apply(String,O)}function Sj(){}Zj(window[Sj[L(1086826,LI)]]===Sj);Zj(typeof ie9rgb4!==Z(LI,130,145,138,127,144,133,139,138));Zj(RegExp("\x3c")[L(1372177,LI)](function(){return"\x3c"})&!RegExp(L(42861,LI))[L(1372177,LI)](function(){return"'x3'+'d';"}));
+var _j=window[Z(LI,125,144,144,125,127,132,97,146,129,138,144)]||RegExp(z(LI,137,139,126,133,152,125,138,128,142,139,133,128),L(-10,LI))[L(1372177,LI)](window["\x6e\x61vi\x67a\x74\x6f\x72"]["\x75\x73e\x72A\x67\x65\x6et"]),IJ=+new Date+(J(376)?6E5:385602),jJ,lJ,oJ,OJ=window[Z(LI,143,129,144,112,133,137,129,139,145,144)],sJ=_j?J(731)?36123:3E4:J(325)?6E3:7874;
+document[z(LI,125,128,128,97,146,129,138,144,104,133,143,144,129,138,129,142)]&&document[z(LI,125,128,128,97,146,129,138,144,104,133,143,144,129,138,129,142)](z(LI,146,133,143,133,126,133,136,133,144,149,127,132,125,138,131,129),function(I){var l=15;document[Z(l,133,120,130,120,113,120,123,120,131,136,98,131,112,131,116)]&&(document[Z(l,133,120,130,120,113,120,123,120,131,136,98,131,112,131,116)]===L(1058781968,l)&&I[z(l,120,130,99,129,132,130,131,116,115)]?oJ=!0:document[z(l,133,120,130,120,113,
+120,123,120,131,136,98,131,112,131,116)]===Z(l,133,120,130,120,113,123,116)&&(jJ=+new Date,oJ=!1,SJ()))});function SJ(){if(!document[z(27,140,144,128,141,148,110,128,135,128,126,143,138,141)])return!0;var I=+new Date;if(I>IJ&&(J(267)?6E5:453042)>I-jJ)return Zj(!1);var l=Zj(lJ&&!oJ&&jJ+sJ<I);jJ=I;lJ||(lJ=!0,OJ(function(){lJ=!1},J(627)?1:0));return l}SJ();var _J=[J(928)?25386751:17795081,J(911)?2147483647:27611931586,J(525)?1558153217:1250947332];
+function jl(I){var l=29;I=typeof I===L(1743045647,l)?I:I[z(l,145,140,112,145,143,134,139,132)](J(964)?32:36);var O=window[I];if(!O||!O[Z(l,145,140,112,145,143,134,139,132)])return;var s=""+O;window[I]=function(I,l){lJ=!1;return O(I,l)};window[I][Z(l,145,140,112,145,143,134,139,132)]=function(){return s}}for(var Jl=(J(98),0);Jl<_J[z(LI,136,129,138,131,144,132)];++Jl)jl(_J[Jl]);Zj(!1!==window[z(LI,113,130,150,115)]);window.IZ=window.IZ||{};window.IZ._Oo="08dba40de016e800d4c716930a83b3337b4f0a775bc1c306353d10e33bf81b0db88b01b6e2c214a8bf81fc6867ea2949d8620640e86b25cff017ba3469a19f181b2bd3fa1e21b993878c66d2e498187837d68725ef01b4a3bb16c2cc867f3d85062e8356ec1d6b303c28afb61a2861c6c5369e55a935aa9f311c55de32edf20c64e478e1444551aba7745cc7c4c9dfd888a203643bea0c139c2b43bfe15bef63a35f949916ab493c7ef67d1550d8e8e9291ee7ff77ea6d88c22ab9ceb885b02c3bec6ee4cf333296a5a5ca2dd9f0a19b6c95d1c10c3e66fcca853c168ab42c754f613d083359a6fe529e6c73e1197071";
+function ll(I){var l=+new Date,O;!document[Z(7,120,124,108,121,128,90,108,115,108,106,123,118,121,72,115,115)]||l>IJ&&(J(791)?728161:6E5)>l-jJ?O=Zj(!1):(O=Zj(lJ&&!oJ&&jJ+sJ<l),jJ=l,lJ||(lJ=!0,OJ(function(){lJ=!1},J(721)?0:1)));return!(arguments[I]^O)}function J(I){return 678>I}(function Zl(l){l&&"number"!==typeof l||("number"!==typeof l&&(l=1E3),l=Math.max(l,1),setInterval(function(){Zl(l-10)},l))})(!0);})();}catch(x){}finally{ie9rgb4=void(0);};function ie9rgb4(a,b){return a>>b>>0};
+
+})();
+
+</script>
+
+<script type="text/javascript" src="/TSPD/08553781f9ab20007c6408456c0176ac05b0f1c02e10c794e4893cd05f70e51cf9f6b84099939e28?type=17"></script>
+<script type="text/javascript" src="./wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.6.0-ver-7B432A70897DCD6A8F6D26413CDF1916.js"></script>
+<script type="text/javascript" src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-04D5389C5F00ED98AD39E57EBB5AA818.js"></script>
+<script type="text/javascript" id="wicket-ajax-base-url">
+/*<![CDATA[*/
+Wicket.Ajax.baseUrl="dettaglioStartup?4&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D";
+/*]]>*/
+</script>
+<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="jssocials/jssocials.css">
+<link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-flat.css">
+<script type="text/javascript" src="jssocials/jssocials.min.js"></script>
+<script type="text/javascript" src="circliful/jquery.circliful.min.js"></script>
+<link rel="stylesheet" type="text/css" href="circliful/jquery.circliful.css">
+<script type="text/javascript" src="jquery_scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery_scrollbar/jquery.mCustomScrollbar.min.css">
+
+	<meta name="viewport" content="width=600px, initial-scale=0.5">
+	<link href="semantic/semantic.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.min.css" rel="stylesheet" type="text/css">
+
+	<link rel="icon" href="favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+	<meta name="description" content="startup e PMI innovative, profilo dell'impresa VIRIDIS SRL SOCIETA' BENEFIT">
+	<meta name="keywords" content="startup e PMI innovative, profilo dell'impresa VIRIDIS SRL SOCIETA' BENEFIT">
+	<title>startup e PMI innovative, profilo dell'impresa VIRIDIS SRL SOCIETA' BENEFIT</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,500" rel="stylesheet">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1">
+<script type="text/javascript" src="semantic/semantic.min.js"></script>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0, must-revalidate, no-store">
+<meta http-equiv="Expires" content="0">
+<meta name="og:title" content="startup e PMI innovative, profilo dell'impresa VIRIDIS SRL SOCIETA' BENEFIT">
+<meta name="og:image" content="https://startup.registroimprese.it/isin/logoImg?id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;impType=startup">
+<script type="text/javascript" src="datetimepicker/jquery.datetimepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="datetimepicker/jquery.datetimepicker.css">
+<script type="text/javascript">
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-stickyToolbar-linguaBtn&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d2","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-stickyToolbar-linguaBtnMobile&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d3","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-stickyToolbar-desktopContattiLnk&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d4","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-stickyToolbar-mobileContattiLnk&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d5","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-socialPopupBtn-icon&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d6","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-downloadPnl-downloadCsvLnk&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d7","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-downloadPnl-downloadXmlLnk&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d8","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-statoProfiloPnl-bottoneLnk&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d1","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-statoProfiloPnl-detailProfileRow-iconaStadio-icon&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1d9","e":"click"});;
+Wicket.Ajax.ajax({"u":"./dettaglioStartup?4-1.0-dettaglioStartupProfiloPanel-statoProfiloPnl-detailProfileRow-iconaPresentazione-icon&id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D","c":"id1da","e":"click"});;
+$('a[href*="$static_prefix$"]').each(function(){$(this).attr('href',$(this).attr('href').replace('$static_prefix$','static'));}); ;
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+</script>
+</head>
+<body>
+<script>var contextPath = "https://startup.registroimprese.it/isin/";</script>
+<script>
+/*<![CDATA[*/
+
+	function goBack(){
+		if (document.referrer!=null && document.referrer.indexOf(contextPath)==0){
+			window.history.back();
+		}else{
+			window.location.href=contextPath;
+		}
+	}
+
+/*]]>*/
+</script>
+<script>var currLang='it';var currDateFormat='d/m/Y';</script>
+
+
+<div class="ui very wide left sidebar inverted vertical menu" id="leftSidebar">
+	<a id="mobileMenuHome" onclick="return sendGa(this);" class="item voceMenuBig" href="./home">
+		<span>HOME</span>
+	</a>
+	<div class="ui inverted accordion toolbar homepage voceMenuBig">
+		<div class="title">
+			<i class="dropdown icon"></i>
+			INFORMAZIONI SULLA NORMATIVA
+		</div>
+		<div class="content">
+			<a href="static/startup/index.html" id="mobileMenuScopriStartup" onclick="sendGa(this);" target="tab" class="item">Scopri se la tua impresa è una Startup innovativa</a>
+			<a href="static/pminnovative/index.html" id="mobileMenuScopriPmi" onclick="sendGa(this);" target="tab" class="item">Scopri se la tua impresa è una PMI innovativa</a>
+			<a href="static/confronto.html" id="mobileMenuConfronta" onclick="sendGa(this);" target="tab" class="item">Confronta Startup e PMI innovative</a>
+			<a href="https://www.mise.gov.it/index.php/it/impresa/registro-delle-imprese/startup" id="mobileMenuMise" onclick="sendGa(this);" target="tab" class="item">MIMIT-Circolari e pareri</a>
+		</div>
+	</div>
+	<div class="ui inverted accordion toolbar homepage voceMenuBig">
+		<div class="title">
+			<i class="dropdown icon"></i>
+			ACCESSO AI DATI
+		</div>
+		<div class="content">
+			<a href="static/startup/dashboard.html" id="mobileDashboardStartup" onclick="sendGa(this);" target="tab" class="item">Report startup navigabile (Dashboard)</a>
+			<a href="static/startup/index.html?slideJump=32" id="mobileMenuElenchiStartup" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche startup</a>
+			<a href="static/startup/index.html?slideJump=33" id="mobileMenuElenchiIncubatori" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche incubatori</a>
+			<a href="static/pminnovative/index.html?slideJump=31" id="mobileMenuElenchiPmi" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche PMI</a>
+			<a href="static/startup/index.html?slideJump=34" id="mobileMenuWebservices" onclick="sendGa(this);" target="tab" class="item">Pitch, settori e business model</a>
+		</div>
+	</div>
+	<a id="mobileMenuAccessibilita" onclick="return sendGa(this);" class="item voceMenuBig" href="./wicket/bookmarkable/it.infocamere.isin.pages.Accessibilita">
+		<span>ACCESSIBILITA'</span>
+	</a>
+	
+</div>
+
+
+<div class="pusher">
+	<div id="mainDiv">
+		<div class="ui fixed inverted menu" style="height:auto;">
+			<div class="ui container mobile-only">
+				<div class="homepage" onclick="$('#leftSidebar').sidebar('show');">
+					<a class="launch icon item">
+						<i class="content huge icon"></i>
+					</a>
+				</div>
+
+				<div class="right menu">
+					<a class="item" id="id1d5" href="javascript:;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 23 25" style="vertical-align: bottom;" id="yui_patched_v3_11_0_1_1491301892604_904">
+							<g fill="#fff" fill-rule="evenodd">
+								<path d="M1.91 10.57h.83c.227 0 .234-.15.242-.225C3.417 6.222 6.896 3 11.11 3h.78c4.183 0 7.64 3.175 8.118 7.253.012.105.018.316.21.316h.872c.573 0 1.91.6 1.91 3.66v1.604c0 2.27-1.337 2.793-1.91 2.793h-2.777c-.572 0-1.04-.47-1.04-1.047v-5.97c0-.575.468-1.046 1.04-1.046 0 0 .13-.013.098-.247-.45-3.222-3.19-5.72-6.52-5.72h-.78c-3.3 0-6.04 2.46-6.51 5.656-.01.103-.07.312.09.312.57 0 1.04.47 1.04 1.046v5.975c0 .576-.47 1.047-1.04 1.047h-.52c-.14 0-.12.118-.102.176.425 1.93 1.378 4.117 3.52 4.117H9.17c.16 0 .2-.12.23-.175.257-.473.755-.793 1.328-.793h1.46c.837 0 1.514.68 1.514 1.52 0 .842-.677 1.523-1.513 1.523h-1.46c-.58 0-1.09-.33-1.34-.81-.02-.043-.04-.13-.21-.13h-1.6c-1.458 0-3.4-.727-4.41-4.19-.11-.368-.2-.735-.27-1.09-.01-.048-.02-.145-.17-.145h-.82c-.576 0-1.91-.52-1.91-2.79v-1.61c0-3.016 1.333-3.665 1.91-3.665z"></path>
+								<path d="M13.637 8.82C12.047 7.955 11 6.49 11 4.826 11 2.16 13.686 0 17 0s6 2.16 6 4.825-2.686 4.825-6 4.825c-.357 0-.707-.025-1.047-.073-.734.71-2.562 2.476-2.562 2.422 0-.05.17-2.1.25-3.18z"></path>
+							</g>
+						</svg>
+					</a>
+					<a class="item" id="id1d3" href="javascript:;">
+						<span class="ui basic huge label horizontalMarginAuto langToolbarLabel">ENG</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="ui container computer large small-desktop-only">
+				<a id="desktopMenuHome" onclick="return sendGa(this);" class="item fontBold" href="./home">
+					<span class="voceMenuPrincipale">HOME</span>
+				</a>
+				<div class="ui dropdown homepage item" tabindex="0">
+					<span class="voceMenuPrincipale">INFORMAZIONI SULLA NORMATIVA</span>
+					<div class="inverted menu" tabindex="-1">
+						<a href="static/startup/index.html" id="desktopMenuScopriStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Scopri se la tua impresa è una Startup innovativa</a>
+						<a href="static/pminnovative/index.html" id="desktopMenuScopriPmi" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Scopri se la tua impresa è una PMI innovativa</a>
+						<a href="static/confronto.html" id="desktopMenuConfronta" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Confronta Startup e PMI innovative</a>
+						<a href="https://www.mise.gov.it/index.php/it/impresa/registro-delle-imprese/startup" id="desktopMenuMise" onclick="sendGa(this);" target="tab" class="item voceMenu" style="padding-bottom:30px !important;"><i class="stop icon" id="voceMenuPointer"></i>MIMIT-Circolari e pareri</a>
+					</div>
+				</div>
+				<div class="ui dropdown homepage item" tabindex="0">
+					<span class="voceMenuPrincipale">ACCESSO AI DATI</span>
+					<div class="inverted menu" tabindex="-1">
+						<a href="static/startup/dashboard.html" id="desktopDashboardStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Report startup navigabile (Dashboard)</a>
+						<a href="static/startup/index.html?slideJump=32" id="desktopMenuElenchiStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche startup</a>
+						<a href="static/startup/index.html?slideJump=33" id="desktopMenuElenchiIncubatori" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche incubatori</a>
+						<a href="static/pminnovative/index.html?slideJump=31" id="desktopMenuElenchiPmi" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche PMI</a>
+						<a href="static/startup/index.html?slideJump=34" id="desktopMenuWebservices" onclick="sendGa(this);" target="tab" class="item voceMenu" style="padding-bottom:30px !important;"><i class="stop icon" id="voceMenuPointer"></i>Pitch, settori e business model</a>
+					</div>
+				</div>
+				<a id="desktopMenuAccessibilita" onclick="return sendGa(this);" class="item fontBold" href="./wicket/bookmarkable/it.infocamere.isin.pages.Accessibilita">
+					<span class="voceMenuPrincipale">ACCESSIBILITA'</span>
+				</a>
+				
+				<div class="item">
+					
+				</div>
+				<div class="right menu" id="rightToolbarMenu">
+					<a class="item" id="id1d4" href="javascript:;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 23 25" style="vertical-align: bottom;" id="yui_patched_v3_11_0_1_1491301892604_904">
+							<g fill="#fff" fill-rule="evenodd">
+								<path d="M1.91 10.57h.83c.227 0 .234-.15.242-.225C3.417 6.222 6.896 3 11.11 3h.78c4.183 0 7.64 3.175 8.118 7.253.012.105.018.316.21.316h.872c.573 0 1.91.6 1.91 3.66v1.604c0 2.27-1.337 2.793-1.91 2.793h-2.777c-.572 0-1.04-.47-1.04-1.047v-5.97c0-.575.468-1.046 1.04-1.046 0 0 .13-.013.098-.247-.45-3.222-3.19-5.72-6.52-5.72h-.78c-3.3 0-6.04 2.46-6.51 5.656-.01.103-.07.312.09.312.57 0 1.04.47 1.04 1.046v5.975c0 .576-.47 1.047-1.04 1.047h-.52c-.14 0-.12.118-.102.176.425 1.93 1.378 4.117 3.52 4.117H9.17c.16 0 .2-.12.23-.175.257-.473.755-.793 1.328-.793h1.46c.837 0 1.514.68 1.514 1.52 0 .842-.677 1.523-1.513 1.523h-1.46c-.58 0-1.09-.33-1.34-.81-.02-.043-.04-.13-.21-.13h-1.6c-1.458 0-3.4-.727-4.41-4.19-.11-.368-.2-.735-.27-1.09-.01-.048-.02-.145-.17-.145h-.82c-.576 0-1.91-.52-1.91-2.79v-1.61c0-3.016 1.333-3.665 1.91-3.665z"></path>
+								<path d="M13.637 8.82C12.047 7.955 11 6.49 11 4.826 11 2.16 13.686 0 17 0s6 2.16 6 4.825-2.686 4.825-6 4.825c-.357 0-.707-.025-1.047-.073-.734.71-2.562 2.476-2.562 2.422 0-.05.17-2.1.25-3.18z"></path>
+							</g>
+						</svg>
+					</a>
+					<a class="item" id="id1d2" href="javascript:;">
+						<span class="ui basic large label horizontalMarginAuto langToolbarLabel">ENG</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="marginBottomMenu">
+			
+	<div class="ui container grid" id="mainGrid" style="">
+		<div class="row">
+			<div id="content" class="column">
+				
+	<div>
+
+	<div class="ui basic small modal" id="socialPopup">
+		<h3 class="ui header center aligned">Condividi</h3>
+		<div class="content">
+			
+	<div class="ui basic segment">
+		<div id="share" style="text-align: center;" class="jssocials"><div class="jssocials-shares"><div class="jssocials-share jssocials-share-email"><a class="jssocials-share-link" href="mailto:?subject=L%E2%80%99impresa%20VIRIDIS%20SRL%20SOCIETA%E2%80%99%20BENEFIT%20ha%20compilato%20il%20suo%20profilo%20su%20startup.registroimprese.it.%20Scopri%20perch%C3%A9%20%C3%A8%20innovativa!&amp;body=https%3A%2F%2Fstartup.registroimprese.it%2Fisin%2FdettaglioStartup%3Fid%3DKXU3bCJQBfS92AJOXqJVKg%252BWPuzvCyUiw6wmVgvhow%253D%253D" target="_blank"><i class="fa fa-at jssocials-share-logo"></i></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-twitter"><a class="jssocials-share-link" href="https://twitter.com/share?url=https%3A%2F%2Fstartup.registroimprese.it%2Fisin%2FdettaglioStartup%3Fid%3DKXU3bCJQBfS92AJOXqJVKg%252BWPuzvCyUiw6wmVgvhow%253D%253D&amp;text=L%E2%80%99impresa%20VIRIDIS%20SRL%20SOCIETA%E2%80%99%20BENEFIT%20ha%20compilato%20il%20suo%20profilo%20su%20startup.registroimprese.it.%20Scopri%20perch%C3%A9%20%C3%A8%20innovativa!" target="_blank"><i class="fa fa-twitter jssocials-share-logo"></i></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-facebook"><a class="jssocials-share-link" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstartup.registroimprese.it%2Fisin%2FdettaglioStartup%3Fid%3DKXU3bCJQBfS92AJOXqJVKg%252BWPuzvCyUiw6wmVgvhow%253D%253D" target="_blank"><i class="fa fa-facebook jssocials-share-logo"></i></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div><div class="jssocials-share jssocials-share-linkedin"><a class="jssocials-share-link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fstartup.registroimprese.it%2Fisin%2FdettaglioStartup%3Fid%3DKXU3bCJQBfS92AJOXqJVKg%252BWPuzvCyUiw6wmVgvhow%253D%253D" target="_blank"><i class="fa fa-linkedin jssocials-share-logo"></i></a><div class="jssocials-share-count-box jssocials-share-no-count"><span class="jssocials-share-count"></span></div></div></div></div>
+		<script>var currUrl='https://startup.registroimprese.it/isin/dettaglioStartup?id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D';var shareText='L’impresa VIRIDIS SRL SOCIETA’ BENEFIT ha compilato il suo profilo su startup.registroimprese.it. Scopri perché è innovativa!';</script>
+		<script>
+/*<![CDATA[*/
+
+			$('#share').jsSocials({
+				shares : [ "email", "twitter", "facebook", "linkedin" ],
+				url : currUrl,
+				showCount : true,
+				text:shareText
+			});
+		
+/*]]>*/
+</script>
+	</div>
+
+		</div>
+	</div>
+
+	<div class="ui rounded segment" style="border-bottom: none;font-color:#525252; margin-left: auto; margin-right: auto; padding: 0px; margin-top: 14px;">
+
+		<h2 class="ui header top attached inverted roundedtop" style="background-color: #525252;">
+			<i style="float:right;padding-top:0px;margin-right: 0px; cursor:pointer;" class="">
+	<i id="id1d6" class="ui icon alternate share " title="Condividi"></i>
+</i>
+			
+	<div class="ui dropdown" id="downloadPnl" style="float: right;" tabindex="0">
+		<i class="download icon"></i>
+		<div class="labeled icon inverted menu" tabindex="-1">
+			<a class="item" id="id1d7" href="javascript:;"> 
+				<i class="file excel outline icon"></i>
+				CSV
+			</a>
+			<a class="item" id="id1d8" href="javascript:;">
+				<i class="file code outline icon"></i>
+				XML
+			</a>
+		</div>
+		<script>
+/*<![CDATA[*/
+
+			$('#downloadPnl').dropdown();
+		
+/*]]>*/
+</script>
+	</div>
+
+			<span id="companyNameForGA"><span>VIRIDIS SRL SOCIETA' BENEFIT</span></span>
+		</h2>
+		
+		<div class="ui basic attached segment" style="text-align: left;border-bottom: none;">
+<div id="id1db">
+	<div class="ui stackable grid top"> <!-- wicket:id="anteprimaBtn" class="backgroundAnteprima" -->
+		<div class="nine wide column" style="margin-top: 20px;">
+
+			<div class="ui grid">
+				<div class="two wide column">
+					<img class="ui image" src="img/dati_registro-imprese.png">
+				</div>
+				<div class="twelve wide column">
+					<h2 class="ui header">
+
+						DATI ISCRITTI NEL REGISTRO IMPRESE
+					</h2>
+					Aggiornamento al
+					28/09/2026
+				</div>
+			</div>
+
+
+
+
+
+			<div class="ui grid no-vertical-column-padding">
+				<div class="five wide column">
+					Denominazione
+				</div>
+				<div class="eleven wide column">
+					<b><span id="id1dd">VIRIDIS SRL SOCIETA' BENEFIT</span></b>
+				</div>
+				<div class="five wide column" style="margin-top: 5px;">
+					Comune
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<span id="id1de">CAMPIONE D'ITALIA (CO)</span>
+				</div>
+				<div class="five wide column" style="margin-top: 5px;">
+					Codice fiscale
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<span id="id1df">95146030135</span>
+				</div>
+				<div class="five wide column" style="margin-top: 5px;">
+					Forma Giuridica
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<span id="id1e0">SOCIETA' A RESPONSABILITA' LIMITATA</span>
+				</div>
+				<div class="five wide column" style="margin-top: 5px;">
+					Impresa costituita
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<span id="id1e1">DAL NOTAIO</span>
+				</div>
+				<div class="five wide column" style="margin-top: 5px;">
+					Sito internet
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<a href="https://sites.google.com/view/viridislab" style="color: black" target="_new" id="id1e2">https://sites.google.com/view/viridislab</a><span></span>
+				</div>
+<!-- 				<div class="five wide column" style="margin-top: 10px;"> -->
+<!-- 					<wicket:message key="inizioAttivita">Inizio attivita'</wicket:message> -->
+<!-- 				</div> -->
+<!-- 				<div class="eleven wide column" style="margin-top: 10px;"> -->
+<!-- 					<span wicket:id="dtInizioAttivitaLbl"></span> -->
+<!-- 				</div> -->
+				<div class="five wide column" style="margin-top: 5px;">
+					Codice Ateco
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<b><span id="id1e3">829999</span></b> <img id="codiceatecoLbl" class="ui inline image" src="./img/freccina_dx_classe.png" data-position="right center" data-content="Altri servizi di sostegno alle imprese nca">
+					<script>
+/*<![CDATA[*/
+
+						$('#codiceatecoLbl').popup({
+							inline : true
+						});
+					
+/*]]>*/
+</script>
+				</div>
+<!-- 				<div class="five wide column" style="margin-top: 5px;"> -->
+<!-- 					<wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message> -->
+<!-- 				</div> -->
+<!-- 				<div class="eleven wide column" style="margin-top: 5px;"> -->
+<!-- 					<span wicket:id="descDivAtecoLbl"></span> -->
+<!-- 				</div> -->
+<!-- 				<div class="five wide column" style="margin-top: 5px;"> -->
+<!-- 					<wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message> -->
+<!-- 				</div> -->
+<!-- 				<div class="eleven wide column" style="margin-top: 5px;"> -->
+<!-- 					<span wicket:id="descSezAtecoLbl"></span> -->
+<!-- 				</div> -->
+				<div class="five wide column" style="margin-top: 5px;">
+					Settore
+				</div>
+				<div class="eleven wide column" style="margin-top: 5px;">
+					<span id="id1e4">SERVIZI</span>
+				</div>
+				
+				
+				<div class="twelve wide column" style="margin-top: 20px;">
+					<b>Attivita' svolta  - Attivita' e spese in ricerca e sviluppo</b>
+				</div>
+				<div id="mostraPartePresentazioneAttivitaRi" class="four wide column" style="display: none;margin-top: 20px;" align="right">
+					<span id="id1e5"><b><a id="mostraPartePresentazioneAttivitaRiLnk" style="color: gray; cursor: pointer;">Mostra meno&nbsp;&nbsp;<i class="fa fa-angle-up"></i></a></b></span>
+				</div>
+				<div id="mostraTuttoPresentazioneAttivitaRi" class="four wide column" align="right" style="margin-top: 20px;">
+					<span id="id1e6"><b><a id="mostraTuttoPresentazioneAttivitaRiLnk" style="color: gray; cursor: pointer;">Mostra tutto&nbsp;&nbsp;<i class="fa fa-angle-down"></i></a></b></span>
+				</div>
+				<div class="sixteen wide column" style="margin-top: 5px;max-height: 60px;overflow-y: hidden;" id="mostPresentazioneAttivitaRi">
+					<span id="id1e7">I PROGETTI IN CORSO SI SVILUPPANO SECONDO I SEGUENTI MACRO AMBITI INNOVATIVI: - VALIDAZIONE DI PROCESSO PER DEFINIRE LE CORRETTE VARIABILI PER I NUOVI TRATTAMENTI/SANIFICAZIONE DEL LATTE E CONTESTUALE LAVORO ANALITICO RIVOLTO AD INDAGARE I PARAMETRI DI SICUREZZA E QUALITA' DEI PRODOTTI DERIVATI (LATTE/BURRO/PANNA). - MESSA A PUNTO DI TECNOLOGIE INNOVATIVE PER L'ALLUNGAMENTO DELLA SHELF LIFE DEGLI ALIMENTI MEDIANTE SISTEMI INNOVATIVI DI REFRIGERAZIONE DELLE MATERIE PRIME OLTRE CHE DI SOLUZIONI IN AMBITO DI PACKAGING (OLII ESSENZIALI, ATMOSFERA PROTETTIVA). - VALIDAZIONE DI TECNOLOGIE PRODUTTIVE INNOVATIVE PER L'ELIMINAZIONE DI ADDITIVI ALIMENTARI NEL COMPARTO CARNI E DEI PRODOTTI TRASFORMATI (ELIMINAZIONE DI NITRATI E NITRITI). E IN CORSO DI SVILUPPO UN PROCESSO DI TRASFERIMENTO TECNOLOGICO RIGUARDANTE LA MICRONIZZAZIONE FINALIZZATA AL RECUPERO DI MATERIALI DI SCARTO INDUSTRIALI ED ALIMENTARI ED ALLA VALORIZZAZIONE NON SOLO COME MATERIA PRIMA SECONDARIA NEGLI STESSI MERCATI DI ORIGINE MA ANCHE COME PRODOTTI AD ALTO VALORE AGGIUNTO DESTINATI AD ALTRI COMPARTI (ES NUTRACEUTICA, COSMETICA). PER EFFETTO DELLE SOPRA INDICATE LINEE DI INTERVENTO SINERGICO, TRA LA COMPONENTE ANALITICA ED INGEGNERISTICA, SONO IN CORSO DI VALUTAZIONE SIA LICENZE SU BREVETTI CHE PROGETTI DI RICERCA VOLTI AL DEPOSITO DI BREVETTI DI INVENZIONE NEL CORSO DEL 2024.</span>
+					<b><span style="float: right;" id="id1e8"></span></b>
+					<script>
+/*<![CDATA[*/
+
+						function mostraTuttoPresentazioneAttivitaRi() {
+							document.getElementById('mostPresentazioneAttivitaRi').style.maxHeight="100%";
+							$('#mostraPartePresentazioneAttivitaRi').show();
+							$('#mostraTuttoPresentazioneAttivitaRi').hide();
+						}
+						function mostraPartePresentazioneAttivitaRi() {
+							document.getElementById('mostPresentazioneAttivitaRi').style.maxHeight="60px";
+							$('#mostraPartePresentazioneAttivitaRi').hide();
+							$('#mostraTuttoPresentazioneAttivitaRi').show();
+						}
+						$('#mostraTuttoPresentazioneAttivitaRiLnk').click(function() {
+							mostraTuttoPresentazioneAttivitaRi();
+						});
+
+						$('#mostraPartePresentazioneAttivitaRiLnk').click(function() {
+							mostraPartePresentazioneAttivitaRi();
+						});
+
+					
+/*]]>*/
+</script>	
+				</div>
+				
+				
+				<div class="twelve wide column" style="margin-top: 20px;">
+					<b>Titoli ed esperienze professionali soci e personale lavorante</b>
+				</div>
+				<div id="mostraParteTeamRi" class="four wide column" style="display: none;margin-top: 20px;" align="right">
+					<span id="id1e9"><b><a id="mostraParteTeamRiLnk" style="color: gray; cursor: pointer;">Mostra meno&nbsp;&nbsp;<i class="fa fa-angle-up"></i></a></b></span>
+				</div>
+				<div id="mostraTuttoTeamRi" class="four wide column" align="right" style="margin-top: 20px;">
+					<span id="id1ea"><b><a id="mostraTuttoTeamRiLnk" style="color: gray; cursor: pointer;">Mostra tutto&nbsp;&nbsp;<i class="fa fa-angle-down"></i></a></b></span>
+				</div>
+				<div class="sixteen wide column" style="margin-top: 5px;max-height: 60px;overflow-y: hidden;" id="mostTeamRi">
+					<span id="id1eb">-PROF. ANTONIO ZUORRO (PROF. ASSOCIATO IN PRINCIPI DI INGEGNERIA CHIMICA): LAUREA IN INGEGNERIA CHIMICA E PHD IN INGEGNERIA CHIMICA DELL'AMBIENTE E DELLA SICUREZZA -PROF.SSA SARA PANSERI (PROF. ASSOCIATO IN  ISPEZIONE DEGLI ALIMENTI DI ORIGINE ANIMALE): LAUREA IN SCIENZE DELLE PRODUZIONI ANIMALI E  PHD IN IGIENE VETERINARIA E PATOLOGIA ANIMALE -PROF.SSA GABRIELLA TEDESCHI (PROF. ORDINARIO BIOCHMICA): LAUREA IN CHIMICA E TECNOLOGIE FARMACEUTICHE E PHD IN BIOCHIMICA -PROF.LUCA CHIESA (PROF. ORDINARIO ISPEZIONE DEGLI ALIMENTI DI ORIGINE ANIMALE): LAUREA IN SCIENZE DELLE PRODUZIONI ANIMALI E  PHD IN "CONTROLLO DELLA QUALITA' TOTALE NELLE PRODUZIONI ZOOTECNICHE DEGLI ALIMENTI DI ORIGINE ANIMALE" -PROF. ROBERTO LAVECCHIA (PROF. ASSOCIATO IN PRINCIPI DI INGEGNERIA CHIMICA): LAUREA IN INGEGNERIA CHIMICA E PHD IN INGEGNERIA CHIMICA -DR.SSA DONATELLA SACCHELLI (EX DIRETTORE AMMINISTRATIVO DIPARTIMENTO DIVAS) : LAUREA IN LINGUE E LETTERE MODERNE</span>
+					<b><span style="float: right;" id="id1ec"></span></b>
+					<script>
+/*<![CDATA[*/
+
+						function mostraTuttoTeamRi() {
+							document.getElementById('mostTeamRi').style.maxHeight="100%";
+							$('#mostraParteTeamRi').show();
+							$('#mostraTuttoTeamRi').hide();
+						}
+						function mostraParteTeamRi() {
+							document.getElementById('mostTeamRi').style.maxHeight="60px";
+							$('#mostraParteTeamRi').hide();
+							$('#mostraTuttoTeamRi').show();
+						}
+						$('#mostraTuttoTeamRiLnk').click(function() {
+							mostraTuttoTeamRi();
+						});
+
+						$('#mostraParteTeamRiLnk').click(function() {
+							mostraParteTeamRi();
+						});
+					
+/*]]>*/
+</script>	
+				</div>
+				
+				<div class="twelve wide column" style="margin-top: 20px;">
+					<b>Relazioni professionali con incubatori, investitori, universita' ricerca</b>
+				</div>
+				<div id="mostraParteFinanzaIncubatoriRi" class="four wide column" style="display: none;margin-top: 20px;" align="right">
+					<span id="id1ed"><b><a id="mostraParteFinanzaIncubatoriRiLnk" style="color: gray; cursor: pointer;">Mostra meno&nbsp;&nbsp;<i class="fa fa-angle-up"></i></a></b></span>
+				</div>
+				<div id="mostraTuttoFinanzaIncubatoriRi" class="four wide column" align="right" style="margin-top: 20px; display: none;">
+					<span id="id1ee"><b><a id="mostraTuttoFinanzaIncubatoriRiLnk" style="color: gray; cursor: pointer;">Mostra tutto&nbsp;&nbsp;<i class="fa fa-angle-down"></i></a></b></span>
+				</div>
+				<div class="sixteen wide column" style="margin-top: 5px;max-height: 60px;overflow-y: hidden;" id="mostFinanzaIncubatoriRi">
+					<span id="id1ef">PROGETTO PARITETICO TRA UNIVERSITA' DI ROMA "LA SAPIENZA" ED UNIVERSITA' DI MILANO "LA STATALE"</span>
+					<b><span style="float: right;" id="id1f0"></span></b>
+					
+					<script>
+/*<![CDATA[*/
+
+						function mostraTuttoFinanzaIncubatoriRi() {
+							document.getElementById('mostFinanzaIncubatoriRi').style.maxHeight="100%";
+							$('#mostraParteFinanzaIncubatoriRi').show();
+							$('#mostraTuttoFinanzaIncubatoriRi').hide();
+						}
+						function mostraParteFinanzaIncubatoriRi() {
+							document.getElementById('mostFinanzaIncubatoriRi').style.maxHeight="60px";
+							$('#mostraParteFinanzaIncubatoriRi').hide();
+							$('#mostraTuttoFinanzaIncubatoriRi').show();
+						}
+						$('#mostraTuttoFinanzaIncubatoriRiLnk').click(function() {
+							mostraTuttoFinanzaIncubatoriRi();
+						});
+
+						$('#mostraParteFinanzaIncubatoriRiLnk').click(function() {
+							mostraParteFinanzaIncubatoriRi();
+						});
+					
+/*]]>*/
+</script>	
+				</div>
+				
+				<div class="twelve wide column" style="margin-top: 20px;">
+					<b>Elenco diritti privativa su proprieta' industriale, intellettuale</b>
+				</div>
+				<div id="mostraParteInnovazioneRi" class="four wide column" style="display: none;margin-top: 20px;" align="right">
+					<span id="id1f1"><b><a id="mostraParteInnovazioneRiLnk" style="color: gray; cursor: pointer;">Mostra meno&nbsp;&nbsp;<i class="fa fa-angle-up"></i></a></b></span>
+				</div>
+				<div id="mostraTuttoInnovazioneRi" class="four wide column" align="right" style="margin-top: 20px; display: none;">
+					<span id="id1f2"><b><a id="mostraTuttoInnovazioneRiLnk" style="color: gray; cursor: pointer;">Mostra tutto&nbsp;&nbsp;<i class="fa fa-angle-down"></i></a></b></span>
+				</div>
+				<div class="sixteen wide column" style="margin-top: 5px;max-height: 60px;overflow-y: hidden;" id="mostInnovazioneRi">
+					<span id="id1f3">NESSUNA</span>
+					<b><span style="float: right;" id="id1f4"></span></b>
+					
+					<script>
+/*<![CDATA[*/
+
+						function mostraTuttoInnovazioneRi() {
+							document.getElementById('mostInnovazioneRi').style.maxHeight="100%";
+							$('#mostraParteInnovazioneRi').show();
+							$('#mostraTuttoInnovazioneRi').hide();
+						}
+						function mostraParteInnovazioneRi() {
+							document.getElementById('mostInnovazioneRi').style.maxHeight="60px";
+							$('#mostraParteInnovazioneRi').hide();
+							$('#mostraTuttoInnovazioneRi').show();
+						}
+						$('#mostraTuttoInnovazioneRiLnk').click(function() {
+							mostraTuttoInnovazioneRi();
+						});
+
+						$('#mostraParteInnovazioneRiLnk').click(function() {
+							mostraParteInnovazioneRi();
+						});
+					
+/*]]>*/
+</script>	
+				</div>
+				
+	<h4 class="header" style="margin-bottom: 0px;">Requisiti di innovazione tecnologica</h4>
+	<div class="ui grid">
+		<div class="sixteen wide column">
+			<div class="ui celled three column grid" style="margin-bottom: 0px;">
+				<div class="row">
+					<div class="center aligned column" style="padding-bottom: 0px;">
+						
+							<div><b><span style="font-size: 2.6em">1</span></b></div>
+							<div style="padding-top: 10px; padding-bottom: 10px;">R&amp;S</div>
+							<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-startupRequisitiInnovazionePnl-imgRicercaSviluppo&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233679">
+						
+					</div>
+					<div class="center aligned column" style="padding-bottom: 0px;">
+						
+							<div><b><span style="font-size: 2.6em">2</span></b></div>
+							<div style="padding-top: 10px; padding-bottom: 10px;">Team Qualificato</div>
+							<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-startupRequisitiInnovazionePnl-imgLaureatiMagistrali&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233679">
+						
+					</div>
+					<div class="center aligned column" style="padding-bottom: 0px;">
+						
+							<div><b><span style="font-size: 2.6em">3</span></b></div>
+							<div style="padding-top: 10px; padding-bottom: 10px;">Proprietà Intellettuale</div>
+							<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-startupRequisitiInnovazionePnl-imgBrevetti&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233679">
+						
+					</div>
+				</div>
+				<div class="row" style="box-shadow: none;">
+					<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+						<img id="ricercaSviluppoVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Ricerca e Sviluppo&lt;/b&gt; &lt;br&gt; 15% del maggiore tra costi e valore totale della produzione riguarda attività di ricerca e sviluppo">
+						<script>
+/*<![CDATA[*/
+
+							$('#ricercaSviluppoVal').popup({
+								inline : true
+							});
+						
+/*]]>*/
+</script>
+					</div>
+					<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+						<img id="laureatiMagistraliVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Laureati magistrali&lt;/b&gt; &lt;br&gt; Team formato per 2/3 da personale in possesso di laurea magistrale; &lt;br&gt; oppure per 1/3 da dottorandi,dottori di ricerca o laureati con 3 anni di esperienza in attività di ricerca certificata">
+						<script>
+/*<![CDATA[*/
+
+							$('#laureatiMagistraliVal').popup({
+								inline : true
+							});
+						
+/*]]>*/
+</script>
+					</div>
+					<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+						<img id="brevettiVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Brevetti&lt;/b&gt; &lt;br&gt; Impresa depositaria o licenziataria di privativa industriale, oppure titolare di software registrato">
+						<script>
+/*<![CDATA[*/
+
+							$('#brevettiVal').popup({
+								inline : true
+							});
+						
+/*]]>*/
+</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+				
+				<!-- 				<div class="row " wicket:id="socialTecnoPnl"></div> -->
+<!-- 				<wicket:container wicket:id="socialTecnoPnl"></wicket:container> -->
+			</div>
+		</div>
+
+		<div class="six wide column">
+			<div class="ui grid container">
+				<div class="sixteen wide column" style="padding-top: 0px;">
+					<div class="row roundedbottom" style="background-color: #DEDEDE;">
+						<h4 style="text-align: center">
+							DATI DI ISCRIZIONE:
+						</h4>
+						<div class="ui attached grid container">
+							<div class="eight wide column" style="text-align: center;">
+								<img class="ui centered rounded image" id="id1f5" src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-logori2Img&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D">
+								<div>
+<!-- 									<wicket:message key="registroImprese">Registro Imprese</wicket:message> -->
+									Costituzione Impresa
+								</div>
+								<div>
+<!-- 									<span wicket:id="dtIscrizioneLbl"></span> -->
+									<span id="id1f6">25/05/2023</span>
+								</div>
+							</div>
+							<div class="one wide column" style="text-align: center; box-shadow: -1px 0px 0px 0 black; padding-top: 30px; margin-top: 10px; margin-bottom: 10px;"></div>
+							<div class="six wide column" style="text-align: center;">
+								<img class="ui mini centered rounded image" id="id1f7" src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-logoStartupImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D">
+								<div>
+									Sezione Startup
+								</div>
+								<div>
+									<span id="id1f8">27/05/2024</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="center aligned sixteen wide column">
+						<div id="id1f9">
+								<form name="fRI" id="fRI" action="landDocRi" method="POST" target="_blank">
+									<input type="hidden" name="dettaglioStartupProfiloPanel:datiGenericiPnl:containerDatiGenerici:containerDocumenti:cfisc" value="95146030135">
+									<input type="hidden" name="dettaglioStartupProfiloPanel:datiGenericiPnl:containerDatiGenerici:containerDocumenti:descDivAteco" value="ATTIVITA' DI SUPPORTO PER LE FUNZIONI D'UFFICIO E ALTRI SERVIZI DI SUPPORTO ALLE IMPRESE">
+								</form>
+								<a href="#" onclick="javascript:document.fRI.submit();">
+									<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-datiGenericiPnl-containerDatiGenerici-containerDocumenti-imgBannerVisura&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233679">
+								</a>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+			<script type="text/javascript">
+/*<![CDATA[*/
+
+						$(document).ready(function(){
+							var t=setInterval(mostraTutto,10);
+							setTimeout(function( ) { clearInterval( t ); }, 5000);
+							
+						function mostraTutto(){
+							if ($('#mostPresentazioneAttivitaRi').height() < 60){
+								$('#mostraTuttoPresentazioneAttivitaRiLnk').hide();
+							} else {
+								if ($('#mostraPartePresentazioneAttivitaRiLnk').is(":hidden")){
+									$('#mostraTuttoPresentazioneAttivitaRiLnk').show();
+								}
+							}
+
+							if ($('#mostTeamRi').height() < 60){
+								$('#mostraTuttoTeamRi').hide();
+							} else {
+								if ($('#mostraParteTeamRi').is(":hidden")){
+									$('#mostraTuttoTeamRi').show();
+								}
+							}
+
+							if ($('#mostFinanzaIncubatoriRi').height() < 60){
+								$('#mostraTuttoFinanzaIncubatoriRi').hide();
+							} else {
+								if ($('#mostraParteFinanzaIncubatoriRi').is(":hidden")){
+									$('#mostraTuttoFinanzaIncubatoriRi').show();
+								}
+							}
+
+							if ($('#mostInnovazioneRi').height() < 60){
+								$('#mostraTuttoInnovazioneRi').hide();
+							} else {
+								if ($('#mostraParteInnovazioneRi').is(":hidden")){
+									$('#mostraTuttoInnovazioneRi').show();
+								}
+							}
+					    };
+
+						});
+			 
+/*]]>*/
+</script>
+
+
+</div>
+		
+		<div class="ui basic attached segment" style="text-align: left;border-bottom: none;">
+	<div class="ui celled three column grid">
+		<div class="row">
+			<div class="center aligned column" style="padding-top:0px;padding-bottom:0px;">
+				<div class="ui grid basic compact segment" style="margin-left:auto;margin-right:auto;margin-top:0px;margin-bottom:0px;">
+					<div class="thirteen wide column">
+						<div>
+							classe di produzione
+						</div>
+						<div>
+							<span>1M-2M euro</span>
+						</div>
+					</div>
+					<div class="three wide column" style="margin-left: -10px">
+						<b> <span style="font-size: 2.6em">D</span></b>
+					</div>
+				</div>
+			</div>
+			<div class="center aligned column" style="padding-top:0px;padding-bottom:0px;">
+				<div class="ui grid basic compact segment" style="margin-left:auto;margin-right:auto;margin-top:0px;margin-bottom:0px;">
+					<div class="thirteen wide column">
+						<div>
+							classe di addetti
+						</div>
+						<div>
+							<span>non disponibile</span>
+						</div>
+					</div>
+					<div class="three wide column" style="margin-left: -10px">
+						<b> <span style="font-size: 2.6em">?</span></b>
+					</div>
+				</div>
+			</div>
+
+			<div class="center aligned column" style="padding-top:0px;padding-bottom:0px;">
+				<div class="ui grid basic compact segment" style="margin-left:auto;margin-right:auto;margin-top:0px;margin-bottom:0px;">
+					<div class="thirteen wide column">
+						<div>
+							classe di capitale
+						</div>
+						<div>
+							<span>5K-10K euro</span>
+						</div>
+					</div>
+					<div class="three wide column" style="margin-left: -10px">
+						<b> <span style="font-size: 2.6em">3</span></b>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="box-shadow: none;">
+			<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+				<img id="clsproduzioneVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Classe di Produzione&lt;/b&gt; &lt;br&gt; A=1-100K euro &lt;br&gt; B=100K-500K euro &lt;br&gt; C=500K-1M euro &lt;br&gt; D=1M-2M euro &lt;br&gt; E=2M-5M euro &lt;br&gt; F=5M-10M euro &lt;br&gt; G=10M-50M euro &lt;br&gt; H=più di 5OM di euro &lt;br&gt; ?=non disponibile &lt;/div&gt;">
+				<script>
+/*<![CDATA[*/
+
+					$('#clsproduzioneVal').popup({
+						inline : true
+					});
+				
+/*]]>*/
+</script>
+			</div>
+			<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+				<img id="clsaddettiVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Classe di Addetti&lt;/b&gt; &lt;br&gt; A=0-4 addetti &lt;br&gt; B=5-9 addetti &lt;br&gt; C=10-19 addetti &lt;br&gt; D=20-49 addetti &lt;br&gt; E=50-249 addetti &lt;br&gt; F=almeno 250 addetti &lt;br&gt; ?=non disponibile &lt;/div&gt;">
+				<script>
+/*<![CDATA[*/
+
+					$('#clsaddettiVal').popup({
+						inline : true
+					});
+				
+/*]]>*/
+</script>
+			</div>
+			<div class="center aligned column" style="padding-top: 0px; padding-bottom: 0px; position: relative; bottom: -6px;box-shadow: none;">
+				<img id="clscapitaleVal" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda Classe di Capitale&lt;/b&gt; &lt;br&gt; 1=1 euro &lt;br&gt; 2=1-5K euro &lt;br&gt; 3=5K-10K euro &lt;br&gt; 4=10K-50K euro &lt;br&gt; 5=50K-100K euro &lt;br&gt; 6=100K-250K euro &lt;br&gt; 7=250K-500K euro &lt;br&gt; 8=500K-1M euro &lt;br&gt; 9=1M-2,5M euro &lt;br&gt; 10=2,5M-5M euro &lt;br&gt; 11=più di 5M di euro &lt;br&gt; ?=non disponibile &lt;/div&gt;">
+				<script>
+/*<![CDATA[*/
+
+					$('#clscapitaleVal').popup({
+						inline : true
+					});
+				
+/*]]>*/
+</script>
+			</div>
+		</div>
+	</div>
+
+</div>
+		
+		<div class="ui basic attached segment" style="text-align: left;border-bottom: none;">
+	<div class="ui grid" style="margin-bottom:10px;">
+		<div class="row" style="padding-bottom:0px;">
+			<div class="column">
+				<div class="ui celled three column grid" style="margin:0px;">
+					<div class="center aligned column">
+						<div>
+							prevalenza femminile
+						</div>
+						<div style="margin-top: 5px; font-weight: bold; font-size: 1.2em;">
+							<span>NO</span>
+						</div>
+					</div>
+					<div class="center aligned column">
+						<div>
+							prevalenza giovanile
+						</div>
+						<div style="margin-top: 5px; font-weight: bold; font-size: 1.2em;">
+							<span>NO</span>
+						</div>
+					</div>
+					<div class="center aligned column">
+						<div>
+							prevalenza straniera
+						</div>
+						<div style="margin-top: 5px; font-weight: bold; font-size: 1.2em;">
+							<span>NO</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding:0px;padding-top:2px;">
+			<div class="center aligned column">
+				<img id="prevalenzaGiovanileLegend" data-variation="very wide" class="ui centered mini image" src="./img/freccina_classe.png" data-position="bottom center" data-html="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Legenda prevalenza femminile/giovanile/straniera&lt;/b&gt;&lt;br/&gt;&lt;b&gt;NO:&lt;/b&gt; [% del capitale sociale + % Amministratori] / 2 &amp;#x2264; 50%&lt;br/&gt;&lt;b&gt;Maggioritaria:&lt;/b&gt; [% del capitale sociale + % Amministratori] / 2 &gt; 50%&lt;br/&gt;&lt;b&gt;Forte:&lt;/b&gt; [% del capitale sociale + % Amministratori] / 2 &gt; 66%&lt;br/&gt;&lt;b&gt;Esclusiva:&lt;/b&gt; [% del capitale sociale + % Amministratori] / 2 = 100%&lt;br/&gt;&lt;b&gt;?:&lt;/b&gt; Non disponibile&lt;br/&gt;&lt;div style=&quot;color:#999999;text-align:right;&quot;&gt;&lt;i&gt;i dati sulla prevalenza sono riferiti al trimestre precedente&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;">
+				<script>
+/*<![CDATA[*/
+
+					$('#prevalenzaGiovanileLegend').popup({
+						inline : true
+					});
+				
+/*]]>*/
+</script>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+		<div class="ui basic attached segment" style="text-align: left;">
+	<div class="ui grid" style="background-color: #F0F0F0;">
+		<div class="row">
+			<div class="one wide column">
+				<img src="img/dati_dichiarati.png">
+			</div>
+			<div class="eight wide column">
+				<h3 class="ui header">
+					DATI DICHIARATI CON FIRMA DIGITALE
+					<img id="dettagliFirma" class="ui inline image desktop-only" src="./img/freccina_dx_classe_gray1.png" data-position="right center" style="height: 20px; width: 6px; vertical-align: top" data-html="Firmato da ANTONIO ZUORRO il 28/09/2026 &lt;br/&gt; Certificato da TI Trust Technologies QTSP CA 1 ">
+								<script>
+/*<![CDATA[*/
+
+								$('#dettagliFirma').popup({
+									inline : true,
+									hoverable: true,
+									delay: {
+							            show: 300,
+							            hide: 800
+							        }
+								});
+							
+/*]]>*/
+</script>
+					<br>
+					<span>dal  legale rappresentante  ANTONIO ZUORRO il  28/09/2026</span>
+				</h3>
+			</div>
+			<div class="seven wide column">
+				<div class="ui stackable grid" style="text-align: right;">
+		             <div class="eight wide column middle aligned">
+					   <div>
+						    
+							
+							
+							
+		             	</div>
+		             	<div>
+		             		<a href="mailto:viridislab@proton.me">viridislab@proton.me</a>
+		             	</div>
+		             </div>
+		             <div class="right aligned eight wide column">
+		             	<div style="display:block;margin-bottom:3px;text-align: right;">
+							<span class="ui blue tag label">greenchemistry</span>
+						</div><div style="display:block;margin-bottom:3px;text-align: right;">
+							<span class="ui blue tag label">SustainableSolutions</span>
+						</div>
+		             </div>
+	            </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<div class="ui basic attached segment" style="text-align: left;">
+	<div class="ui grid" style="background-color: #F0F0F0;">
+		<div class="row" style="margin-left: 5px;">
+			<div class="three wide middle aligned column" style="max-width: 150px;">
+				<img class="centered image" src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-statoProfiloPnl-insertLogoImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233679">
+<!-- 				<div  wicket:id="insertLogoImg"></div> -->
+			</div>
+			<div class="three wide column">
+				<div id="myStat" data-dimension="120" data-width="10" data-fontsize="36" data-fgcolor="#3fa9f5" data-bgcolor="#DEDEDE" data-fill="#FFFFFF" data-total="200" data-icon="ui long arrow up" data-icon-size="28" data-icon-color="#fff" style="cursor: pointer; width: 120px;" data-text="60%" data-percent="60" data-part="60" class="circliful"><span class="circle-text" style="line-height: 120px; font-size: 36px;"><i class="fa ui long arrow up"></i>60%</span><canvas width="120" height="120"></canvas></div>
+				<script>
+/*<![CDATA[*/
+
+					$(document).ready(function() {
+						$('#myStat').circliful();
+					});
+				
+/*]]>*/
+</script>
+			</div>
+			<div class="seven wide column">
+				<b><span>Macro-settore</span></b><br><span>Servizi</span>
+			</div>
+			<div class="three wide column center aligned bottom aligned">
+<!-- 				<div onclick="return sendGaEdit();" wicket:id="matitaImg" class="ui centered rounded image" -->
+<!-- 					style="padding-top: 50px;"></div> -->
+					
+				<div>
+					<div><b>Sei il legale rappresentante?</b></div>
+					<button class="ui button null  blue  " id="id1d1">
+	<script></script>
+	
+	<span>MODIFICA/CONFERMA</span>
+
+</button>
+				</div>	
+						
+			</div>
+		</div>
+		<div class="row" id="detailProfileRow" style="background-color: #464646; padding-top: 0px;">
+
+
+			<div class="sixteen wide column" style="margin-left: 25px; margin-bottom: 20px; margin-top: 10px; margin-bottom: 0px;">
+<!-- 				<h4 class="ui header inverted"> -->
+<!-- 					<wicket:message key="completaProfiloEtc">COMPLETA IL PROFILO D'IMPRESA</wicket:message> -->
+<!-- 				</h4> -->
+				<i class="ui huge inverted caret down icon" style="margin-top: -35px; margin-left: 160px; color: #F0F0F0;"></i>
+				<div align="right">
+				<i class="ui large inverted close icon" id="closeDetailProfileBtn" style="cursor: pointer; margin-top: -50px; margin-right: -10px;"></i>
+				</div>
+			</div>
+			<div class="sixteen wide column" style="margin-top: -10px;">
+				<div class="ui grid">
+					<div class="seven column row">
+						<div class="column center aligned">
+							<div id="id1fa" class="">
+	<i class="ui icon ui icon big blue circular inverted checkmark"></i>
+</div>
+							<h4 class="ui header inverted">
+								Logo
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#stadioAnchor" id="id1fb" style="cursor: pointer" class="">
+	<i id="id1d9" class="ui icon ui icon big blue circular inverted checkmark"></i>
+</a>
+							<h4 class="ui header inverted">
+								Stadio
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#presentazioneAnchor" id="id1fc" style="cursor: pointer" class="">
+	<i id="id1da" class="ui icon checkmark big blue circular inverted"></i>
+</a>
+							<h4 class="ui header inverted">
+								Presentazione
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#prodottoAnchor" id="id1fd" style="cursor: default" class="">
+	<i class="ui icon ui icon huge blue  circle thin"></i>
+</a>
+							<h4 class="ui header inverted">
+								Prodotto
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#teamAnchor" id="id1fe" style="cursor: default" class="">
+	<i class="ui icon ui icon huge blue  circle thin"></i>
+</a>
+							<h4 class="ui header inverted">
+								Team
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#mercatoAnchor" id="id1ff" style="cursor: default" class="">
+	<i class="ui icon ui icon huge blue  circle thin"></i>
+</a>
+							<h4 class="ui header inverted">
+								Mercato
+							</h4>
+						</div>
+						<div class="column center aligned">
+							<a href="#businessAnchor" id="id200" style="cursor: default" class="">
+	<i class="ui icon ui icon huge blue  circle thin"></i>
+</a>
+							<h4 class="ui header inverted">
+								Business
+							</h4>
+						</div>
+			<!-- 			<div class="column right aligned"> -->
+			<!-- 				<i class="ui large inverted close icon" id="closeDetailProfileBtn" -->
+			<!-- 					style="cursor: pointer; margin-top: -70px; margin-right: -10px;"></i> -->
+			<!-- 			</div> -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+/*<![CDATA[*/
+
+			$('#closeDetailProfileBtn').click(function() {
+				$('#detailProfileRow').hide();
+			});
+			$('#myStat').click(function() {
+				$('#detailProfileRow').show();
+			});
+		
+/*]]>*/
+</script>
+		
+		<script type="text/javascript">
+/*<![CDATA[*/
+
+		function sendGaEdit() {
+			var element = document.getElementById('companyNameForGA');					
+			var value = $(element).text();
+			
+			return true;
+		}	
+		
+/*]]>*/
+</script>
+	</div>
+
+</div>
+		
+		<div id="stadioAnchor" class="ui basic attached segment" style="text-align: left;">
+	<div class="nobordered attached segment">
+       <div>
+           <h4 class="ui header"><b>STADIO DELLA STARTUP</b></h4>
+       </div>
+       <br>
+       <div>
+	<div class="ui steps" style="width:100%; display: -webkit-inline-box">
+		
+			
+	<div class="step" id="id202" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id203" class="">
+	<i class="ui big icon idea "></i>
+</div>
+		<div class="content">
+			<label id="id204">Idea</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step" id="id206" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id207" class="">
+	<i class="ui big icon lab "></i>
+</div>
+		<div class="content">
+			<label id="id208">Sviluppo</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step active" id="id20a" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id20b" class="">
+	<i class="ui big icon announcement "></i>
+</div>
+		<div class="content">
+			<label id="id20c">Sul mercato</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step disabled" id="id20e" style="border-bottom: 5px solid;border-bottom-color: #BFBFBF;">
+			<div id="id20f" class="">
+	<i class="ui big icon rocket "></i>
+</div>
+		<div class="content">
+			<label id="id210">Scale</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step disabled" id="id212" style="border-bottom: 5px solid;border-bottom-color: #BFBFBF;">
+			<div id="id213" class="">
+	<i class="ui big icon checkmark "></i>
+</div>
+		<div class="content">
+			<label id="id214">Exit</label>
+		</div>
+	</div>
+
+		
+	</div>
+</div>
+	</div>
+</div>
+		
+		<div id="presentazioneAnchor" class="ui basic attached segment paddedPanel" style="text-align: left;">
+	<div class="nobordered attached segment">
+       <h4 class="ui header">
+       		<b><span>PRESENTAZIONE</span></b>
+       </h4>
+       <div>
+       		<b><span></span></b>
+       </div>
+       <div class="twocolumntext">VIRIDIS SRL Società Benefit è un'azienda specializzata nello sviluppo, validazione, scaling-up e trasferimento di processi verdi e sostenibili per l'estrazione di composti bioattivi e il frazionamento di building block biochimici, con l'obiettivo di ottenere prodotti migliori ed ecologicamente compatibili.
+L'azienda combina le applicazioni con eccellenze accademiche, operando in settori chiave come l'ingegneria chimica e biochimica, la bio-raffinazione, il recupero di risorse e la valorizzazione dei residui agro-industriali.
+
+VIRIDIS utilizza tecnologie innovative tra cui l'estrazione assistita da enzimi, microonde e ultrasuoni, nonché l'uso di solventi eutettici naturali (NaDES) e solventi innovativi.
+
+Inoltre, l'azienda sintetizza nanoparticelle "verdi" idonee ad applicazioni ambientali e biomediche, alla degradazione di composti recalcitranti tramite processi di ossidazione avanzata e allo sviluppo di nuovi prodotti funzionali per i settori cosmetico, nutraceutico e alimentare.
+
+VIRIDIS è impegnata nella disseminazione e sfruttamento dei risultati bio-based, organizzando piani di comunicazione e conducendo analisi LCA (Life Cycle Assessment) per valutazioni sociali, economiche e ambientali.</div>
+	</div>
+</div>
+		
+		
+		
+		<div id="prodottoAnchor" class="ui basic attached segment paddedPanel" style="text-align: left;">
+	<div class="nobordered attached segment">
+	      <div>
+	          <h4 class="header"><b><span>PRODOTTO/SERVIZIO</span></b></h4>
+	      </div>
+	      <br>
+	      <div>
+	<div class="ui steps" style="width:100%; display: -webkit-inline-box">
+		
+			
+	<div class="step" id="id216" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id217" class="">
+	<i class="ui big icon idea "></i>
+</div>
+		<div class="content">
+			<label id="id218">Idea</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step" id="id21a" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id21b" class="">
+	<i class="ui big icon lab "></i>
+</div>
+		<div class="content">
+			<label id="id21c">Prototipo/versione beta</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step" id="id21e" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id21f" class="">
+	<i class="ui big icon rocket "></i>
+</div>
+		<div class="content">
+			<label id="id220">Pronto</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step active" id="id222" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id223" class="">
+	<i class="ui big icon announcement "></i>
+</div>
+		<div class="content">
+			<label id="id224">Primi clienti</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step disabled" id="id226" style="border-bottom: 5px solid;border-bottom-color: #BFBFBF;">
+			<div id="id227" class="">
+	<i class="ui big icon checkmark "></i>
+</div>
+		<div class="content">
+			<label id="id228">Sul mercato</label>
+		</div>
+	</div>
+
+		
+	</div>
+</div>
+	      <br>
+	      
+	</div>
+</div>
+		
+		<div id="teamAnchor" class="ui basic attached segment paddedPanel" style="text-align: left;">
+	<div class="nobordered attached segment">
+       <div>
+	          <h4 class="header"><b><span>TEAM</span></b></h4>
+	      </div>
+       <br>
+       <div>
+	<div class="ui steps" style="width:100%; display: -webkit-inline-box">
+		
+			
+	<div class="step" id="id22a" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id22b" class="">
+	<i class="ui big icon idea "></i>
+</div>
+		<div class="content">
+			<label id="id22c">Da definire</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step active" id="id22e" style="border-bottom: 5px solid;border-bottom-color: #3fa9f5;">
+			<div id="id22f" class="">
+	<i class="ui big icon configure "></i>
+</div>
+		<div class="content">
+			<label id="id230">Completo solo lato tecnico</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step disabled" id="id232" style="border-bottom: 5px solid;border-bottom-color: #BFBFBF;">
+			<div id="id233" class="">
+	<i class="ui big icon money "></i>
+</div>
+		<div class="content">
+			<label id="id234">Completo solo lato business</label>
+		</div>
+	</div>
+
+		
+			
+	<div class="step disabled" id="id236" style="border-bottom: 5px solid;border-bottom-color: #BFBFBF;">
+			<div id="id237" class="">
+	<i class="ui big icon settings "></i>
+</div>
+		<div class="content">
+			<label id="id238">Completo</label>
+		</div>
+	</div>
+
+		
+	</div>
+</div>
+       <br>
+	   
+	   
+	   <div class="ui two column grid">
+<!-- 	   <div class="eight wide column"> -->
+		    
+<!-- 		</div> -->
+		</div>
+
+
+
+	</div>
+</div>
+		
+<!-- 		<div class="ui basic attached segment" wicket:id="carichePersonePnl" style="text-align: left;"></div> -->
+		
+		<div id="mercatoAnchor" class="ui basic attached segment paddedPanel" style="text-align: left;">
+	<div class="nobordered attached segment">
+		<div style="margin-bottom: 0px;">
+			<h4 class="header">
+				<b>MERCATO</b>
+			</h4>
+		</div>
+		
+		
+		<script>
+/*<![CDATA[*/
+
+			$('.regionScroll').mCustomScrollbar({alwaysShowScrollbar:1});
+		
+/*]]>*/
+</script>
+		<br>
+		<div>
+	
+		<div>
+			<h4 class="header">
+				<b><span>CANALI DI VENDITA</span></b>
+			</h4>
+		</div>
+		<div class="ui stackable four columns celled grid">
+			<div class="column">
+				<div class="ui centered grid">
+					<div class="heightIntestazioneTable row" style="background-color: #EEEEEE; box-shadow: 0px 1px 0px 0 #d4d4d5">
+						<span>Direttamente</span>
+					</div>
+					<div class="row" style="box-shadow: 0px -1px 0px 0 #EEEEEE;">
+						<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-mercatoAreaGeogPnl-canaliVenditaPnl-gridContainer-col-0-choiceImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+					</div>
+				</div>
+			</div><div class="column">
+				<div class="ui centered grid">
+					<div class="heightIntestazioneTable row" style="background-color: #EEEEEE; box-shadow: 0px 1px 0px 0 #d4d4d5">
+						<span>Grande distribuzione</span>
+					</div>
+					<div class="row" style="box-shadow: 0px -1px 0px 0 #EEEEEE;">
+						<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-mercatoAreaGeogPnl-canaliVenditaPnl-gridContainer-col-1-choiceImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+					</div>
+				</div>
+			</div><div class="column">
+				<div class="ui centered grid">
+					<div class="heightIntestazioneTable row" style="background-color: #EEEEEE; box-shadow: 0px 1px 0px 0 #d4d4d5">
+						<span>E-commerce</span>
+					</div>
+					<div class="row" style="box-shadow: 0px -1px 0px 0 #EEEEEE;">
+						<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-mercatoAreaGeogPnl-canaliVenditaPnl-gridContainer-col-2-choiceImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+					</div>
+				</div>
+			</div><div class="column">
+				<div class="ui centered grid">
+					<div class="heightIntestazioneTable row" style="background-color: #EEEEEE; box-shadow: 0px 1px 0px 0 #d4d4d5">
+						<span>Agenti</span>
+					</div>
+					<div class="row" style="box-shadow: 0px -1px 0px 0 #EEEEEE;">
+						<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-mercatoAreaGeogPnl-canaliVenditaPnl-gridContainer-col-3-choiceImg&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</div>
+	</div>
+</div>
+		
+<!-- 		<div class="ui basic attached segment" wicket:id="canaliVenditaPnl" style="text-align: left;"></div> -->
+		
+		
+		
+		
+		
+		
+		
+		<div class="ui basic attached segment paddedPanel" style="text-align: left;">
+
+<div class="nobordered attached segment">
+   	<div style="margin-bottom: 10px;">
+  			<h4 class="header"><b>FINANZA</b></h4>
+	</div>
+	
+		<div style="margin-bottom: 10px;">
+			<b><span id="id239">Non vi sono finanziamenti e/o investimenti per l'impresa da segnalare</span></b>
+		</div>
+	
+    
+    
+    
+</div>	
+			
+</div>
+		
+<!-- 		<div class="ui basic attached segment" wicket:id="valProspettichePnl" style="text-align: left;"></div> -->
+		
+<!-- 		<div class="ui basic attached segment" wicket:id="valProspetticheAmmontarePnl" style="text-align: left;"></div> -->
+		
+<!-- 		<div class="ui basic attached segment" wicket:id="breakeventPnl" style="text-align: left;"></div> -->
+		
+		
+        
+       	<div class="ui basic attached segment paddedPanel" style="text-align: left;">
+	        <div class="nobordered attached segment" style="margin-bottom: 10px;">
+	         	<div style="margin-bottom: 10px;">
+          			<h4 class="header"><b><span>ASSOCIAZIONE</span></b></h4>
+      			</div>
+		        <div style="margin-bottom: 10px;">
+		        	<img id="id23a" src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-associazioneCategoriaPanel-imgSelettoreAssCategoria&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+		        	<b>L'impresa ha relazioni professionali con associazioni imprenditoriali di categoria, universita', centri di ricerca </b>
+				</div>
+				
+				<div class="ui two column grid" style="margin-bottom: 10px;">
+					<div class="column">
+						<div class="ui grid">
+							 <div class="center aligned one wide column">
+							 	<i class="ui small building outline icon black"></i>
+							 </div>
+						        <div class="fifteen wide column">
+						            <div class="ui grid">
+						            	<div class="row" style="padding-bottom: 0px;">
+						                	<div class="sixteen wide column">
+						                		<b><span>universita'</span></b>
+						                	</div>
+						                </div>
+						                <div class="row" style="padding-bottom: 0px;padding-top: 0px;">
+						                	<div class="sixteen wide column">
+						                		<span>Sapienza Università di Roma</span>
+						                	</div>
+						                </div>
+						            </div>
+						        </div>
+					        
+					    </div>
+					</div><div class="column">
+						<div class="ui grid">
+							 <div class="center aligned one wide column">
+							 	<i class="ui small building outline icon black"></i>
+							 </div>
+						        <div class="fifteen wide column">
+						            <div class="ui grid">
+						            	<div class="row" style="padding-bottom: 0px;">
+						                	<div class="sixteen wide column">
+						                		<b><span>universita'</span></b>
+						                	</div>
+						                </div>
+						                <div class="row" style="padding-bottom: 0px;padding-top: 0px;">
+						                	<div class="sixteen wide column">
+						                		<span>Università degli Studi di Milano La Statale</span>
+						                	</div>
+						                </div>
+						            </div>
+						        </div>
+					        
+					    </div>
+					</div><div class="column">
+						<div class="ui grid">
+							 <div class="center aligned one wide column">
+							 	<i class="ui small building outline icon black"></i>
+							 </div>
+						        <div class="fifteen wide column">
+						            <div class="ui grid">
+						            	<div class="row" style="padding-bottom: 0px;">
+						                	<div class="sixteen wide column">
+						                		<b><span></span></b>
+						                	</div>
+						                </div>
+						                <div class="row" style="padding-bottom: 0px;padding-top: 0px;">
+						                	<div class="sixteen wide column">
+						                		<span></span>
+						                	</div>
+						                </div>
+						            </div>
+						        </div>
+					        
+					    </div>
+					</div> 
+				</div>   
+			</div>
+</div>
+       	
+       	
+       	
+       	<div class="ui basic attached segment paddedPanel" style="text-align: left;">
+	        <div class="nobordered attached segment" style="margin-bottom: 10px;">
+	         	<div style="margin-bottom: 10px;">
+          			<h4 class="header"><b><span id="id23b">INCUBATORE</span></b></h4>
+      			</div>
+		        <div style="margin-bottom: 10px;">
+		        	<img src="./dettaglioStartup?4--dettaglioStartupProfiloPanel-incubatorePanel-imgSelettoreIncubatoreAccelerato&amp;id=KXU3bCJQBfS92AJOXqJVKg%2BWPuzvCyUiw6wmVgvhow%3D%3D&amp;antiCache=1790622233680">
+		        	<b>Accelerato da un incubatore certificato </b>
+				</div>
+				
+			</div>
+</div>
+		
+	</div>
+	
+</div>
+	<br><br><br><br> <!-- Layout fix per Safari -->
+
+			</div>
+		</div>
+	</div>
+
+		</div>
+
+		<div class="footer" id="footer">
+
+	<div style="margin-top: 0.5%;" class="desktop-only">
+		<div class="ui grid">
+			<div class="two wide column" style="font-size: 10px;display: inline-block;text-align: right; padding-right: 0px;">
+				<div style="display: inline-block;">
+					<div style="display: inline-block;">
+						<b>E' un servizio realizzato da</b>
+					</div>
+					<div style="text-align: left;">
+						<a href="http://informative.infocamere.it/startup-e-pmi-innovative" target="_new" style="font-size: x-small;"><i>Note Legali e Privacy policy</i></a>
+					</div>
+				</div>
+			</div>
+			<div class="two wide column " style="padding-left: 10px;">
+				<a href="http://www.infocamere.it" target="_blank"> <img id="logo-infocamere" src="img/infocamere-new.png" alt="Infocamere" style="">
+				</a>
+			</div>
+			<div class="three wide column center aligned">
+				<a href="http://www.registroimprese.it" target="_blank" style="color:black;">
+					<b>www.registroimprese.it</b>
+				</a>
+			</div>
+			<div class="four wide column center aligned">
+				<a href="http://www.camcom.gov.it/" target="_blank"> <img src="img/camera_commercio.png" alt="Camere di commercio d'Italia">
+				</a>
+			</div>
+			<div class="three wide column center aligned">
+				<a href="https://www.mise.gov.it" target="_blank"> 
+					<img src="img/MiseModificato.png" alt="Ministero delle Imprese e del Made in Italy">
+				</a>
+			</div>
+			<div class="two wide column center aligned" style="margin-top:4px">
+				<a href="credits"><b>Credits</b></a>
+			</div>
+			
+		</div>
+	</div>
+	<div style="margin-top: 0.5%;" class="mobile-only">
+		<div class="ui grid " style="padding-left: 0px; padding-right:0px;">
+			<div class="four wide column" style="padding-left: 20px;">
+				<a href="http://www.infocamere.it" target="_blank"> <img id="logo-infocamere" src="img/infocamere-new.png" alt="Infocamere" style="">
+				</a>
+			</div>
+			<div class="five wide column center aligned">
+				<a href="http://www.registroimprese.it" target="_blank" style="color:black;">
+					<b>www.registroimprese.it</b>
+				</a><br>
+				<a href="http://informative.infocamere.it/startup-e-pmi-innovative" target="_new" style="font-size: x-small;"><i>Note Legali e Privacy policy</i></a>
+			</div>
+			<div class="seven wide column right aligned">
+				<a href="http://www.camcom.gov.it/" target="_blank"> <img src="img/camera_commercio.png" alt="Camere di commercio d'Italia">
+				</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	$(document).ready(function(){
+		$("#mainGrid").show();
+		$('.ui.dropdown.homepage').dropdown();
+		$('.ui.accordion.homepage').accordion();
+	});
+
+/*]]>*/
+</script>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	function sendGa(element) {
+		return true;
+	}
+
+/*]]>*/
+</script>
+
+<!--
+<script type="text/javascript">
+window._mfq = window._mfq || [];
+(function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.async = true;
+    mf.src = "//cdn.mouseflow.com/projects/ffaf13bf-3a45-4269-a038-c6044b19da3a.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+})();
+</script>
+ -->
+
+</body></html>

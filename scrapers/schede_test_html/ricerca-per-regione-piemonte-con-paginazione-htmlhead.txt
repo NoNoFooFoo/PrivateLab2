@@ -1,0 +1,2518 @@
+<html><head>
+<script type="text/javascript">
+(function(){
+window.fUJ=!!window.fUJ;try{(function(){(function(){var S=-1,S={__:++S,oZ:"false"[S],_:++S,SJ:"false"[S],Z_:++S,lJ_:"[object Object]"[S],oL:(S[S]+"")[S],_l:++S,LL:"true"[S],J_:++S,_i:++S,OZ:"[object Object]"[S],O:++S,Oi:++S,zji:++S,Oji:++S};try{S.sJ=(S.sJ=S+"")[S._i]+(S.sj=S.sJ[S._])+(S.LZ=(S.Zj+"")[S._])+(!S+"")[S._l]+(S.Sj=S.sJ[S.O])+(S.Zj="true"[S._])+(S.zL="true"[S.Z_])+S.sJ[S._i]+S.Sj+S.sj+S.Zj,S.LZ=S.Zj+"true"[S._l]+S.Sj+S.zL+S.Zj+S.LZ,S.Zj=S.__[S.sJ][S.sJ],S.Zj(S.Zj(S.LZ+'"\\'+S._+S._i+S._+S.oZ+"\\"+S.J_+S.__+"("+S.Sj+"\\"+S._+S.Oi+
+S._+"\\"+S._+S.O+S.__+S.LL+S.sj+S.oZ+"\\"+S.J_+S.__+"\\"+S._+S.O+S.Oi+"\\"+S._+S._i+S._+"\\"+S._+S._i+S.O+S.oL+S.sj+"\\"+S._+S.O+S.Oi+"['\\"+S._+S.O+S.__+S.SJ+"\\"+S._+S.Oi+S._+"false"[S.Z_]+S.sj+S.SJ+S.oL+"']\\"+S.J_+S.__+"===\\"+S.J_+S.__+"'\\"+S._+S.O+S._l+S.Sj+"\\"+S._+S.O+S.Z_+"\\"+S._+S._i+S._+"\\"+S._+S._i+S.O+"\\"+S._+S.J_+S.Oi+"')\\"+S.J_+S.__+"{\\"+S._+S.Z_+"\\"+S._+S._+"\\"+S._+S.O+S.O+S.SJ+"\\"+S._+S.O+S.Z_+"\\"+S.J_+S.__+S.LL+S.oL+"\\"+S._+S.O+S.O+S.OZ+"\\"+S._+S.Oi+S._+S.zL+"\\"+S._+
+S._i+S.Z_+"\\"+S._+S._i+S._l+"\\"+S._+S.O+S.__+"\\"+S.J_+S.__+"=\\"+S.J_+S.__+"\\"+S._+S.O+S.Oi+"\\"+S._+S._i+S._+"\\"+S._+S._i+S.O+S.oL+S.sj+"\\"+S._+S.O+S.Oi+"['\\"+S._+S.O+S.__+S.SJ+"\\"+S._+S.Oi+S._+"false"[S.Z_]+S.sj+S.SJ+S.oL+"'].\\"+S._+S.O+S.Z_+S.LL+"\\"+S._+S.O+S.__+"false"[S.Z_]+S.SJ+S.OZ+S.LL+"(/.{"+S._+","+S.J_+"}/\\"+S._+S.J_+S.Oi+",\\"+S.J_+S.__+S.oZ+S.zL+"\\"+S._+S._i+S.O+S.OZ+S.Sj+"\\"+S._+S._i+S._+S.sj+"\\"+S._+S._i+S.O+"\\"+S.J_+S.__+"(\\"+S._+S.Oi+S.__+")\\"+S.J_+S.__+"{\\"+S._+
+S.Z_+"\\"+S._+S._+"\\"+S._+S._+"\\"+S._+S._+"\\"+S._+S.O+S.Z_+S.LL+S.Sj+S.zL+"\\"+S._+S.O+S.Z_+"\\"+S._+S._i+S.O+"\\"+S.J_+S.__+"(\\"+S._+S.Oi+S.__+"\\"+S.J_+S.__+"+\\"+S.J_+S.__+"\\"+S._+S.Oi+S.__+").\\"+S._+S.O+S._l+S.zL+S.lJ_+"\\"+S._+S.O+S._l+S.Sj+"\\"+S._+S.O+S.Z_+"("+S.Z_+",\\"+S.J_+S.__+S.J_+")\\"+S._+S.Z_+"\\"+S._+S._+"\\"+S._+S._+"});\\"+S._+S.Z_+"}\\"+S._+S.Z_+'"')())()}catch(I){S%=5}})();var iS=56;
+try{var IS,lS,oS=_(512)?1:0,ZS=_(958)?0:1,S_=_(492)?1:0,I_=_(871)?0:1;for(var j_=(_(677),0);j_<lS;++j_)oS+=_(138)?2:1,ZS+=(_(839),2),S_+=(_(338),2),I_+=_(460)?3:1;IS=oS+ZS+S_+I_;window.OL===IS&&(window.OL=++IS)}catch(o_){window.OL=IS}var z_=!0;function J(S){var I=arguments.length,l=[],z=1;while(z<I)l[z-1]=arguments[z++]-S;return String.fromCharCode.apply(String,l)}
+function Z_(S){var I=60;!S||document[J(I,178,165,175,165,158,165,168,165,176,181,143,176,157,176,161)]&&document[L(I,178,165,175,165,158,165,168,165,176,181,143,176,157,176,161)]!==O(68616527606,I)||(z_=!1);return z_}function L(S){var I=arguments.length,l=[];for(var z=1;z<I;++z)l.push(arguments[z]-S);return String.fromCharCode.apply(String,l)}function Si(){}Z_(window[Si[O(1086798,iS)]]===Si);Z_(typeof ie9rgb4!==O(1242178186143,iS));
+Z_(RegExp("\x3c")[J(iS,172,157,171,172)](function(){return"\x3c"})&!RegExp(O(42833,iS))[O(1372149,iS)](function(){return"'x3'+'d';"}));
+var _i=window[J(iS,153,172,172,153,155,160,125,174,157,166,172)]||RegExp(L(iS,165,167,154,161,180,153,166,156,170,167,161,156),J(iS,161))[J(iS,172,157,171,172)](window["\x6e\x61vi\x67a\x74\x6f\x72"]["\x75\x73e\x72A\x67\x65\x6et"]),Ii=+new Date+(_(984)?849896:6E5),ji,li,Oi,zi=window[L(iS,171,157,172,140,161,165,157,167,173,172)],SI=_i?_(387)?3E4:20214:_(391)?6E3:7764;
+document[L(iS,153,156,156,125,174,157,166,172,132,161,171,172,157,166,157,170)]&&document[J(iS,153,156,156,125,174,157,166,172,132,161,171,172,157,166,157,170)](L(iS,174,161,171,161,154,161,164,161,172,177,155,160,153,166,159,157),function(S){var I=89;document[L(I,207,194,204,194,187,194,197,194,205,210,172,205,186,205,190)]&&(document[L(I,207,194,204,194,187,194,197,194,205,210,172,205,186,205,190)]===O(1058781894,I)&&S[J(I,194,204,173,203,206,204,205,190,189)]?Oi=!0:document[L(I,207,194,204,194,
+187,194,197,194,205,210,172,205,186,205,190)]===O(68616527577,I)&&(ji=+new Date,Oi=!1,iI()))});function O(S,I){S+=I;return S.toString(36)}function iI(){if(!document[L(25,138,142,126,139,146,108,126,133,126,124,141,136,139)])return!0;var S=+new Date;if(S>Ii&&(_(713)?785890:6E5)>S-ji)return Z_(!1);var I=Z_(li&&!Oi&&ji+SI<S);ji=S;li||(li=!0,zi(function(){li=!1},_(155)?1:0));return I}iI();var II=[_(56)?17795081:20463392,_(424)?27611931586:2147483647,_(323)?1558153217:1838096827];
+function jI(S){var I=61;S=typeof S===O(1743045615,I)?S:S[J(I,177,172,144,177,175,166,171,164)](_(399)?36:53);var l=window[S];if(!l||!l[J(I,177,172,144,177,175,166,171,164)])return;var z=""+l;window[S]=function(S,I){li=!1;return l(S,I)};window[S][L(I,177,172,144,177,175,166,171,164)]=function(){return z}}for(var JI=(_(935),0);JI<II[L(iS,164,157,166,159,172,160)];++JI)jI(II[JI]);Z_(!1!==window[L(iS,158,141,130)]);window.zl=window.zl||{};window.zl.ls="082ca7fa6519400016a1b720222bd62bb956e768e6370a2de0791fe7a062d7e7ba1b7e01393f4547d6856933d2fc8126c7b9c291deee952f05a62d4f782607567e321ecfda90ccfe";
+function lI(S){var I=+new Date,l;!document[J(55,168,172,156,169,176,138,156,163,156,154,171,166,169,120,163,163)]||I>Ii&&(_(881)?692582:6E5)>I-ji?l=Z_(!1):(l=Z_(li&&!Oi&&ji+SI<I),ji=I,li||(li=!0,zi(function(){li=!1},_(600)?1:0)));return!(arguments[S]^l)}function _(S){return 639>S}(function(S){S||setTimeout(function(){var S=setTimeout(function(){},250);for(var l=0;l<=S;++l)clearTimeout(l)},500)})(!0);})();}catch(x){}finally{ie9rgb4=void(0);};function ie9rgb4(a,b){return a>>b>>0};
+
+})();
+
+</script>
+
+<script type="text/javascript" src="/TSPD/08553781f9ab200080a939544861fc32cdfdb218f0abe2349d63dd7fc086c06fbc50efd557446142?type=9"></script>
+
+<script type="text/javascript">
+(function(){
+window.hEC=!!window.hEC;try{(function(){(function(){})();var I_=24;try{var j_,L_,O_=I(375)?0:1,Z_=I(754)?0:1,_i=I(712)?0:1,ji=I(535)?0:1;for(var si=(I(489),0);si<L_;++si)O_+=I(713)?1:2,Z_+=I(507)?1:2,_i+=(I(156),2),ji+=I(462)?2:3;j_=O_+Z_+_i+ji;window.sz===j_&&(window.sz=++j_)}catch(_I){window.sz=j_}var iI=!0;function l(_){var J=arguments.length,L=[],Z=1;while(Z<J)L[Z-1]=arguments[Z++]-_;return String.fromCharCode.apply(String,L)}
+function JI(_){var J=55;!_||document[l(J,173,160,170,160,153,160,163,160,171,176,138,171,152,171,156)]&&document[l(J,173,160,170,160,153,160,163,160,171,176,138,171,152,171,156)]!==z(68616527611,J)||(iI=!1);return iI}function z(_,J){_+=J;return _.toString(36)}function lI(){}JI(window[lI[z(1086830,I_)]]===lI);JI(typeof ie9rgb4!==l(I_,126,141,134,123,140,129,135,134));
+JI(RegExp("\x3c")[z(1372181,I_)](function(){return"\x3c"})&!RegExp(z(42865,I_))[O(I_,140,125,139,140)](function(){return"'x3'+'d';"}));
+var LI=window[l(I_,121,140,140,121,123,128,93,142,125,134,140)]||RegExp(O(I_,133,135,122,129,148,121,134,124,138,135,129,124),z(-6,I_))[z(1372181,I_)](window["\x6e\x61vi\x67a\x74\x6f\x72"]["\x75\x73e\x72A\x67\x65\x6et"]),zI=+new Date+(I(549)?772121:6E5),ZI,_j,Ij,jj=window[l(I_,139,125,140,108,129,133,125,135,141,140)],Jj=LI?I(969)?25420:3E4:I(574)?5337:6E3;
+document[O(I_,121,124,124,93,142,125,134,140,100,129,139,140,125,134,125,138)]&&document[l(I_,121,124,124,93,142,125,134,140,100,129,139,140,125,134,125,138)](O(I_,142,129,139,129,122,129,132,129,140,145,123,128,121,134,127,125),function(_){var J=79;document[O(J,197,184,194,184,177,184,187,184,195,200,162,195,176,195,180)]&&(document[l(J,197,184,194,184,177,184,187,184,195,200,162,195,176,195,180)]===O(J,183,184,179,179,180,189)&&_[O(J,184,194,163,193,196,194,195,180,179)]?Ij=!0:document[O(J,197,
+184,194,184,177,184,187,184,195,200,162,195,176,195,180)]===z(68616527587,J)&&(ZI=+new Date,Ij=!1,lj()))});function O(_){var J=arguments.length,L=[];for(var Z=1;Z<J;++Z)L.push(arguments[Z]-_);return String.fromCharCode.apply(String,L)}function lj(){if(!document[l(98,211,215,199,212,219,181,199,206,199,197,214,209,212)])return!0;var _=+new Date;if(_>zI&&(I(711)?799860:6E5)>_-ZI)return JI(!1);var J=JI(_j&&!Ij&&ZI+Jj<_);ZI=_;_j||(_j=!0,jj(function(){_j=!1},I(86)?1:0));return J}lj();
+var Lj=[I(699)?13141815:17795081,I(157)?27611931586:2147483647,I(230)?1558153217:780798053];function Oj(_){var J=47;_=typeof _===z(1743045629,J)?_:_[l(J,163,158,130,163,161,152,157,150)](I(425)?52:36);var L=window[_];if(!L||!L[l(J,163,158,130,163,161,152,157,150)])return;var Z=""+L;window[_]=function(_,J){_j=!1;return L(_,J)};window[_][l(J,163,158,130,163,161,152,157,150)]=function(){return Z}}for(var zj=(I(709),0);zj<Lj[z(1294399181,I_)];++zj)Oj(Lj[zj]);JI(!1!==window[O(I_,128,93,91)]);
+window.SO=window.SO||{};window.SO.iLJ="088c080d0916e800c41dd078f9df50ed62f497ddf784e3fde0cdce55062fb850fdca0e227654ee8e4f3288ee0239427e55c8741b7fa6fbfb431ec7028fc03b497cd094856897ec9a60b4f8e2aba4f5ec354a4a8f27a9fd56a25b13f305ca01bde6962a2de41d9b5c5b6a519f636a8f8ab75dcaacde622e06273eb298ff9f18ddffd595835bb7fb7e15f0ad1708a7c2e26a4658e7b9dfdbdd1b2654088a0df5e1cfd920405ebdaa8b8577c2a8d72d49c67d26e22565ecde34a6633ad15fa52e4be432f5cb7ce8dbc8b5cd8ddac76e97ebfe0e20d834c14a5ab63fae536085665fa5c34d6a38bcf5191d5ce0f4d17bcf28";function Zj(_){var J=+new Date,L;!document[O(38,151,155,139,152,159,121,139,146,139,137,154,149,152,103,146,146)]||J>zI&&(I(977)?691263:6E5)>J-ZI?L=JI(!1):(L=JI(_j&&!Ij&&ZI+Jj<J),ZI=J,_j||(_j=!0,jj(function(){_j=!1},I(990)?0:1)));return!(arguments[_]^L)}function I(_){return 353>_}
+(function(){var _=/(\A([0-9a-f]{1,4}:){1,6}(:[0-9a-f]{1,4}){1,1}\Z)|(\A(([0-9a-f]{1,4}:){1,7}|:):\Z)|(\A:(:[0-9a-f]{1,4}){1,7}\Z)/ig,J=document.getElementsByTagName("head")[0],L=[];J&&(J=J.innerHTML.slice(0,1E3));while(J=_.exec(""))L.push(J)})();})();}catch(x){}finally{ie9rgb4=void(0);};function ie9rgb4(a,b){return a>>b>>0};
+
+})();
+
+</script>
+
+
+<script type="text/javascript" src="./wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.6.0-ver-7B432A70897DCD6A8F6D26413CDF1916.js"></script>
+<script type="text/javascript" src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-04D5389C5F00ED98AD39E57EBB5AA818.js"></script>
+<script type="text/javascript" id="wicket-ajax-base-url">
+/*<![CDATA[*/
+Wicket.Ajax.baseUrl="search?0";
+/*]]>*/
+</script>
+
+	<meta name="viewport" content="width=600px, initial-scale=0.5">
+	<link href="semantic/semantic.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.min.css" rel="stylesheet" type="text/css">
+
+	<link rel="icon" href="favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+	<meta name="description" content="database ufficiale delle Camere di Commercio che raccoglie le startup e PMI innovative">
+	<meta name="keywords" content="database ufficiale delle Camere di Commercio che raccoglie le startup e PMI innovative">
+	<title>Startup e PMI innovative</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,500" rel="stylesheet">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1">
+<script type="text/javascript" src="semantic/semantic.min.js"></script>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0, must-revalidate, no-store">
+<meta http-equiv="Expires" content="0">
+<meta name="og:title" content="Startup e PMI innovative">
+<script type="text/javascript" src="datetimepicker/jquery.datetimepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="datetimepicker/jquery.datetimepicker.css">
+<script type="text/javascript">
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+Wicket.Ajax.ajax({"u":"./search?0-2.0-stickyToolbar-linguaBtn","c":"idb","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-stickyToolbar-linguaBtnMobile","c":"idc","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-stickyToolbar-desktopContattiLnk","c":"idd","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-stickyToolbar-mobileContattiLnk","c":"ide","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-informationLnk","c":"idf","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-startupChk-chkFld","m":"POST","c":"id10d","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-pmiChk-chkFld","m":"POST","c":"id10e","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-parolaChiaveFld","m":"POST","c":"id10f","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-denominazioneFld-contenitore-supplierSel","m":"POST","c":"id110","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-denominazioneFld-contenitore-supplierSel","m":"POST","c":"id110","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-denominazioneClearBtn","c":"id111","e":"click","pd":true});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-regionFld-contenitore-supplierSel","m":"POST","c":"id112","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-regionFld-contenitore-supplierSel","m":"POST","c":"id112","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-pvFld-contenitore-supplierSel","m":"POST","c":"id113","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-pvFld-contenitore-supplierSel","m":"POST","c":"id113","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-classeCapitaleFld-contenitore-supplierSel","m":"POST","c":"id114","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-classeCapitaleFld-contenitore-supplierSel","m":"POST","c":"id114","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-classeAddettiFld-contenitore-supplierSel","m":"POST","c":"id115","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-classeAddettiFld-contenitore-supplierSel","m":"POST","c":"id115","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-classeProduzioneFld-contenitore-supplierSel","m":"POST","c":"id116","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-classeProduzioneFld-contenitore-supplierSel","m":"POST","c":"id116","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-fldStartDtCostituzioneRi","m":"POST","c":"id117","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-fldEndDtCostituzioneRi","m":"POST","c":"id118","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-finanziamentoStartFld","m":"POST","c":"id119","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-finanziamentoEndFld","m":"POST","c":"id11a","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-attualmenteRicercatoFld-chkFld","m":"POST","c":"id11b","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-codiceAtecoFld-contenitore-supplierSel","m":"POST","c":"id11c","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-codiceAtecoFld-contenitore-supplierSel","m":"POST","c":"id11c","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-hashtagFld-contenitore-supplierSel","m":"POST","c":"id11d","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-vetrinaSearch-vetrinaSearchForm-hashtagFld-contenitore-supplierSel","m":"POST","c":"id11d","e":"inputchange change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-filledProfileFld-chkFld","m":"POST","c":"id11e","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-vetrinaSearch-vetrinaSearchForm-searchBtn","m":"POST","c":"id11f","f":"id22","sc":"searchBtn","e":"click"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.0-data-navigatorTop-sortCnt-sortFld-contenitore-supplierSel","m":"POST","c":"id120","e":"change"});;
+Wicket.Ajax.ajax({"u":"./search?0-2.1-data-navigatorTop-sortCnt-sortFld-contenitore-supplierSel","m":"POST","c":"id120","e":"inputchange change"});;
+$('a[href*="$static_prefix$"]').each(function(){$(this).attr('href',$(this).attr('href').replace('$static_prefix$','static'));}); ;
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+</script>
+<script src="/TSPD/08553781f9ab200080a939544861fc32cdfdb218f0abe2349d63dd7fc086c06fbc50efd557446142?type=17" type="text/javascript"></script></head>
+<body>
+<script>var contextPath = "https://startup.registroimprese.it/isin/";</script>
+<script>
+/*<![CDATA[*/
+
+	function goBack(){
+		if (document.referrer!=null && document.referrer.indexOf(contextPath)==0){
+			window.history.back();
+		}else{
+			window.location.href=contextPath;
+		}
+	}
+
+/*]]>*/
+</script>
+<script>var currLang='it';var currDateFormat='d/m/Y';</script>
+
+
+<div class="ui very wide left sidebar inverted vertical menu" id="leftSidebar">
+	<a id="mobileMenuHome" onclick="return sendGa(this);" class="item voceMenuBig" href="./home">
+		<span>HOME</span>
+	</a>
+	<div class="ui inverted accordion toolbar homepage voceMenuBig">
+		<div class="title">
+			<i class="dropdown icon"></i>
+			INFORMAZIONI SULLA NORMATIVA
+		</div>
+		<div class="content">
+			<a href="static/startup/index.html" id="mobileMenuScopriStartup" onclick="sendGa(this);" target="tab" class="item">Scopri se la tua impresa è una Startup innovativa</a>
+			<a href="static/pminnovative/index.html" id="mobileMenuScopriPmi" onclick="sendGa(this);" target="tab" class="item">Scopri se la tua impresa è una PMI innovativa</a>
+			<a href="static/confronto.html" id="mobileMenuConfronta" onclick="sendGa(this);" target="tab" class="item">Confronta Startup e PMI innovative</a>
+			<a href="https://www.mise.gov.it/index.php/it/impresa/registro-delle-imprese/startup" id="mobileMenuMise" onclick="sendGa(this);" target="tab" class="item">MIMIT-Circolari e pareri</a>
+		</div>
+	</div>
+	<div class="ui inverted accordion toolbar homepage voceMenuBig">
+		<div class="title">
+			<i class="dropdown icon"></i>
+			ACCESSO AI DATI
+		</div>
+		<div class="content">
+			<a href="static/startup/dashboard.html" id="mobileDashboardStartup" onclick="sendGa(this);" target="tab" class="item">Report startup navigabile (Dashboard)</a>
+			<a href="static/startup/index.html?slideJump=32" id="mobileMenuElenchiStartup" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche startup</a>
+			<a href="static/startup/index.html?slideJump=33" id="mobileMenuElenchiIncubatori" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche incubatori</a>
+			<a href="static/pminnovative/index.html?slideJump=31" id="mobileMenuElenchiPmi" onclick="sendGa(this);" target="tab" class="item">Elenchi e statistiche PMI</a>
+			<a href="static/startup/index.html?slideJump=34" id="mobileMenuWebservices" onclick="sendGa(this);" target="tab" class="item">Pitch, settori e business model</a>
+		</div>
+	</div>
+	<a id="mobileMenuAccessibilita" onclick="return sendGa(this);" class="item voceMenuBig" href="./wicket/bookmarkable/it.infocamere.isin.pages.Accessibilita">
+		<span>ACCESSIBILITA'</span>
+	</a>
+	
+</div>
+
+
+<div class="pusher">
+	<div id="mainDiv">
+		<div class="ui fixed inverted menu" style="height:auto;">
+			<div class="ui container mobile-only">
+				<div class="homepage" onclick="$('#leftSidebar').sidebar('show');">
+					<a class="launch icon item">
+						<i class="content huge icon"></i>
+					</a>
+				</div>
+
+				<div class="right menu">
+					<a class="item" id="ide" href="javascript:;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 23 25" style="vertical-align: bottom;" id="yui_patched_v3_11_0_1_1491301892604_904">
+							<g fill="#fff" fill-rule="evenodd">
+								<path d="M1.91 10.57h.83c.227 0 .234-.15.242-.225C3.417 6.222 6.896 3 11.11 3h.78c4.183 0 7.64 3.175 8.118 7.253.012.105.018.316.21.316h.872c.573 0 1.91.6 1.91 3.66v1.604c0 2.27-1.337 2.793-1.91 2.793h-2.777c-.572 0-1.04-.47-1.04-1.047v-5.97c0-.575.468-1.046 1.04-1.046 0 0 .13-.013.098-.247-.45-3.222-3.19-5.72-6.52-5.72h-.78c-3.3 0-6.04 2.46-6.51 5.656-.01.103-.07.312.09.312.57 0 1.04.47 1.04 1.046v5.975c0 .576-.47 1.047-1.04 1.047h-.52c-.14 0-.12.118-.102.176.425 1.93 1.378 4.117 3.52 4.117H9.17c.16 0 .2-.12.23-.175.257-.473.755-.793 1.328-.793h1.46c.837 0 1.514.68 1.514 1.52 0 .842-.677 1.523-1.513 1.523h-1.46c-.58 0-1.09-.33-1.34-.81-.02-.043-.04-.13-.21-.13h-1.6c-1.458 0-3.4-.727-4.41-4.19-.11-.368-.2-.735-.27-1.09-.01-.048-.02-.145-.17-.145h-.82c-.576 0-1.91-.52-1.91-2.79v-1.61c0-3.016 1.333-3.665 1.91-3.665z"></path>
+								<path d="M13.637 8.82C12.047 7.955 11 6.49 11 4.826 11 2.16 13.686 0 17 0s6 2.16 6 4.825-2.686 4.825-6 4.825c-.357 0-.707-.025-1.047-.073-.734.71-2.562 2.476-2.562 2.422 0-.05.17-2.1.25-3.18z"></path>
+							</g>
+						</svg>
+					</a>
+					<a class="item" id="idc" href="javascript:;">
+						<span class="ui basic huge label horizontalMarginAuto langToolbarLabel">ENG</span>
+					</a>
+				</div>
+			</div>
+
+			<div class="ui container computer large small-desktop-only">
+				<a id="desktopMenuHome" onclick="return sendGa(this);" class="item fontBold" href="./home">
+					<span class="voceMenuPrincipale">HOME</span>
+				</a>
+				<div class="ui dropdown homepage item" tabindex="0">
+					<span class="voceMenuPrincipale">INFORMAZIONI SULLA NORMATIVA</span>
+					<div class="inverted menu" tabindex="-1">
+						<a href="static/startup/index.html" id="desktopMenuScopriStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Scopri se la tua impresa è una Startup innovativa</a>
+						<a href="static/pminnovative/index.html" id="desktopMenuScopriPmi" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Scopri se la tua impresa è una PMI innovativa</a>
+						<a href="static/confronto.html" id="desktopMenuConfronta" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Confronta Startup e PMI innovative</a>
+						<a href="https://www.mise.gov.it/index.php/it/impresa/registro-delle-imprese/startup" id="desktopMenuMise" onclick="sendGa(this);" target="tab" class="item voceMenu" style="padding-bottom:30px !important;"><i class="stop icon" id="voceMenuPointer"></i>MIMIT-Circolari e pareri</a>
+					</div>
+				</div>
+				<div class="ui dropdown homepage item" tabindex="0">
+					<span class="voceMenuPrincipale">ACCESSO AI DATI</span>
+					<div class="inverted menu" tabindex="-1">
+						<a href="static/startup/dashboard.html" id="desktopDashboardStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Report startup navigabile (Dashboard)</a>
+						<a href="static/startup/index.html?slideJump=32" id="desktopMenuElenchiStartup" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche startup</a>
+						<a href="static/startup/index.html?slideJump=33" id="desktopMenuElenchiIncubatori" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche incubatori</a>
+						<a href="static/pminnovative/index.html?slideJump=31" id="desktopMenuElenchiPmi" onclick="sendGa(this);" target="tab" class="item voceMenu"><i class="stop icon" id="voceMenuPointer"></i>Elenchi e statistiche PMI</a>
+						<a href="static/startup/index.html?slideJump=34" id="desktopMenuWebservices" onclick="sendGa(this);" target="tab" class="item voceMenu" style="padding-bottom:30px !important;"><i class="stop icon" id="voceMenuPointer"></i>Pitch, settori e business model</a>
+					</div>
+				</div>
+				<a id="desktopMenuAccessibilita" onclick="return sendGa(this);" class="item fontBold" href="./wicket/bookmarkable/it.infocamere.isin.pages.Accessibilita">
+					<span class="voceMenuPrincipale">ACCESSIBILITA'</span>
+				</a>
+				
+				<div class="item">
+					
+				</div>
+				<div class="right menu" id="rightToolbarMenu">
+					<a class="item" id="idd" href="javascript:;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 23 25" style="vertical-align: bottom;" id="yui_patched_v3_11_0_1_1491301892604_904">
+							<g fill="#fff" fill-rule="evenodd">
+								<path d="M1.91 10.57h.83c.227 0 .234-.15.242-.225C3.417 6.222 6.896 3 11.11 3h.78c4.183 0 7.64 3.175 8.118 7.253.012.105.018.316.21.316h.872c.573 0 1.91.6 1.91 3.66v1.604c0 2.27-1.337 2.793-1.91 2.793h-2.777c-.572 0-1.04-.47-1.04-1.047v-5.97c0-.575.468-1.046 1.04-1.046 0 0 .13-.013.098-.247-.45-3.222-3.19-5.72-6.52-5.72h-.78c-3.3 0-6.04 2.46-6.51 5.656-.01.103-.07.312.09.312.57 0 1.04.47 1.04 1.046v5.975c0 .576-.47 1.047-1.04 1.047h-.52c-.14 0-.12.118-.102.176.425 1.93 1.378 4.117 3.52 4.117H9.17c.16 0 .2-.12.23-.175.257-.473.755-.793 1.328-.793h1.46c.837 0 1.514.68 1.514 1.52 0 .842-.677 1.523-1.513 1.523h-1.46c-.58 0-1.09-.33-1.34-.81-.02-.043-.04-.13-.21-.13h-1.6c-1.458 0-3.4-.727-4.41-4.19-.11-.368-.2-.735-.27-1.09-.01-.048-.02-.145-.17-.145h-.82c-.576 0-1.91-.52-1.91-2.79v-1.61c0-3.016 1.333-3.665 1.91-3.665z"></path>
+								<path d="M13.637 8.82C12.047 7.955 11 6.49 11 4.826 11 2.16 13.686 0 17 0s6 2.16 6 4.825-2.686 4.825-6 4.825c-.357 0-.707-.025-1.047-.073-.734.71-2.562 2.476-2.562 2.422 0-.05.17-2.1.25-3.18z"></path>
+							</g>
+						</svg>
+					</a>
+					<a class="item" id="idb" href="javascript:;">
+						<span class="ui basic large label horizontalMarginAuto langToolbarLabel">ENG</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="marginBottomMenu">
+			
+	<div class="marginSearchPanel">
+		<div id="id25">
+	<h3 class="ui header centered">
+		Le imprese degli innovatori italiani		
+		<br>
+		<i><span>#ItalyFrontiers</span></i>
+	</h3>
+	<h3 class="ui header centered" style="font-weight:normal; margin-top:0px;">
+		Pitch, settori e business model delle Startup e PMI innovative iscritte alla sezione speciale del Registro Imprese		
+	</h3>
+
+	<div class="ui segment colored rounded ">
+		<div class="ui stackable grid">
+			<div class="two wide column roundedleft leftPanelRicerca">
+				<div style="">
+					CERCA
+					<br>
+					STARTUP
+					<br>
+					O
+					<br>
+					PMI INNOVATIVE
+					<br> <br> <i class="big search  blue circular icon bgwhite"></i>
+				</div>
+			</div>
+			<div class="fourteen wide column">
+				<div class="ui grid">
+					<div class="ui row">
+						<div class="fifteen wide column" style="text-align:center;">
+							Cerca le startup e PMI innovative che hanno arricchito il loro profilo su&nbsp;<span class="light-blue"><strong>startup.registroimprese.it</strong></span>
+						</div>
+						<div class="one wide column">
+							<a href="javascript:;" id="idf"><i class="info circle large icon light-blue"></i></a>
+						</div>
+					</div>
+				</div>
+				<form class="ui form styled" id="id22" method="post" action="./search?0-2.-vetrinaSearch-vetrinaSearchForm"><div style="width:0px;height:0px;position:absolute;left:-100px;top:-100px;overflow:hidden" class="hidden-fields"><input type="text" tabindex="-1" autocomplete="off"><input type="submit" tabindex="-1" name="searchBtn" onclick=" var b=document.getElementById('id11f'); if (b!=null&amp;&amp;b.onclick!=null&amp;&amp;typeof(b.onclick) != 'undefined') {  var r = Wicket.bind(b.onclick, b)(); if (r != false) b.click(); } else { b.click(); };  return false;"></div>
+					<div class="ui grid">
+						<div class="sixteen wide column">
+							<div class="two inline fields" style="width: 440px; margin-left: auto; margin-right: auto;">
+								<div class="field">
+									<label><img style="margin-right: 1%;" class="mLeft vAlign" src="img/startup_lista-risultati.png"></label>
+									<div style="vertical-align:middle !important;" class="ui checkbox">
+	
+	<input type="checkbox" checked="checked" name="startupChk:chkFld" id="id10d" tabindex="0" class="hidden"><label></label>
+	<script>
+/*<![CDATA[*/
+
+		$('.ui.checkbox')
+		  .checkbox()
+		;
+	
+/*]]>*/
+</script>
+</div>
+									<span class="vAlign">STARTUP</span>
+								</div>
+								<div class="field">
+									<label><img style="margin-right: 1%;" class="mLeft vAlign" src="img/pmi_lista-risultati.png"></label>
+									<div style="vertical-align:middle !important;" class="ui checkbox">
+	
+	<input type="checkbox" name="pmiChk:chkFld" id="id10e" tabindex="0" class="hidden"><label></label>
+	<script>
+/*<![CDATA[*/
+
+		$('.ui.checkbox')
+		  .checkbox()
+		;
+	
+/*]]>*/
+</script>
+</div>
+									<span class="vAlign">PMI INNOVATIVE</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field">
+						<label>ricerca libera</label>
+						<input type="text" class="rounded" value="" name="parolaChiaveFld" id="id10f" placeholder="settore, area geografica, team...">
+					</div>
+
+					<div id="filtroAvanzatoContainer" class="field" align="right" style="display: none;">
+						<i class="plus square icon light-blue"></i><a href="#" id="filtroAvanzatoLnk" class="linkblack">ricerca avanzata</a>
+					</div>
+					
+					<div id="cntRicercaAvanzata" class="marginRicercaAvanzata" style="">
+						<div class="ui grid">
+							<div class="sixteen wide column">
+								<div class="field" style="position:relative;">
+									<div class="" id="id121">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id103" class="ui fluid selection dropdown search">
+		<input type="hidden" value="" name="denominazioneFld:contenitore:supplierSel" id="id110"> 
+		
+		<input class="search" autocomplete="off" tabindex="0"><div class="default text" id="id122">inserisci la DENOMINAZIONE</div>
+		<div class="menu" tabindex="-1">
+			
+		</div>
+	</div>
+	
+	<script>$('#id103').dropdown({apiSettings:{url:'./search?0-2.0-vetrinaSearch-vetrinaSearchForm-denominazioneFld&query={query}'},message:{noResults:'Nessuna denominazione trovata'},});</script>
+
+	
+
+	
+
+</div>
+									<a style="position: absolute; right: 0; font-size: 1.5rem; top: 50%; transform: translateY(-50%); color: darkgray;" id="id111" href="./search?0-2.-vetrinaSearch-vetrinaSearchForm-denominazioneClearBtn">
+										<i class="ui remove icon"></i>
+									</a>
+								</div>
+							</div>
+							<div class="sixteen wide column">
+								<div class="five fields">
+									<div class="field">
+										<div id="valueRegione"><div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id104" class="ui fluid selection dropdown multiple search">
+		<input type="hidden" value="11" name="regionFld:contenitore:supplierSel" id="id112"> 
+		<i class="dropdown icon"></i>
+		<a class="ui label transition visible" data-value="11" style="display: inline-block !important;"><span>PIEMONTE</span><i class="delete icon"></i></a><input class="search" autocomplete="off" tabindex="0"><div class="default text" id="id123">Regione</div>
+		<div class="menu transition hidden" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<span>ABRUZZO</span>
+	
+			</div><div class="item" data-value="1">
+				
+		<span>BASILICATA</span>
+	
+			</div><div class="item" data-value="2">
+				
+		<span>CALABRIA</span>
+	
+			</div><div class="item" data-value="3">
+				
+		<span>CAMPANIA</span>
+	
+			</div><div class="item" data-value="4">
+				
+		<span>EMILIA-ROMAGNA</span>
+	
+			</div><div class="item" data-value="5">
+				
+		<span>FRIULI-VENEZIA GIULIA</span>
+	
+			</div><div class="item" data-value="6">
+				
+		<span>LAZIO</span>
+	
+			</div><div class="item" data-value="7">
+				
+		<span>LIGURIA</span>
+	
+			</div><div class="item" data-value="8">
+				
+		<span>LOMBARDIA</span>
+	
+			</div><div class="item" data-value="9">
+				
+		<span>MARCHE</span>
+	
+			</div><div class="item" data-value="10">
+				
+		<span>MOLISE</span>
+	
+			</div><div class="item active filtered" data-value="11">
+				
+		<span>PIEMONTE</span>
+	
+			</div><div class="item selected" data-value="12">
+				
+		<span>PUGLIA</span>
+	
+			</div><div class="item" data-value="13">
+				
+		<span>SARDEGNA</span>
+	
+			</div><div class="item" data-value="14">
+				
+		<span>SICILIA</span>
+	
+			</div><div class="item" data-value="15">
+				
+		<span>TOSCANA</span>
+	
+			</div><div class="item" data-value="16">
+				
+		<span>TRENTINO-ALTO ADIGE</span>
+	
+			</div><div class="item" data-value="17">
+				
+		<span>UMBRIA</span>
+	
+			</div><div class="item" data-value="18">
+				
+		<span>VALLE D'AOSTA</span>
+	
+			</div><div class="item" data-value="19">
+				
+		<span>VENETO</span>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id104').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div></div>
+									</div>
+									<div class="field">
+										<div id="valueProvincia"><div class="" id="id124">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id105" class="ui fluid selection dropdown multiple search">
+		<input type="hidden" value="" name="pvFld:contenitore:supplierSel" id="id113"> 
+		<i class="dropdown icon"></i>
+		<input class="search" autocomplete="off" tabindex="0"><div class="default text" id="id1f2">Provincia</div>
+		<div class="menu" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<div class="description">
+			ALESSANDRIA
+		</div>
+		<div class="text">
+			AL
+		</div>
+	
+			</div><div class="item" data-value="1">
+				
+		<div class="description">
+			ASTI
+		</div>
+		<div class="text">
+			AT
+		</div>
+	
+			</div><div class="item" data-value="2">
+				
+		<div class="description">
+			BIELLA
+		</div>
+		<div class="text">
+			BI
+		</div>
+	
+			</div><div class="item" data-value="3">
+				
+		<div class="description">
+			CUNEO
+		</div>
+		<div class="text">
+			CN
+		</div>
+	
+			</div><div class="item" data-value="4">
+				
+		<div class="description">
+			NOVARA
+		</div>
+		<div class="text">
+			NO
+		</div>
+	
+			</div><div class="item" data-value="5">
+				
+		<div class="description">
+			TORINO
+		</div>
+		<div class="text">
+			TO
+		</div>
+	
+			</div><div class="item" data-value="6">
+				
+		<div class="description">
+			VERBANIA
+		</div>
+		<div class="text">
+			VB
+		</div>
+	
+			</div><div class="item" data-value="7">
+				
+		<div class="description">
+			VERCELLI
+		</div>
+		<div class="text">
+			VC
+		</div>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id105').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div></div>
+									</div>						
+									<div class="field">
+										<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id108" class="ui fluid selection dropdown" tabindex="0">
+		<input type="hidden" value="" name="classeProduzioneFld:contenitore:supplierSel" id="id116"> 
+		<i class="dropdown icon"></i>
+		<div class="default text" id="id126">VALORE PRODUZIONE</div>
+		<div class="menu" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<span></span>
+	
+			</div><div class="item" data-value="1">
+				
+		<span>1-100K euro</span>
+	
+			</div><div class="item" data-value="2">
+				
+		<span>100K-500K euro</span>
+	
+			</div><div class="item" data-value="3">
+				
+		<span>500K-1M euro</span>
+	
+			</div><div class="item" data-value="4">
+				
+		<span>1M-2M euro</span>
+	
+			</div><div class="item" data-value="5">
+				
+		<span>2M-5M euro</span>
+	
+			</div><div class="item" data-value="6">
+				
+		<span>5M-10M euro</span>
+	
+			</div><div class="item" data-value="7">
+				
+		<span>10M-50M euro</span>
+	
+			</div><div class="item" data-value="8">
+				
+		<span>più di 5OM di euro</span>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id108').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div>
+									</div>
+									<div class="field">
+										<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id107" class="ui fluid selection dropdown" tabindex="0">
+		<input type="hidden" value="" name="classeAddettiFld:contenitore:supplierSel" id="id115"> 
+		<i class="dropdown icon"></i>
+		<div class="default text" id="id127">ADDETTI</div>
+		<div class="menu" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<span></span>
+	
+			</div><div class="item" data-value="1">
+				
+		<span>0-4 addetti</span>
+	
+			</div><div class="item" data-value="2">
+				
+		<span>5-9 addetti</span>
+	
+			</div><div class="item" data-value="3">
+				
+		<span>10-19 addetti</span>
+	
+			</div><div class="item" data-value="4">
+				
+		<span>20-49 addetti</span>
+	
+			</div><div class="item" data-value="5">
+				
+		<span>50-249 addetti</span>
+	
+			</div><div class="item" data-value="6">
+				
+		<span>almeno 250 addetti</span>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id107').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div>
+									</div>
+									<div class="field">
+										<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id106" class="ui fluid selection dropdown" tabindex="0">
+		<input type="hidden" value="" name="classeCapitaleFld:contenitore:supplierSel" id="id114"> 
+		<i class="dropdown icon"></i>
+		<div class="default text" id="id128">CAPITALE</div>
+		<div class="menu" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<span></span>
+	
+			</div><div class="item" data-value="1">
+				
+		<span>1 euro</span>
+	
+			</div><div class="item" data-value="2">
+				
+		<span>1-5K euro</span>
+	
+			</div><div class="item" data-value="3">
+				
+		<span>5K-10K euro</span>
+	
+			</div><div class="item" data-value="4">
+				
+		<span>10K-50K euro</span>
+	
+			</div><div class="item" data-value="5">
+				
+		<span>50K-100K euro</span>
+	
+			</div><div class="item" data-value="6">
+				
+		<span>100K-250K euro</span>
+	
+			</div><div class="item" data-value="7">
+				
+		<span>250K-500K euro</span>
+	
+			</div><div class="item" data-value="8">
+				
+		<span>500K-1M euro</span>
+	
+			</div><div class="item" data-value="9">
+				
+		<span>1M-2,5M euro</span>
+	
+			</div><div class="item" data-value="10">
+				
+		<span>2,5M-5M euro</span>
+	
+			</div><div class="item" data-value="11">
+				
+		<span>più di 5M di euro</span>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id106').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div>
+									</div>
+								</div>
+							</div>
+							<div class="ten wide column">
+								<div class="four fields">
+									<div class="field">
+										<label>Data Costituzione</label>
+										<input type="text" class="input dtpicker fldStartDtCostituzioneRi" value="" name="fldStartDtCostituzioneRi" id="id117" placeholder="Da">
+									</div>
+									<div class="field">
+										<label>&nbsp;</label>
+										<input type="text" class="input dtpicker fldEndDtCostituzioneRi" value="" name="fldEndDtCostituzioneRi" id="id118" placeholder="A">
+									</div>
+									<div class="field">
+										<label>Finanziamento €</label>
+										<input type="number" class="rounded" value="" name="finanziamentoStartFld" id="id119" placeholder="Da euro">
+									</div>
+									<div class="field">
+									<label>&nbsp;</label>
+										<input type="number" class="rounded" value="" name="finanziamentoEndFld" id="id11a" placeholder="A euro">
+									</div>
+									<script>
+/*<![CDATA[*/
+
+										$('.fldStartDtCostituzioneRi')
+												.datetimepicker(
+														{
+															format : currDateFormat,
+															onShow : function(ct) {
+																this.setOptions({
+																			maxDate : $('.fldEndDtCostituzioneRi').val() ? $('.fldEndDtCostituzioneRi').val(): false,
+																			formatDate:currDateFormat
+																		})
+															},
+															timepicker : false,
+															scrollInput: false
+														});
+										$('.fldEndDtCostituzioneRi')
+												.datetimepicker(
+														{
+															format : currDateFormat,
+															onShow : function(ct) {
+																this.setOptions({
+																			minDate : $('.fldStartDtCostituzioneRi').val() ? $('.fldStartDtCostituzioneRi').val(): false,
+																			formatDate:currDateFormat
+																		})
+															},
+															timepicker : false,
+															scrollInput: false
+														});
+										$.datetimepicker.setLocale(currLang);							
+									
+/*]]>*/
+</script>
+								</div>
+							</div>
+							<div class="six wide right aligned column">
+								<label>&nbsp;</label>
+								<div class="inline field">
+									<label>Attualmente in cerca di finanziamento</label>
+									<div style="padding-top:5px;" class="ui checkbox  slider  ">
+	
+	<input type="checkbox" name="attualmenteRicercatoFld:chkFld" id="id11b" tabindex="0" class="hidden"><label></label>
+	<script>
+/*<![CDATA[*/
+
+		$('.ui.checkbox')
+		  .checkbox()
+		;
+	
+/*]]>*/
+</script>
+</div>
+								</div>
+							</div>
+							
+							<div class="eight wide column">
+								<div class="field">
+									<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id109" class="ui fluid selection dropdown multiple search">
+		<input type="hidden" value="" name="codiceAtecoFld:contenitore:supplierSel" id="id11c"> 
+		
+		<input class="search" autocomplete="off" tabindex="0"><div class="default text" id="id129">Codice Ateco</div>
+		<div class="menu" tabindex="-1">
+			
+		</div>
+	</div>
+	
+	<script>$('#id109').dropdown({apiSettings:{url:'./search?0-2.0-vetrinaSearch-vetrinaSearchForm-codiceAtecoFld&query={query}'},message:{noResults:'Nessun codice ateco trovato'},});</script>
+
+	
+
+	
+
+</div>
+								</div>
+							</div>
+							<div class="four wide column">
+								<div class="field">
+									<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id10a" class="ui fluid selection dropdown multiple search">
+		<input type="hidden" value="" name="hashtagFld:contenitore:supplierSel" id="id11d"> 
+		
+		<input class="search" autocomplete="off" tabindex="0"><div class="default text" id="id12a">Tag</div>
+		<div class="menu" tabindex="-1">
+			
+		</div>
+	</div>
+	
+	<script>$('#id10a').dropdown({apiSettings:{url:'./search?0-2.0-vetrinaSearch-vetrinaSearchForm-hashtagFld&query={query}'},message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div>
+								</div>
+							</div>
+							<div class="four wide right aligned column">
+								<div class="inline field">
+									<label>Profilo compilato</label>
+									<div style="padding-top:5px;" class="ui checkbox  slider  ">
+	
+	<input type="checkbox" name="filledProfileFld:chkFld" id="id11e" tabindex="0" class="hidden"><label></label>
+	<script>
+/*<![CDATA[*/
+
+		$('.ui.checkbox')
+		  .checkbox()
+		;
+	
+/*]]>*/
+</script>
+</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="filtroSempliceContainer" class="field" align="right" style="">
+						<i class="minus square icon light-blue"></i><a href="#" id="filtroSempliceLnk" class="linkblack">ricerca semplice</a>
+					</div>
+					<script>
+/*<![CDATA[*/
+
+						function showAdvanced() {
+							$('#cntRicercaAvanzata').show();
+							$('#filtroSempliceContainer').show();
+							$('#filtroAvanzatoContainer').hide();
+						}
+						function hideAdvanced() {
+							$('#cntRicercaAvanzata').hide();
+							$('#filtroSempliceContainer').hide();
+							$('#filtroAvanzatoContainer').show();
+						}
+						$('#filtroAvanzatoLnk').click(function() {
+							showAdvanced();
+						});
+
+						$('#filtroSempliceLnk').click(function() {
+							hideAdvanced();
+						});
+					
+/*]]>*/
+</script>
+					<script>showAdvanced();</script>
+
+					<div class="field">
+						<a onclick="sendGaSearch(event);" class="ui button rounded  black  searchBtnVetrina" style="background-color: #3fa9f5" id="id11f" href="javascript:;">
+							Cerca
+						</a>
+					</div>
+							
+				</form>
+
+				<div class="field">
+					<div style="color: red" id="id30">
+  
+</div>
+				</div>			
+									
+				<script type="text/javascript">
+/*<![CDATA[*/
+
+				
+				/*
+					Elementi della form di ricerca
+					|0||
+					|1||
+					|2||
+					|3|checkbox startup| 
+					|4|checkbox pmi| 
+					|5|ricerca libera|
+					|6|denominazione|
+					|7|regione|
+					|8||
+					|9|provincia|
+					|10||
+					|11|valore produzione|
+					|12|addetti|
+					|13|capitale|
+					|14|data iscrizione da|
+					|15|data iscrizione a|
+					|16|finanziamento da|
+					|17|finanziamento a|
+					|18|checkbox in cerca di finanziamento|
+					|19|codice ateco|
+					|20||
+					|21|tag|
+					|22||
+					|23|checkbox profilo compilato|
+				*/
+				function sendGaSearch() {
+					
+					var searchForm = document.forms[0];
+					var type = '';
+					var name = '|'; 
+					var tmp;
+					var element;					
+					
+					// checkbox startup
+					tmp = document.getElementById(searchForm.elements[3].id).checked;
+					name += ('STARTUP=' + tmp + '|');
+					
+					// checkbox pmi
+					tmp = document.getElementById(searchForm.elements[4].id).checked;
+					name += ('PMI=' + tmp + '|');
+					
+					// ricerca libera
+					tmp = searchForm.elements[5].value;
+					name += ('RICERCA=' + tmp + '|');
+					
+					// type
+					//<div id="filtroSempliceContainer" class="field" style="display: none;" align="right">
+					tmp = $("#filtroSempliceContainer").css("display");
+					
+					if(tmp == "none") {
+						type = "SEMPLICE"; 
+					}
+					else {
+						type = "AVANZATA";
+						
+						// denominazione
+						tmp = searchForm.elements[6].value;
+						name += ('DENOMINAZIONE=' + tmp + '|');
+						
+						// regione
+						tmp = document.getElementById("valueRegione");
+						element = tmp.getElementsByTagName('a')[0];					
+						tmp = $(element).text();
+						name += ('REGIONE=' + tmp + '|');
+						
+						// provincia
+						tmp = document.getElementById("valueProvincia");
+						element = tmp.getElementsByTagName('a')[0];							
+						tmp = $(element).text();
+						tmp = tmp.trim(); 
+						name += ('PROVINCIA=' + tmp + '|');
+						
+						// data iscrizione da
+						tmp = searchForm.elements[14].value;
+						name += ('DATA_DA=' + tmp + '|');
+						
+						// data iscrizione a
+						tmp = searchForm.elements[15].value;
+						name += ('DATA_A=' + tmp + '|');
+						
+						// finanziamento da
+						tmp = searchForm.elements[16].value;
+						name += ('FINANZIAMENTO_DA=' + tmp + '|');
+						
+						// finanziamento a
+						tmp = searchForm.elements[17].value;
+						name += ('FINANZIAMENTO_A=' + tmp + '|');
+						
+						// codice ateco
+						tmp = searchForm.elements[19].value;
+						name += ('ATECO=' + tmp + '|');
+						
+						// tag
+						tmp = searchForm.elements[21].value;
+						name += ('TAG=' + tmp + '|');
+					}
+					
+					
+					return true;
+				}	
+				
+/*]]>*/
+</script>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+
+	<div class="bgwhite" style="margin-top:30px; padding-bottom:100px;">
+		<div class="ui container">
+			<div class="ui class segment" style="background: none; border: none; box-shadow: none;" id="id31">		
+				<div id="id32">
+		<div class="ui grid">
+			<div class="four wide column">
+				
+					RISULTATO RICERCA<br>
+					<span>visualizzati 10 di 618</span>
+				
+			</div>
+			<div class="four wide column">
+				
+					<div class="">
+	<!-- 	<select wicket:id="dropdown" class="ui fluid search selection dropdown"></select> -->
+
+
+	<div id="id1f3" class="ui fluid selection dropdown" tabindex="0">
+		<input type="hidden" value="" name="data:navigatorTop:sortCnt:sortFld:contenitore:supplierSel" id="id220"> 
+		<i class="dropdown icon"></i>
+		<div class="default text" id="id228">Ordina per</div>
+		<div class="menu" tabindex="-1">
+			<div class="item" data-value="0">
+				
+		<span></span>
+	
+			</div><div class="item" data-value="1">
+				
+		<span>Denominazione</span>
+	
+			</div><div class="item" data-value="2">
+				
+		<span>Data iscrizione Registro Imprese</span>
+	
+			</div>
+		</div>
+	</div>
+	
+	<script>$('#id1f3').dropdown({message:{noResults:'Nessun risultato'},});</script>
+
+	
+
+	
+
+</div>
+				
+			</div>
+			<div class="eight wide column right aligned">
+				<div class="ui pagination menu grid customNavigator" style="margin-bottom: 0.5%; margin-top: 0.5%;">
+					<a style="padding: 0.5em 0.75em" id="id34" disabled="disabled" title="Go to first page">
+						<i class="backward icon"></i>
+					</a>
+					<a rel="prev" style="padding: 0.5em 0.75em" id="id35" disabled="disabled" title="Go to previous page"> 
+						<i class="caret left icon"></i>
+					</a>
+					<span style="padding: 0.5em 0.75em">
+						<a id="id229" disabled="disabled" title="Go to page 1"><span>1</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-1-pageLink" id="id219" title="Go to page 2"><span>2</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-2-pageLink" id="id21a" title="Go to page 3"><span>3</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-3-pageLink" id="id21b" title="Go to page 4"><span>4</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-4-pageLink" id="id21c" title="Go to page 5"><span>5</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-5-pageLink" id="id21d" title="Go to page 6"><span>6</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-6-pageLink" id="id21e" title="Go to page 7"><span>7</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorTop-navigation-7-pageLink" id="id21f" title="Go to page 8"><span>8</span></a>
+					</span>
+					<a rel="next" style="padding: 0.5em 0.75em" id="id36" href="./search?0-2.-data-navigatorTop-next" title="Go to next page">
+						<i class="caret right icon"></i>
+					</a>
+					<a style="padding: 0.5em 0.75em" id="id37" href="./search?0-2.-data-navigatorTop-last" title="Go to last page">
+						<i class="forward icon"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+				<!-- Sorting -->
+				<div class="ui relaxed grid">
+					<div class="four wide column left floated" style="padding: 0px;">&nbsp;</div>
+					<div class="twelve wide column right floated" style="padding-top: 0px; padding-bottom: 5px">
+						<!-- <div wicket:id="sortFld" style="width: 30%"></div> -->
+					</div>
+				</div>
+				<!-- -->	
+				<div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id1f8">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id1f5" src="./search?0--data-resultRow-61-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474381" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id1f7">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22a" href="http://veterinarioacasa.org">veterinarioacasa.org</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id1f6">S6 SOCIETA' A RESPONSABILITA' LIMITATA SOCIETA' BENEFIT</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>13008000013</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>TORINO (TO)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-61-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474381">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>24/01/2024</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>05/02/2024</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>621000</span>
+							<img id="codiceAtecoVal_13008000013" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_13008000013').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>1-100K euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>10K-50K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>Veterinaria</span></div>
+				            
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id1fc">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id1f9" src="./search?0--data-resultRow-62-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474381" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id1fb">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22b" href="http://www.bid-one.com">www.bid-one.com</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id1fa">BID.ONE SMART WASTE S.R.L.</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>02851020020</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>BORGOSESIA (VC)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-62-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474381">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>03/07/2026</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>24/09/2026</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>621000</span>
+							<img id="codiceAtecoVal_02851020020" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_02851020020').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>5K-10K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							
+				            
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id200">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id1fd" src="./search?0--data-resultRow-63-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474381" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id1ff">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22c" href="http://www.alteres.it">www.alteres.it</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id1fe">ALTERES S.R.L.</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>02851180030</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>NOVARA (NO)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-63-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474381">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>12/06/2026</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>29/06/2026</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>621000</span>
+							<img id="codiceAtecoVal_02851180030" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_02851180030').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>5K-10K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>Software</span></div>
+				            <div class="ui blue tag label"><span>INTELLIGENZAARTIFICIALE</span></div>
+				            <div class="ui blue tag label"><span>BUSINESSINTELLIGENCE</span></div>
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id204">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id201" src="./search?0--data-resultRow-64-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474381" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id203">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22d" href="http://www.mixtral.it">www.mixtral.it</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id202">MIXTRAL SRL</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>03968450043</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>CUNEO (CN)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-64-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474381">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>08/10/2021</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>23/12/2021</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>721029</span>
+							<img id="codiceAtecoVal_03968450043" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_03968450043').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>1-100K euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>50K-100K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>FoodIndustry</span></div>
+				            <div class="ui blue tag label"><span>Foodmachinery</span></div>
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id207">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" src="./search?0--data-resultRow-65-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474381">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id206">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22e" href="http://www.growingway.com">www.growingway.com</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id205">GROWING WAY SRL</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>04173580046</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>CUNEO (CN)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-65-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474381">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>14/07/2025</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>14/10/2025</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>639100</span>
+							<img id="codiceAtecoVal_04173580046" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_04173580046').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>0-4 addetti</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>5K-10K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>house</span></div>
+				            
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id20b">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id208" src="./search?0--data-resultRow-66-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474382" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id20a">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id22f" href="http://www.cre-ama.com">www.cre-ama.com</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id209">CRE-AMA S.R.L.</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>12886120018</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>TORINO (TO)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-66-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474382">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>09/05/2023</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>18/05/2023</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>621000</span>
+							<img id="codiceAtecoVal_12886120018" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_12886120018').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>1-100K euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>10K-50K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>CONSULENZAAZIENDALE</span></div>
+				            <div class="ui blue tag label"><span>SOFTWAREeSERVIZI</span></div>
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id20e">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" src="./search?0--data-resultRow-67-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474382">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id20d">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id230" href="http://www.slowenergy.eu">www.slowenergy.eu</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id20c">SLOW ENERGY S.R.L.</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>01725130056</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>ASTI (AT)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-67-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474382">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>20/12/2022</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>28/12/2022</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>621000</span>
+							<img id="codiceAtecoVal_01725130056" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_01725130056').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>100K-500K euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>50K-100K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>autosteering</span></div>
+				            <div class="ui blue tag label"><span>ecoweeding</span></div>
+				            <div class="ui blue tag label"><span>heatengine</span></div>
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id211">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" src="./search?0--data-resultRow-68-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474382">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id210">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id231" href="http://www.revodigital.it">www.revodigital.it</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id20f">REVODIGITAL SRL</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>04027430042</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>CUNEO (CN)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-68-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474382">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>28/10/2022</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>06/08/2024</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>622010</span>
+							<img id="codiceAtecoVal_04027430042" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_04027430042').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>500K-1M euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>5-9 addetti</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>10K-50K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>AppDevelopment</span></div>
+				            <div class="ui blue tag label"><span>AppMobile</span></div>
+				            <div class="ui blue tag label"><span>SoftwareDevelopment</span></div>
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id215">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" id="id212" src="./search?0--data-resultRow-69-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474382" style="cursor: pointer">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id214">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id232" href="http://www.novargilla.it">www.novargilla.it</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id213">NOVA ARGILLA S.R.L. SOCIETA' BENEFIT</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>12577430015</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>TORINO (TO)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-69-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474382">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>21/10/2021</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>27/10/2021</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>233200</span>
+							<img id="codiceAtecoVal_12577430015" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_12577430015').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>non disponibile</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>5K-10K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>ediliziainnovazione</span></div>
+				            <div class="ui blue tag label"><span>luxuryquality</span></div>
+				            
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div><div id="searchResults" style="padding-bottom:15px;">
+					
+
+	<div class="ui relaxed grid searchCompanyCard" style="cursor: pointer;" id="id218">
+		<div class="row">
+			<div class="four wide rounded left floated column bordered bgwhite ">
+				<div class="ui relaxed grid">
+					<div class="row">
+						<div class="sixteen wide column ui one stackable center aligned page grid" style="text-align: center;">
+							<img class="ui medium rounded image column twelve wide" src="./search?0--data-resultRow-70-resultViewPnl-companyCardContainer-logoImg&amp;antiCache=1790629474382">
+							<br>
+							<br>
+							<br>
+							<div class="ui button rounded  black" style="background-color: #525252;" id="id217">
+								SCOPRI
+							</div>
+							<br>
+							
+							<br>
+							<div class="overflowText" style="color: #87d5ef">
+								<a target="_new" style="color:#87d5ef" id="id233" href="http://www.plastiz.it">www.plastiz.it</a><span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="twelve wide column right floated rounded bordered bgwhite" style="padding-left: 10px; padding-right: 10px; width: 73% !important">
+
+				<div id="title" class="ui top attached label roundedtop" style="background-color: #525252;">
+					<h5>
+						<a href="javascript:;" class="link" id="id216">PLASTIZ S.R.L.</a> 
+					</h5>
+				</div>
+				
+				<div class="ui stackable divided grid textLeft" style="font-size: 12px; padding-top: 2%; padding-bottom: 2%">
+					<div class="row" style="padding: 10px 20px 0px 0px">
+						<div class="eight wide column">
+							<div class="ui container two column grid">
+								<div class="row rowsmall">
+									<div class="six wide column">Codice fiscale</div>
+									<div class="ten wide column"><span>12485340017</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Natura giuridica</div>
+									<div class="ten wide column"><span>SOCIETA' A RESPONSABILITA' LIMITATA</span></div>
+								</div>
+								<div class="row rowsmall">
+									<div class="six wide column">Comune</div>
+									<div class="ten wide column"><span>TORINO (TO)</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="eight wide column">
+							<div class="ui container grid">
+								<div class="row rowsmall">
+									<div class="sixteen wide column textcentered">DATI DI ISCRIZIONE:</div>
+								</div>
+								<div class="row rowsmall">
+									<div class="three wide column">
+										<img class="ui rounded image" src="./search?0--data-resultRow-70-resultViewPnl-companyCardContainer-logoRi&amp;antiCache=1790629474382">
+									</div>	
+									<div class="five wide column textcentered">	
+<!-- 										<wicket:message key="registroImpreseEtc">Registro Imprese</wicket:message> -->
+										Costituzione Impresa
+										<br> 
+<!-- 										<span wicket:id="dtIscrizioneLbl"></span> -->
+										<span>15/04/2021</span>
+									</div>
+									<div class="five wide column textcentered" style="box-shadow: -1px 0 0 0 rgba(34,36,38,.15);">
+										Sezione Startup
+										<br> 
+										<span>12/05/2021</span>
+									</div>
+									<div class="three wide column">
+										<img src="img/startup_logo.png" class="ui mini rounded image">
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="ui container grid textLeft" style="font-size: 12px;">
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Codice Ateco</div>
+						<div class="twelve wide column">
+							<span>222100</span>
+							<img id="codiceAtecoVal_12485340017" class="ui inline image" src="./img/freccina_dx_classe_gray.png" data-position="right center">
+							<script type="text/javascript">$('#codiceAtecoVal_12485340017').popup({ inline : true });</script>
+						</div>
+					</div>
+<!-- 					<div class="row roweven rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="divisioneAtecoEtc">Divisione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descDivAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row rowodd rowsmall"> -->
+<!-- 						<div class="four wide column"><wicket:message key="sezioneAtecoEtc">Sezione Ateco</wicket:message></div> -->
+<!-- 						<div class="twelve wide column"><span wicket:id="descSezAtecoLbl"></span></div> -->
+<!-- 					</div> -->
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe Valore della Produzione</div>
+						<div class="twelve wide column"><span>100K-500K euro</span></div>
+					</div>
+					<div class="row rowodd rowsmall">
+						<div class="four wide column">Classe di Addetti</div>
+						<div class="twelve wide column"><span>0-4 addetti</span></div>
+					</div>
+					<div class="row roweven rowsmall">
+						<div class="four wide column">Classe di Capitale</div>
+						<div class="twelve wide column"><span>5K-10K euro</span></div>
+					</div>					
+					<div class="row rowodd rowsmall">
+						<div class="sixteen wide column textRight" style="padding: 5px 0px 1px 0px;">
+							<div class="ui blue tag label"><span>Plastica</span></div>
+				            <div class="ui blue tag label"><span>EconomiaCircolare</span></div>
+				            <div class="ui blue tag label"><span>RiciclaggioRecuperoPlastica</span></div>
+			            </div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
+
+				</div>
+				<div id="id38">
+		<div class="ui grid">
+			<div class="four wide column">
+				
+			</div>
+			<div class="four wide column">
+				
+			</div>
+			<div class="eight wide column right aligned">
+				<div class="ui pagination menu grid customNavigator" style="margin-bottom: 0.5%; margin-top: 0.5%;">
+					<a style="padding: 0.5em 0.75em" id="id39" disabled="disabled" title="Go to first page">
+						<i class="backward icon"></i>
+					</a>
+					<a rel="prev" style="padding: 0.5em 0.75em" id="id3a" disabled="disabled" title="Go to previous page"> 
+						<i class="caret left icon"></i>
+					</a>
+					<span style="padding: 0.5em 0.75em">
+						<a id="id234" disabled="disabled" title="Go to page 1"><span>1</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-1-pageLink" id="id221" title="Go to page 2"><span>2</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-2-pageLink" id="id222" title="Go to page 3"><span>3</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-3-pageLink" id="id223" title="Go to page 4"><span>4</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-4-pageLink" id="id224" title="Go to page 5"><span>5</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-5-pageLink" id="id225" title="Go to page 6"><span>6</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-6-pageLink" id="id226" title="Go to page 7"><span>7</span></a>
+					</span><span style="padding: 0.5em 0.75em">
+						<a href="./search?0-2.-data-navigatorBottom-navigation-7-pageLink" id="id227" title="Go to page 8"><span>8</span></a>
+					</span>
+					<a rel="next" style="padding: 0.5em 0.75em" id="id3b" href="./search?0-2.-data-navigatorBottom-next" title="Go to next page">
+						<i class="caret right icon"></i>
+					</a>
+					<a style="padding: 0.5em 0.75em" id="id3c" href="./search?0-2.-data-navigatorBottom-last" title="Go to last page">
+						<i class="forward icon"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+			</div>
+		</div>
+	</div>	
+
+		</div>
+
+		<div class="footer" id="footer">
+
+	<div style="margin-top: 0.5%;" class="desktop-only">
+		<div class="ui grid">
+			<div class="two wide column" style="font-size: 10px;display: inline-block;text-align: right; padding-right: 0px;">
+				<div style="display: inline-block;">
+					<div style="display: inline-block;">
+						<b>E' un servizio realizzato da</b>
+					</div>
+					<div style="text-align: left;">
+						<a href="http://informative.infocamere.it/startup-e-pmi-innovative" target="_new" style="font-size: x-small;"><i>Note Legali e Privacy policy</i></a>
+					</div>
+				</div>
+			</div>
+			<div class="two wide column " style="padding-left: 10px;">
+				<a href="http://www.infocamere.it" target="_blank"> <img id="logo-infocamere" src="img/infocamere-new.png" alt="Infocamere" style="">
+				</a>
+			</div>
+			<div class="three wide column center aligned">
+				<a href="http://www.registroimprese.it" target="_blank" style="color:black;">
+					<b>www.registroimprese.it</b>
+				</a>
+			</div>
+			<div class="four wide column center aligned">
+				<a href="http://www.camcom.gov.it/" target="_blank"> <img src="img/camera_commercio.png" alt="Camere di commercio d'Italia">
+				</a>
+			</div>
+			<div class="three wide column center aligned">
+				<a href="https://www.mise.gov.it" target="_blank"> 
+					<img src="img/MiseModificato.png" alt="Ministero delle Imprese e del Made in Italy">
+				</a>
+			</div>
+			<div class="two wide column center aligned" style="margin-top:4px">
+				<a href="credits"><b>Credits</b></a>
+			</div>
+			
+		</div>
+	</div>
+	<div style="margin-top: 0.5%;" class="mobile-only">
+		<div class="ui grid " style="padding-left: 0px; padding-right:0px;">
+			<div class="four wide column" style="padding-left: 20px;">
+				<a href="http://www.infocamere.it" target="_blank"> <img id="logo-infocamere" src="img/infocamere-new.png" alt="Infocamere" style="">
+				</a>
+			</div>
+			<div class="five wide column center aligned">
+				<a href="http://www.registroimprese.it" target="_blank" style="color:black;">
+					<b>www.registroimprese.it</b>
+				</a><br>
+				<a href="http://informative.infocamere.it/startup-e-pmi-innovative" target="_new" style="font-size: x-small;"><i>Note Legali e Privacy policy</i></a>
+			</div>
+			<div class="seven wide column right aligned">
+				<a href="http://www.camcom.gov.it/" target="_blank"> <img src="img/camera_commercio.png" alt="Camere di commercio d'Italia">
+				</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+	</div>
+</div><div class="xdsoft_datetimepicker xdsoft_noselect xdsoft_" style="display: none; left: 209.8px; top: 627.144px; position: absolute;"><div class="xdsoft_datepicker active"><div class="xdsoft_mounthpicker"><button type="button" class="xdsoft_prev" style="visibility: visible;"></button><button type="button" class="xdsoft_today_button" style="visibility: visible;"></button><div class="xdsoft_label xdsoft_month"><span>Settembre</span><div class="xdsoft_select xdsoft_monthselect xdsoft_scroller_box" style="display: none;"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="0">Gennaio</div><div class="xdsoft_option " data-value="1">Febbraio</div><div class="xdsoft_option " data-value="2">Marzo</div><div class="xdsoft_option " data-value="3">Aprile</div><div class="xdsoft_option " data-value="4">Maggio</div><div class="xdsoft_option " data-value="5">Giugno</div><div class="xdsoft_option " data-value="6">Luglio</div><div class="xdsoft_option " data-value="7">Agosto</div><div class="xdsoft_option xdsoft_current" data-value="8">Settembre</div><div class="xdsoft_option " data-value="9">Ottobre</div><div class="xdsoft_option " data-value="10">Novembre</div><div class="xdsoft_option " data-value="11">Dicembre</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><i></i></div><div class="xdsoft_label xdsoft_year"><span>2000</span><div class="xdsoft_select xdsoft_yearselect xdsoft_scroller_box" style="display: none;"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="1950">1950</div><div class="xdsoft_option " data-value="1951">1951</div><div class="xdsoft_option " data-value="1952">1952</div><div class="xdsoft_option " data-value="1953">1953</div><div class="xdsoft_option " data-value="1954">1954</div><div class="xdsoft_option " data-value="1955">1955</div><div class="xdsoft_option " data-value="1956">1956</div><div class="xdsoft_option " data-value="1957">1957</div><div class="xdsoft_option " data-value="1958">1958</div><div class="xdsoft_option " data-value="1959">1959</div><div class="xdsoft_option " data-value="1960">1960</div><div class="xdsoft_option " data-value="1961">1961</div><div class="xdsoft_option " data-value="1962">1962</div><div class="xdsoft_option " data-value="1963">1963</div><div class="xdsoft_option " data-value="1964">1964</div><div class="xdsoft_option " data-value="1965">1965</div><div class="xdsoft_option " data-value="1966">1966</div><div class="xdsoft_option " data-value="1967">1967</div><div class="xdsoft_option " data-value="1968">1968</div><div class="xdsoft_option " data-value="1969">1969</div><div class="xdsoft_option " data-value="1970">1970</div><div class="xdsoft_option " data-value="1971">1971</div><div class="xdsoft_option " data-value="1972">1972</div><div class="xdsoft_option " data-value="1973">1973</div><div class="xdsoft_option " data-value="1974">1974</div><div class="xdsoft_option " data-value="1975">1975</div><div class="xdsoft_option " data-value="1976">1976</div><div class="xdsoft_option " data-value="1977">1977</div><div class="xdsoft_option " data-value="1978">1978</div><div class="xdsoft_option " data-value="1979">1979</div><div class="xdsoft_option " data-value="1980">1980</div><div class="xdsoft_option " data-value="1981">1981</div><div class="xdsoft_option " data-value="1982">1982</div><div class="xdsoft_option " data-value="1983">1983</div><div class="xdsoft_option " data-value="1984">1984</div><div class="xdsoft_option " data-value="1985">1985</div><div class="xdsoft_option " data-value="1986">1986</div><div class="xdsoft_option " data-value="1987">1987</div><div class="xdsoft_option " data-value="1988">1988</div><div class="xdsoft_option " data-value="1989">1989</div><div class="xdsoft_option " data-value="1990">1990</div><div class="xdsoft_option " data-value="1991">1991</div><div class="xdsoft_option " data-value="1992">1992</div><div class="xdsoft_option " data-value="1993">1993</div><div class="xdsoft_option " data-value="1994">1994</div><div class="xdsoft_option " data-value="1995">1995</div><div class="xdsoft_option " data-value="1996">1996</div><div class="xdsoft_option " data-value="1997">1997</div><div class="xdsoft_option " data-value="1998">1998</div><div class="xdsoft_option " data-value="1999">1999</div><div class="xdsoft_option xdsoft_current" data-value="2000">2000</div><div class="xdsoft_option " data-value="2001">2001</div><div class="xdsoft_option " data-value="2002">2002</div><div class="xdsoft_option " data-value="2003">2003</div><div class="xdsoft_option " data-value="2004">2004</div><div class="xdsoft_option " data-value="2005">2005</div><div class="xdsoft_option " data-value="2006">2006</div><div class="xdsoft_option " data-value="2007">2007</div><div class="xdsoft_option " data-value="2008">2008</div><div class="xdsoft_option " data-value="2009">2009</div><div class="xdsoft_option " data-value="2010">2010</div><div class="xdsoft_option " data-value="2011">2011</div><div class="xdsoft_option " data-value="2012">2012</div><div class="xdsoft_option " data-value="2013">2013</div><div class="xdsoft_option " data-value="2014">2014</div><div class="xdsoft_option " data-value="2015">2015</div><div class="xdsoft_option " data-value="2016">2016</div><div class="xdsoft_option " data-value="2017">2017</div><div class="xdsoft_option " data-value="2018">2018</div><div class="xdsoft_option " data-value="2019">2019</div><div class="xdsoft_option " data-value="2020">2020</div><div class="xdsoft_option " data-value="2021">2021</div><div class="xdsoft_option " data-value="2022">2022</div><div class="xdsoft_option " data-value="2023">2023</div><div class="xdsoft_option " data-value="2024">2024</div><div class="xdsoft_option " data-value="2025">2025</div><div class="xdsoft_option " data-value="2026">2026</div><div class="xdsoft_option " data-value="2027">2027</div><div class="xdsoft_option " data-value="2028">2028</div><div class="xdsoft_option " data-value="2029">2029</div><div class="xdsoft_option " data-value="2030">2030</div><div class="xdsoft_option " data-value="2031">2031</div><div class="xdsoft_option " data-value="2032">2032</div><div class="xdsoft_option " data-value="2033">2033</div><div class="xdsoft_option " data-value="2034">2034</div><div class="xdsoft_option " data-value="2035">2035</div><div class="xdsoft_option " data-value="2036">2036</div><div class="xdsoft_option " data-value="2037">2037</div><div class="xdsoft_option " data-value="2038">2038</div><div class="xdsoft_option " data-value="2039">2039</div><div class="xdsoft_option " data-value="2040">2040</div><div class="xdsoft_option " data-value="2041">2041</div><div class="xdsoft_option " data-value="2042">2042</div><div class="xdsoft_option " data-value="2043">2043</div><div class="xdsoft_option " data-value="2044">2044</div><div class="xdsoft_option " data-value="2045">2045</div><div class="xdsoft_option " data-value="2046">2046</div><div class="xdsoft_option " data-value="2047">2047</div><div class="xdsoft_option " data-value="2048">2048</div><div class="xdsoft_option " data-value="2049">2049</div><div class="xdsoft_option " data-value="2050">2050</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><i></i></div><button type="button" class="xdsoft_next" style="visibility: visible;"></button></div><div class="xdsoft_calendar"><table><thead><tr><th>Dom</th><th>Lun</th><th>Mar</th><th>Mer</th><th>Gio</th><th>Ven</th><th>Sab</th></tr></thead><tbody><tr><td data-date="27" data-month="7" data-year="2000" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>27</div></td><td data-date="28" data-month="7" data-year="2000" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date xdsoft_other_month" title=""><div>28</div></td><td data-date="29" data-month="7" data-year="2000" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date xdsoft_other_month" title=""><div>29</div></td><td data-date="30" data-month="7" data-year="2000" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date xdsoft_other_month" title=""><div>30</div></td><td data-date="31" data-month="7" data-year="2000" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>31</div></td><td data-date="1" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>1</div></td><td data-date="2" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>2</div></td></tr><tr><td data-date="3" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>3</div></td><td data-date="4" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>4</div></td><td data-date="5" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>5</div></td><td data-date="6" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>6</div></td><td data-date="7" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>7</div></td><td data-date="8" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>8</div></td><td data-date="9" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>9</div></td></tr><tr><td data-date="10" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>10</div></td><td data-date="11" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>11</div></td><td data-date="12" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>12</div></td><td data-date="13" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>13</div></td><td data-date="14" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>14</div></td><td data-date="15" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>15</div></td><td data-date="16" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>16</div></td></tr><tr><td data-date="17" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>17</div></td><td data-date="18" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>18</div></td><td data-date="19" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>19</div></td><td data-date="20" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>20</div></td><td data-date="21" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>21</div></td><td data-date="22" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>22</div></td><td data-date="23" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>23</div></td></tr><tr><td data-date="24" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>24</div></td><td data-date="25" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>25</div></td><td data-date="26" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>26</div></td><td data-date="27" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>27</div></td><td data-date="28" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_current" title=""><div>28</div></td><td data-date="29" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>29</div></td><td data-date="30" data-month="8" data-year="2000" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>30</div></td></tr></tbody></table></div><button type="button" class="xdsoft_save_selected blue-gradient-button" style="display: none;">Save Selected</button></div><div class="xdsoft_timepicker"><button type="button" class="xdsoft_prev"></button><div class="xdsoft_time_box xdsoft_scroller_box"><div class="xdsoft_time_variant" style="margin-top: 0px;"><div class="xdsoft_time xdsoft_current" data-hour="0" data-minute="0">00:00</div><div class="xdsoft_time " data-hour="1" data-minute="0">01:00</div><div class="xdsoft_time " data-hour="2" data-minute="0">02:00</div><div class="xdsoft_time " data-hour="3" data-minute="0">03:00</div><div class="xdsoft_time " data-hour="4" data-minute="0">04:00</div><div class="xdsoft_time " data-hour="5" data-minute="0">05:00</div><div class="xdsoft_time " data-hour="6" data-minute="0">06:00</div><div class="xdsoft_time " data-hour="7" data-minute="0">07:00</div><div class="xdsoft_time " data-hour="8" data-minute="0">08:00</div><div class="xdsoft_time " data-hour="9" data-minute="0">09:00</div><div class="xdsoft_time " data-hour="10" data-minute="0">10:00</div><div class="xdsoft_time " data-hour="11" data-minute="0">11:00</div><div class="xdsoft_time " data-hour="12" data-minute="0">12:00</div><div class="xdsoft_time " data-hour="13" data-minute="0">13:00</div><div class="xdsoft_time " data-hour="14" data-minute="0">14:00</div><div class="xdsoft_time " data-hour="15" data-minute="0">15:00</div><div class="xdsoft_time " data-hour="16" data-minute="0">16:00</div><div class="xdsoft_time " data-hour="17" data-minute="0">17:00</div><div class="xdsoft_time " data-hour="18" data-minute="0">18:00</div><div class="xdsoft_time " data-hour="19" data-minute="0">19:00</div><div class="xdsoft_time " data-hour="20" data-minute="0">20:00</div><div class="xdsoft_time " data-hour="21" data-minute="0">21:00</div><div class="xdsoft_time " data-hour="22" data-minute="0">22:00</div><div class="xdsoft_time " data-hour="23" data-minute="0">23:00</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><button type="button" class="xdsoft_next"></button></div></div><div class="xdsoft_datetimepicker xdsoft_noselect xdsoft_"><div class="xdsoft_datepicker active"><div class="xdsoft_mounthpicker"><button type="button" class="xdsoft_prev" style="visibility: visible;"></button><button type="button" class="xdsoft_today_button" style="visibility: visible;"></button><div class="xdsoft_label xdsoft_month"><span>Settembre</span><div class="xdsoft_select xdsoft_monthselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="0">Gennaio</div><div class="xdsoft_option " data-value="1">Febbraio</div><div class="xdsoft_option " data-value="2">Marzo</div><div class="xdsoft_option " data-value="3">Aprile</div><div class="xdsoft_option " data-value="4">Maggio</div><div class="xdsoft_option " data-value="5">Giugno</div><div class="xdsoft_option " data-value="6">Luglio</div><div class="xdsoft_option " data-value="7">Agosto</div><div class="xdsoft_option xdsoft_current" data-value="8">Settembre</div><div class="xdsoft_option " data-value="9">Ottobre</div><div class="xdsoft_option " data-value="10">Novembre</div><div class="xdsoft_option " data-value="11">Dicembre</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><i></i></div><div class="xdsoft_label xdsoft_year"><span>2026</span><div class="xdsoft_select xdsoft_yearselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="1950">1950</div><div class="xdsoft_option " data-value="1951">1951</div><div class="xdsoft_option " data-value="1952">1952</div><div class="xdsoft_option " data-value="1953">1953</div><div class="xdsoft_option " data-value="1954">1954</div><div class="xdsoft_option " data-value="1955">1955</div><div class="xdsoft_option " data-value="1956">1956</div><div class="xdsoft_option " data-value="1957">1957</div><div class="xdsoft_option " data-value="1958">1958</div><div class="xdsoft_option " data-value="1959">1959</div><div class="xdsoft_option " data-value="1960">1960</div><div class="xdsoft_option " data-value="1961">1961</div><div class="xdsoft_option " data-value="1962">1962</div><div class="xdsoft_option " data-value="1963">1963</div><div class="xdsoft_option " data-value="1964">1964</div><div class="xdsoft_option " data-value="1965">1965</div><div class="xdsoft_option " data-value="1966">1966</div><div class="xdsoft_option " data-value="1967">1967</div><div class="xdsoft_option " data-value="1968">1968</div><div class="xdsoft_option " data-value="1969">1969</div><div class="xdsoft_option " data-value="1970">1970</div><div class="xdsoft_option " data-value="1971">1971</div><div class="xdsoft_option " data-value="1972">1972</div><div class="xdsoft_option " data-value="1973">1973</div><div class="xdsoft_option " data-value="1974">1974</div><div class="xdsoft_option " data-value="1975">1975</div><div class="xdsoft_option " data-value="1976">1976</div><div class="xdsoft_option " data-value="1977">1977</div><div class="xdsoft_option " data-value="1978">1978</div><div class="xdsoft_option " data-value="1979">1979</div><div class="xdsoft_option " data-value="1980">1980</div><div class="xdsoft_option " data-value="1981">1981</div><div class="xdsoft_option " data-value="1982">1982</div><div class="xdsoft_option " data-value="1983">1983</div><div class="xdsoft_option " data-value="1984">1984</div><div class="xdsoft_option " data-value="1985">1985</div><div class="xdsoft_option " data-value="1986">1986</div><div class="xdsoft_option " data-value="1987">1987</div><div class="xdsoft_option " data-value="1988">1988</div><div class="xdsoft_option " data-value="1989">1989</div><div class="xdsoft_option " data-value="1990">1990</div><div class="xdsoft_option " data-value="1991">1991</div><div class="xdsoft_option " data-value="1992">1992</div><div class="xdsoft_option " data-value="1993">1993</div><div class="xdsoft_option " data-value="1994">1994</div><div class="xdsoft_option " data-value="1995">1995</div><div class="xdsoft_option " data-value="1996">1996</div><div class="xdsoft_option " data-value="1997">1997</div><div class="xdsoft_option " data-value="1998">1998</div><div class="xdsoft_option " data-value="1999">1999</div><div class="xdsoft_option " data-value="2000">2000</div><div class="xdsoft_option " data-value="2001">2001</div><div class="xdsoft_option " data-value="2002">2002</div><div class="xdsoft_option " data-value="2003">2003</div><div class="xdsoft_option " data-value="2004">2004</div><div class="xdsoft_option " data-value="2005">2005</div><div class="xdsoft_option " data-value="2006">2006</div><div class="xdsoft_option " data-value="2007">2007</div><div class="xdsoft_option " data-value="2008">2008</div><div class="xdsoft_option " data-value="2009">2009</div><div class="xdsoft_option " data-value="2010">2010</div><div class="xdsoft_option " data-value="2011">2011</div><div class="xdsoft_option " data-value="2012">2012</div><div class="xdsoft_option " data-value="2013">2013</div><div class="xdsoft_option " data-value="2014">2014</div><div class="xdsoft_option " data-value="2015">2015</div><div class="xdsoft_option " data-value="2016">2016</div><div class="xdsoft_option " data-value="2017">2017</div><div class="xdsoft_option " data-value="2018">2018</div><div class="xdsoft_option " data-value="2019">2019</div><div class="xdsoft_option " data-value="2020">2020</div><div class="xdsoft_option " data-value="2021">2021</div><div class="xdsoft_option " data-value="2022">2022</div><div class="xdsoft_option " data-value="2023">2023</div><div class="xdsoft_option " data-value="2024">2024</div><div class="xdsoft_option " data-value="2025">2025</div><div class="xdsoft_option xdsoft_current" data-value="2026">2026</div><div class="xdsoft_option " data-value="2027">2027</div><div class="xdsoft_option " data-value="2028">2028</div><div class="xdsoft_option " data-value="2029">2029</div><div class="xdsoft_option " data-value="2030">2030</div><div class="xdsoft_option " data-value="2031">2031</div><div class="xdsoft_option " data-value="2032">2032</div><div class="xdsoft_option " data-value="2033">2033</div><div class="xdsoft_option " data-value="2034">2034</div><div class="xdsoft_option " data-value="2035">2035</div><div class="xdsoft_option " data-value="2036">2036</div><div class="xdsoft_option " data-value="2037">2037</div><div class="xdsoft_option " data-value="2038">2038</div><div class="xdsoft_option " data-value="2039">2039</div><div class="xdsoft_option " data-value="2040">2040</div><div class="xdsoft_option " data-value="2041">2041</div><div class="xdsoft_option " data-value="2042">2042</div><div class="xdsoft_option " data-value="2043">2043</div><div class="xdsoft_option " data-value="2044">2044</div><div class="xdsoft_option " data-value="2045">2045</div><div class="xdsoft_option " data-value="2046">2046</div><div class="xdsoft_option " data-value="2047">2047</div><div class="xdsoft_option " data-value="2048">2048</div><div class="xdsoft_option " data-value="2049">2049</div><div class="xdsoft_option " data-value="2050">2050</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><i></i></div><button type="button" class="xdsoft_next" style="visibility: visible;"></button></div><div class="xdsoft_calendar"><table><thead><tr><th>Dom</th><th>Lun</th><th>Mar</th><th>Mer</th><th>Gio</th><th>Ven</th><th>Sab</th></tr></thead><tbody><tr><td data-date="30" data-month="7" data-year="2026" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>30</div></td><td data-date="31" data-month="7" data-year="2026" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date xdsoft_other_month" title=""><div>31</div></td><td data-date="1" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>1</div></td><td data-date="2" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>2</div></td><td data-date="3" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>3</div></td><td data-date="4" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>4</div></td><td data-date="5" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>5</div></td></tr><tr><td data-date="6" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>6</div></td><td data-date="7" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>7</div></td><td data-date="8" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>8</div></td><td data-date="9" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>9</div></td><td data-date="10" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>10</div></td><td data-date="11" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>11</div></td><td data-date="12" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>12</div></td></tr><tr><td data-date="13" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>13</div></td><td data-date="14" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>14</div></td><td data-date="15" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>15</div></td><td data-date="16" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>16</div></td><td data-date="17" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>17</div></td><td data-date="18" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>18</div></td><td data-date="19" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>19</div></td></tr><tr><td data-date="20" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>20</div></td><td data-date="21" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>21</div></td><td data-date="22" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>22</div></td><td data-date="23" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>23</div></td><td data-date="24" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>24</div></td><td data-date="25" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>25</div></td><td data-date="26" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>26</div></td></tr><tr><td data-date="27" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>27</div></td><td data-date="28" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date xdsoft_current xdsoft_today" title=""><div>28</div></td><td data-date="29" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>29</div></td><td data-date="30" data-month="8" data-year="2026" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>30</div></td><td data-date="1" data-month="9" data-year="2026" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>1</div></td><td data-date="2" data-month="9" data-year="2026" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date xdsoft_other_month" title=""><div>2</div></td><td data-date="3" data-month="9" data-year="2026" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>3</div></td></tr></tbody></table></div><button type="button" class="xdsoft_save_selected blue-gradient-button" style="display: none;">Save Selected</button></div><div class="xdsoft_timepicker"><button type="button" class="xdsoft_prev"></button><div class="xdsoft_time_box xdsoft_scroller_box"><div class="xdsoft_time_variant" style="margin-top: 0px;"><div class="xdsoft_time " data-hour="0" data-minute="0">00:00</div><div class="xdsoft_time " data-hour="1" data-minute="0">01:00</div><div class="xdsoft_time " data-hour="2" data-minute="0">02:00</div><div class="xdsoft_time " data-hour="3" data-minute="0">03:00</div><div class="xdsoft_time " data-hour="4" data-minute="0">04:00</div><div class="xdsoft_time " data-hour="5" data-minute="0">05:00</div><div class="xdsoft_time " data-hour="6" data-minute="0">06:00</div><div class="xdsoft_time " data-hour="7" data-minute="0">07:00</div><div class="xdsoft_time " data-hour="8" data-minute="0">08:00</div><div class="xdsoft_time " data-hour="9" data-minute="0">09:00</div><div class="xdsoft_time " data-hour="10" data-minute="0">10:00</div><div class="xdsoft_time " data-hour="11" data-minute="0">11:00</div><div class="xdsoft_time " data-hour="12" data-minute="0">12:00</div><div class="xdsoft_time " data-hour="13" data-minute="0">13:00</div><div class="xdsoft_time " data-hour="14" data-minute="0">14:00</div><div class="xdsoft_time " data-hour="15" data-minute="0">15:00</div><div class="xdsoft_time " data-hour="16" data-minute="0">16:00</div><div class="xdsoft_time " data-hour="17" data-minute="0">17:00</div><div class="xdsoft_time " data-hour="18" data-minute="0">18:00</div><div class="xdsoft_time " data-hour="19" data-minute="0">19:00</div><div class="xdsoft_time " data-hour="20" data-minute="0">20:00</div><div class="xdsoft_time " data-hour="21" data-minute="0">21:00</div><div class="xdsoft_time " data-hour="22" data-minute="0">22:00</div><div class="xdsoft_time xdsoft_current" data-hour="23" data-minute="0">23:00</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="height: 10px; margin-top: 0px;"></div></div></div><button type="button" class="xdsoft_next"></button></div></div>
+
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	$(document).ready(function(){
+		$("#mainGrid").show();
+		$('.ui.dropdown.homepage').dropdown();
+		$('.ui.accordion.homepage').accordion();
+	});
+
+/*]]>*/
+</script>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+	function sendGa(element) {
+		return true;
+	}
+
+/*]]>*/
+</script>
+
+<!--
+<script type="text/javascript">
+window._mfq = window._mfq || [];
+(function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.async = true;
+    mf.src = "//cdn.mouseflow.com/projects/ffaf13bf-3a45-4269-a038-c6044b19da3a.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+})();
+</script>
+ -->
+
+</body></html>
