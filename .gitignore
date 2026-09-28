@@ -1,0 +1,91 @@
+# ==========================================
+# FILE DI AMBIENTE E SEGRETI (FONDAMENTALE)
+# ==========================================
+.env
+.env.*
+env.*
+*.env
+# Ignora specificamente il file esposto
+env.taziovettori
+secrets.json
+
+# ==========================================
+# DATABASE LOCALI & CACHE DATI
+# ==========================================
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+startup.db
+
+# ==========================================
+# PYTHON & BYTECODE
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==========================================
+# AMBIENTI VIRTUALI (VENV)
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# PLAYWRIGHT & BROWSER ARTIFACTS
+# ==========================================
+.playwright/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# ==========================================
+# LOGS, SCREENSHOT & DUMP TEMPORANEI
+# ==========================================
+*.log
+logs/
+screenshots/
+captchas/
+*.tmp
+*.temp
+
+# ==========================================
+# IDE & SISTEMA OPERATIVO
+# ==========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

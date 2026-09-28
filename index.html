@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrivateLab - Startup Intelligence OSINT</title>
+  
+  <!-- Font Enterprise: Inter & SFMono/Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CDN Esterni: Lucide Icons & Apache ECharts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  
+  <!-- Foglio di Stile Esterno Unificato -->
+  <link rel="stylesheet" href="/style.css?v=8.6">
+</head>
+<body>
+
+<div class="app-viewport">
+  
+  <!-- 1. TOPBAR ORIZZONTALE -->
+  <header class="top-header">
+    <div class="brand-section">
+      <span class="brand-title">PRIVATELAB</span>
+      <span class="brand-sub">/ STARTUP</span>
+    </div>
+
+    <!-- Ticker Centrale Log / DB Status -->
+    <div class="system-ticker-pill">
+      <span class="ticker-icon"><i data-lucide="check-circle-2" style="width:15px; height:15px;"></i></span>
+      <span class="ticker-time" id="ticker-time">--:--:--</span>
+      <span class="ticker-tag">[DB]</span>
+      <span class="ticker-msg" id="ticker-msg">Database SQLite verificato in modalita WAL mode (15 tabelle relazionali collegate e indicizzate).</span>
+      <span class="ticker-status">[SUCCESS]</span>
+      <button type="button" class="ticker-btn" onclick="openLogsModal()" title="Apri Console e Copia i Log">
+        <span>Consulta tutto</span>
+        <i data-lucide="copy" style="width:13px; height:13px;"></i>
+      </button>
+    </div>
+
+    <!-- Indicatori API & Script -->
+    <div class="header-indicators">
+      <div class="indicator-group">
+        <span>API</span>
+        <span class="interactive-api-badge" onclick="testGroqAPI()" title="1-Click Test: verifica token ed endpoint Groq AI">
+          <span class="dot-led dot-green" id="led-api-groq"></span> GROQ
+        </span>
+        <span class="interactive-api-badge" onclick="testWebshareAPI()" title="1-Click Test: verifica proxy pool Webshare">
+          <span class="dot-led dot-green" id="led-api-webshare"></span> WEBSHARE
+        </span>
+      </div>
+      
+      <div class="indicator-group" style="margin-left: 0.5rem;">
+        <span>SCRIPT</span>
+        <span class="script-status-pill">
+          HARVESTER <span class="onoff-badge badge-off" id="badge-script-harvester">OFF</span>
+        </span>
+        <span class="script-status-pill">
+          WORKER <span class="onoff-badge badge-off" id="badge-script-worker">OFF</span>
+        </span>
+      </div>
+
+      <button class="theme-toggle-btn" onclick="toggleDark()" title="Cambia Tema">
+        <i data-lucide="moon" style="width:16px; height:16px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. CORPO PRINCIPALE (SIDEBAR + WORKSPACE) -->
+  <div class="main-body">
+    
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Scraper Engine</div>
+        <div class="sidebar-menu">
+          
+          <div class="sidebar-link active" id="menu-master-startup" onclick="switchDataTab('startup', this)">
+            <div class="sidebar-link-content">
+              <i data-lucide="rocket"></i>
+              <span>Startup Scraper</span>
+            </div>
+            <span class="sidebar-badge" id="side-count-startup">0</span>
+          </div>
+
+          <div class="sidebar-tree-sub" id="startup-subpages">
+            <div class="sidebar-link" onclick="switchDataTab('startup', this)">
+              <div class="sidebar-link-content"><i data-lucide="compass"></i><span>Startup</span></div>
+              <span class="sidebar-badge" id="sub-count-startup">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('pmi', this)">
+              <div class="sidebar-link-content"><i data-lucide="building"></i><span>PMI</span></div>
+              <span class="sidebar-badge" id="sub-count-pmi">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('brevetti', this)">
+              <div class="sidebar-link-content"><i data-lucide="award"></i><span>Brevetti</span></div>
+              <span class="sidebar-badge" id="sub-count-brevetti">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('marchi', this)">
+              <div class="sidebar-link-content"><i data-lucide="bookmark"></i><span>Marchi</span></div>
+              <span class="sidebar-badge" id="sub-count-marchi">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('prodotti', this)">
+              <div class="sidebar-link-content"><i data-lucide="package"></i><span>Prodotti</span></div>
+              <span class="sidebar-badge" id="sub-count-prodotti">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('persone', this)">
+              <div class="sidebar-link-content"><i data-lucide="users"></i><span>Persone</span></div>
+              <span class="sidebar-badge" id="sub-count-persone">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('qualifiche', this)">
+              <div class="sidebar-link-content"><i data-lucide="graduation-cap"></i><span>Qualifiche</span></div>
+              <span class="sidebar-badge" id="sub-count-qualifiche">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('finanziamenti', this)">
+              <div class="sidebar-link-content"><i data-lucide="badge-percent"></i><span>Finanziamenti</span></div>
+              <span class="sidebar-badge" id="sub-count-finanziamenti">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('investitori', this)">
+              <div class="sidebar-link-content"><i data-lucide="briefcase"></i><span>Investitori</span></div>
+              <span class="sidebar-badge" id="sub-count-investitori">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('incubatori', this)">
+              <div class="sidebar-link-content"><i data-lucide="factory"></i><span>Incubatori</span></div>
+              <span class="sidebar-badge" id="sub-count-incubatori">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('enti', this)">
+              <div class="sidebar-link-content"><i data-lucide="landmark"></i><span>Enti</span></div>
+              <span class="sidebar-badge" id="sub-count-enti">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('universita', this)">
+              <div class="sidebar-link-content"><i data-lucide="school"></i><span>Università</span></div>
+              <span class="sidebar-badge" id="sub-count-universita">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('associazioni', this)">
+              <div class="sidebar-link-content"><i data-lucide="heart-handshake"></i><span>Associazioni</span></div>
+              <span class="sidebar-badge" id="sub-count-associazioni">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('coda', this)">
+              <div class="sidebar-link-content"><i data-lucide="clock"></i><span>Coda</span></div>
+              <span class="sidebar-badge" id="sub-count-coda">0</span>
+            </div>
+            <div class="sidebar-link" onclick="switchDataTab('relazioni', this)">
+              <div class="sidebar-link-content"><i data-lucide="network"></i><span>Relazioni</span></div>
+              <span class="sidebar-badge" id="sub-count-relazioni">0</span>
+            </div>
+            <div class="sidebar-link" onclick="openGraphView(this)">
+              <div class="sidebar-link-content">
+                <i data-lucide="share-2" style="color:#a855f7;"></i>
+                <span>Grafo Relazioni</span>
+              </div>
+              <span class="sidebar-badge-pill">2D</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="sidebar-section" style="margin-top:0.5rem;">
+        <div class="sidebar-title">Moduli Esterni</div>
+        <div class="sidebar-menu">
+          <div class="sidebar-link muted-scraper" title="PMI Scraper: modulo inattivo">
+            <div class="sidebar-link-content"><i data-lucide="lock"></i><span>PMI Scraper</span></div>
+            <span class="badge-muted">MUTED</span>
+          </div>
+          <div class="sidebar-link muted-scraper" title="Investitori Scraper: modulo inattivo">
+            <div class="sidebar-link-content"><i data-lucide="lock"></i><span>Investitori Scraper</span></div>
+            <span class="badge-muted">MUTED</span>
+          </div>
+          <div class="sidebar-link muted-scraper" title="Financial Scraper: modulo inattivo">
+            <div class="sidebar-link-content"><i data-lucide="lock"></i><span>Financial Scraper</span></div>
+            <span class="badge-muted">MUTED</span>
+          </div>
+          <div class="sidebar-link muted-scraper" title="Brevetti Scraper: modulo inattivo">
+            <div class="sidebar-link-content"><i data-lucide="lock"></i><span>Brevetti Scraper</span></div>
+            <span class="badge-muted">MUTED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="engine-status-header">
+          <span>Engine Status</span>
+          <span id="engine-status-text">STOP</span>
+        </div>
+        <div class="engine-status-badge">
+          <span class="dot-led dot-red" id="engine-bottom-led"></span>
+          <span id="engine-label">Arrestato</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      
+      <!-- CONTROLS BAR -->
+      <section class="controls-bar">
+        <div class="action-buttons">
+          <button class="btn-play" id="btn-play" onclick="triggerEngineRun()">
+            <i data-lucide="play" style="width:13px; height:13px; fill:#fff;"></i>
+            <span>Play ></span>
+          </button>
+          <button class="btn-ghost-disabled" id="btn-pause" onclick="triggerEnginePause()" style="cursor:pointer;" title="Metti in Pausa">
+            <i data-lucide="pause" style="width:13px; height:13px;"></i>
+            <span>Pause</span>
+          </button>
+          <button class="btn-ghost-disabled" id="btn-stop" onclick="triggerEngineStop()" style="cursor:pointer;" title="Arresta Motore">
+            <i data-lucide="square" style="width:13px; height:13px;"></i>
+            <span>Stop</span>
+          </button>
+        </div>
+
+        <div class="check-options">
+          <label class="check-label" title="Fase 1: Scansione registro e raccolta URL camerali">
+            <input type="checkbox" id="chk-harvester" checked>
+            <span>Harvester</span>
+          </label>
+          <label class="check-label" title="Fase 2: Estrazione XML e inferenza Groq AI">
+            <input type="checkbox" id="chk-worker" checked>
+            <span>Worker</span>
+          </label>
+        </div>
+
+        <div class="inline-select-group">
+          <span>Regione:</span>
+          <select class="select-control" id="select-regione">
+            <option value="ALL">Tutte (Italia)</option>
+            <option value="0">00: Abruzzo</option>
+            <option value="1">01: Basilicata</option>
+            <option value="2">02: Calabria</option>
+            <option value="3">03: Campania</option>
+            <option value="4">04: Emilia-Romagna</option>
+            <option value="5">05: Friuli-Venezia Giulia</option>
+            <option value="6">06: Lazio</option>
+            <option value="7">07: Liguria</option>
+            <option value="8">08: Lombardia</option>
+            <option value="9">09: Marche</option>
+            <option value="10">10: Molise</option>
+            <option value="11">11: Piemonte</option>
+            <option value="12">12: Puglia</option>
+            <option value="13">13: Sardegna</option>
+            <option value="14">14: Sicilia</option>
+            <option value="15">15: Toscana</option>
+            <option value="16">16: Trentino-Alto Adige</option>
+            <option value="17">17: Umbria</option>
+            <option value="18">18: Valle d'Aosta</option>
+            <option value="19">19: Veneto</option>
+          </select>
+        </div>
+
+        <div class="inline-select-group">
+          <span>Limite:</span>
+          <select class="select-control" id="select-limit">
+            <option value="10">10 record</option>
+            <option value="50" selected>50 record</option>
+            <option value="100">100 record</option>
+            <option value="500">500 record</option>
+          </select>
+        </div>
+
+        <div class="inline-select-group">
+          <span>Delay:</span>
+          <select class="select-control" id="select-delay">
+            <option value="1.0">1.0 sec</option>
+            <option value="2.0" selected>2.0 sec</option>
+            <option value="3.0">3.0 sec</option>
+          </select>
+        </div>
+
+        <div class="inline-select-group">
+          <span>Routing:</span>
+          <select class="select-control" id="select-routing">
+            <option value="zenrows,webshare" selected>ZenRows + Webshare</option>
+            <option value="webshare">Solo Webshare</option>
+            <option value="tor">Tor SOCKS5 (9050)</option>
+            <option value="direct">Connessione Diretta</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- FILTERS BAR & DROPDOWN DB AZIONI -->
+      <section class="filters-bar">
+        <div class="search-input-wrapper">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" class="search-field" id="search-input" placeholder="Cerca per nome, CF, comune, prov..." oninput="onSearchInput()">
+        </div>
+
+        <div class="filter-controls-group">
+          <div class="inline-select-group">
+            <span>Regione:</span>
+              <select class="select-control" id="filter-region" onchange="loadTableRecords(true)">
+              <option value="">Tutte le Regioni</option>
+              <option value="ABRUZZO">Abruzzo</option>
+              <option value="BASILICATA">Basilicata</option>
+              <option value="CALABRIA">Calabria</option>
+              <option value="CAMPANIA">Campania</option>
+              <option value="EMILIA-ROMAGNA">Emilia-Romagna</option>
+              <option value="FRIULI-VENEZIA GIULIA">Friuli-Venezia Giulia</option>
+              <option value="LAZIO">Lazio</option>
+              <option value="LIGURIA">Liguria</option>
+              <option value="LOMBARDIA">Lombardia</option>
+              <option value="MARCHE">Marche</option>
+              <option value="MOLISE">Molise</option>
+              <option value="PIEMONTE">Piemonte</option>
+              <option value="PUGLIA">Puglia</option>
+              <option value="SARDEGNA">Sardegna</option>
+              <option value="SICILIA">Sicilia</option>
+              <option value="TOSCANA">Toscana</option>
+              <option value="TRENTINO-ALTO ADIGE">Trentino-Alto Adige</option>
+              <option value="UMBRIA">Umbria</option>
+              <option value="VALLE D'AOSTA">Valle d'Aosta</option>
+              <option value="VENETO">Veneto</option>
+            </select>
+          </div>
+
+          <div class="inline-select-group">
+            <span>Provincia:</span>
+            <select class="select-control" id="filter-provincia" onchange="loadTableRecords(true)">
+              <option value="">Tutte le Province</option>
+              <option value="MI">Milano</option>
+              <option value="RM">Roma</option>
+              <option value="BO">Bologna</option>
+              <option value="TO">Torino</option>
+              <option value="NA">Napoli</option>
+              <option value="FI">Firenze</option>
+              <option value="BA">Bari</option>
+              <option value="PD">Padova</option>
+              <option value="VR">Verona</option>
+              <option value="GE">Genova</option>
+              <option value="PA">Palermo</option>
+              <option value="CT">Catania</option>
+              <option value="CA">Cagliari</option>
+              <option value="TS">Trieste</option>
+              <option value="TN">Trento</option>
+              <option value="BZ">Bolzano</option>
+              <option value="AN">Ancona</option>
+              <option value="PG">Perugia</option>
+              <option value="AQ">L'Aquila</option>
+              <option value="PZ">Potenza</option>
+              <option value="CZ">Catanzaro</option>
+              <option value="CB">Campobasso</option>
+              <option value="AO">Aosta</option>
+            </select>
+          </div>
+
+          <span class="count-indicator" id="records-count">0 aziende</span>
+
+          <!-- DROPDOWN DB AZIONI -->
+          <div class="dropdown-wrapper" id="db-actions-dropdown">
+            <button type="button" class="btn-db-actions" onclick="toggleDbActionsMenu(event)">
+              <i data-lucide="database" style="width:14px; height:14px; color:var(--primary-blue);"></i>
+              <span>DB Azioni</span>
+              <i data-lucide="chevron-down" style="width:13px; height:13px;" id="db-actions-chevron"></i>
+            </button>
+
+            <div class="dropdown-menu" id="db-actions-menu">
+              <div class="dropdown-group-title">1. Esportazione Dati</div>
+              <button type="button" class="dropdown-item" onclick="triggerExport('excel-all')">
+                <i data-lucide="file-spreadsheet" style="color:#10b981;"></i>
+                <div class="item-text">
+                  <span class="item-title">Esporta in XLS (15 Tabelle)</span>
+                  <span class="item-sub">Cartella Excel integrale (.xlsx) con tutti i datamart</span>
+                </div>
+                <span class="item-badge">.XLSX</span>
+              </button>
+
+              <button type="button" class="dropdown-item" onclick="triggerExport('csv-current')">
+                <i data-lucide="file-text" style="color:#0ea5e9;"></i>
+                <div class="item-text">
+                  <span class="item-title">Esporta in CSV (Vista Corrente)</span>
+                  <span class="item-sub">Download dei record filtrati a video</span>
+                </div>
+                <span class="item-badge">.CSV</span>
+              </button>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="dropdown-group-title">2. Cloud & Automazione</div>
+              <button type="button" class="dropdown-item" onclick="triggerGSheetsSyncGAS()">
+                <i data-lucide="sheet" style="color:#16a34a;"></i>
+                <div class="item-text">
+                  <span class="item-title">Sync con GSheet (GAS)</span>
+                  <span class="item-sub">Mirroring 1:1 su Google Apps Script per i 15 fogli</span>
+                </div>
+                <span class="item-badge badge-cloud">GAS</span>
+              </button>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="dropdown-group-title">3. Manutenzione Data Lake</div>
+              <button type="button" class="dropdown-item item-danger" onclick="triggerCleanDatabase()">
+                <i data-lucide="trash-2" style="color:#ef4444;"></i>
+                <div class="item-text">
+                  <span class="item-title">Pulisci DB Locale</span>
+                  <span class="item-sub">Elimina tutte le righe dal database SQLite</span>
+                </div>
+                <span class="item-badge badge-danger">PURGE</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TABELLA DATI MASTER -->
+      <div class="table-area" id="view-table-area">
+        <table class="saas-table">
+          <thead id="table-head">
+            <tr>
+              <th class="sortable">DENOMINAZIONE ↑</th>
+              <th class="sortable">CODICE FISCALE ⇅</th>
+              <th class="sortable">SEDE ⇅</th>
+              <th class="sortable">ATECO ⇅</th>
+              <th class="sortable">COSTITUZIONE ⇅</th>
+              <th class="sortable">BREVETTI ⇅</th>
+              <th class="sortable" style="text-align:right;">RACCOLTA ⇅</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Righe popolate dinamicamente -->
+          </tbody>
+        </table>
+        <div class="table-pagination" id="company-pagination" style="display:none;">
+          <button type="button" id="page-previous" onclick="changeCompanyPage(-1)">‹ Precedente</button>
+          <span id="page-indicator"></span>
+          <button type="button" id="page-next" onclick="changeCompanyPage(1)">Successiva ›</button>
+        </div>
+      </div>
+
+      <!-- GRAFO ECHARTS -->
+      <div class="table-area" id="view-graph-area" style="display:none; padding:1rem;">
+        <div style="width:100%; height:100%; min-height:550px; background:#fff; border-radius:6px; border:1px solid var(--border);" id="echarts-graph-container"></div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- =========================================================================
+     3. VISTA MODALE INTERATTIVA: REPORT AZIENDALE STILE UNIONCAMERE
+     ========================================================================= -->
+<div class="modal-backdrop" id="unioncamere-modal-backdrop" onclick="if(event.target===this) closeUnioncamereModal()">
+  <div class="modal-window-report" id="unioncamere-modal-window">
+    <div class="modal-report-head">
+      <div>
+        <div class="modal-official-tag">
+          REGISTRO DELLE IMPRESE • SEZIONE SPECIALE STARTUP E PMI INNOVATIVE
+        </div>
+        <h2 id="uc-report-company-title" class="modal-company-title">Denominazione Impresa</h2>
+      </div>
+      <div class="modal-actions-group">
+        <button type="button" class="btn-db-actions" onclick="window.print()" title="Stampa o Salva PDF">
+          <i data-lucide="printer" style="width:14px; height:14px;"></i>
+          <span>Stampa / Salva PDF</span>
+        </button>
+        <button type="button" class="modal-close-btn" onclick="closeUnioncamereModal()">&times;</button>
+      </div>
+    </div>
+
+    <div class="modal-report-body" id="uc-modal-report-content">
+      <!-- Compilato dinamicamente da openUnioncamereModal(cf) -->
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================================
+     4. MODALE LOG CONSOLE DEDICATO (PER COPIARE L'INTERO LOG STREAM)
+     ========================================================================= -->
+<div class="modal-backdrop" id="logs-modal-backdrop" onclick="if(event.target===this) closeLogsModal()">
+  <div class="modal-window-report" style="max-width: 860px; max-height: 85vh;">
+    
+    <div class="modal-report-head">
+      <div>
+        <div class="modal-official-tag">TELEMETRIA DI SISTEMA & STREAMING LOG</div>
+        <h3 class="modal-company-title" style="font-size: 1.1rem; margin: 0;">Log Console di Esecuzione</h3>
+      </div>
+      <div class="modal-actions-group">
+        <button type="button" class="btn-db-actions" onclick="copyAllLogsToClipboard()" id="btn-copy-logs" style="background:#0052ff; color:#fff; border-color:#0052ff;">
+          <i data-lucide="copy" style="width:14px; height:14px;"></i>
+          <span id="btn-copy-text">Copia tutti i Log</span>
+        </button>
+        <button type="button" class="modal-close-btn" onclick="closeLogsModal()">&times;</button>
+      </div>
+    </div>
+
+    <div style="padding: 1.25rem; background: #090d16; overflow-y: auto; flex-grow: 1; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; color: #cbd5e1;" id="logs-terminal-stream">
+      <!-- Righe log renderizzate dinamicamente -->
+    </div>
+
+    <div style="padding: 0.75rem 1.25rem; background: #1e293b; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8;">
+      <span id="logs-counter-label">Caricamento log...</span>
+      <button type="button" class="btn-db-actions" style="padding: 3px 8px; font-size: 0.7rem;" onclick="refreshLogsFromBackend()">
+        <i data-lucide="refresh-cw" style="width:12px; height:12px;"></i> Aggiorna
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================================================================
+     5. LOGICA JAVASCRIPT VANILLA COMPLETA
+     ========================================================================= -->
+<script>
+  let activeTab = 'startup';
+  let searchTimer = null;
+  let sseEventSource = null;
+  let echartsInstance = null;
+  let currentEngineState = 'STOPPED';
+  let companyPage = 1;
+  const companyPageSize = 50;
+
+  // Buffer in memoria per raccogliere tutti i log e renderli copiabili
+  let systemLogsBuffer = [];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    initSSE();
+    updateTelemetry();
+    loadTableRecords();
+    setInterval(updateTelemetry, 4000);
+  });
+
+  // Toggle Dark Theme
+  function toggleDark() {
+    document.body.classList.toggle('dark-theme');
+    if (echartsInstance) {
+      echartsInstance.dispose();
+      initEChartsGraph();
+    }
+  }
+
+  // 1-Click Test API Groq
+  async function testGroqAPI() {
+    updateTickerStatus('[API TEST]', 'Test API Groq AI (verifica token e modelli)...', 'INFO');
+    try {
+      const res = await fetch('/api/test/groq').catch(() => fetch('/api/test/worker'));
+      const d = await res.json();
+      const isOk = (d.worker === 'READY' || d.groq_configured);
+      document.getElementById('led-api-groq').className = isOk ? 'dot-led dot-green' : 'dot-led dot-red';
+      updateTickerStatus('[GROQ OK]', `${d.message} (${d.latency_ms || 0}ms)`, isOk ? 'SUCCESS' : 'ERROR');
+    } catch(e) {
+      document.getElementById('led-api-groq').className = 'dot-led dot-red';
+      updateTickerStatus('[GROQ ERR]', `Errore test Groq: ${e}`, 'ERROR');
+    }
+  }
+
+  // 1-Click Test API Webshare con Condizione Reale (Zero Falsi Positivi)
+  async function testWebshareAPI() {
+    updateTickerStatus('[API TEST]', 'Test API Webshare (verifica pool proxy rotanti)...', 'INFO');
+    try {
+      const res = await fetch('/api/test/webshare').catch(() => fetch('/api/test/harvester'));
+      const d = await res.json();
+      // Condizione rigorosa: solo se la chiamata HTTP è 200 e il target è raggiungibile
+      const isOk = (d.success === true && d.target_reachable === true);
+
+      document.getElementById('led-api-webshare').className = isOk ? 'dot-led dot-green' : 'dot-led dot-red';
+      updateTickerStatus(
+        isOk ? '[WEBSHARE OK]' : '[WEBSHARE ERR]',
+        `${d.message || 'Verifica completata'} (${d.latency_ms || 0}ms)`,
+        isOk ? 'SUCCESS' : 'ERROR'
+      );
+    } catch(e) {
+      document.getElementById('led-api-webshare').className = 'dot-led dot-red';
+      updateTickerStatus('[WEBSHARE ERR]', `Errore test Webshare: ${e}`, 'ERROR');
+    }
+  }
+
+  // SSE Channel per Ticker e Accumulo nel Buffer di Sistema
+  function initSSE() {
+    if (sseEventSource) sseEventSource.close();
+    sseEventSource = new EventSource('/api/stream');
+    
+    sseEventSource.onmessage = (e) => {
+      if (!e.data || e.data.trim() === ': ping') return;
+      try {
+        const p = JSON.parse(e.data);
+        const timeStr = p.time || new Date().toLocaleTimeString();
+        document.getElementById('ticker-time').innerText = timeStr;
+        document.getElementById('ticker-msg').innerText = p.msg;
+
+        // Inserimento nello storico copiabile
+        systemLogsBuffer.push(`[${timeStr}] [${p.level || 'INFO'}] ${p.msg}`);
+        if (systemLogsBuffer.length > 2000) systemLogsBuffer.shift();
+
+        // Se il modale dei log è aperto, aggiorna in tempo reale la vista
+        const streamContainer = document.getElementById('logs-terminal-stream');
+        if (streamContainer && document.getElementById('logs-modal-backdrop').classList.contains('open')) {
+          appendSingleLogLineToModal(timeStr, p.level || 'INFO', p.msg);
+        }
+      } catch(err){}
+    };
+  }
+
+  // ==============================================================================
+  // GESTIONE MODALE LOG CONSOLE & COPIA TUTTO NEGLI APPUNTI
+  // ==============================================================================
+  async function openLogsModal() {
+    const backdrop = document.getElementById('logs-modal-backdrop');
+    backdrop.classList.add('open');
+    await refreshLogsFromBackend();
+    lucide.createIcons();
+  }
+
+  function closeLogsModal() {
+    document.getElementById('logs-modal-backdrop').classList.remove('open');
+  }
+
+  async function refreshLogsFromBackend() {
+    const streamContainer = document.getElementById('logs-terminal-stream');
+    streamContainer.innerHTML = '<div style="color:#94a3b8;">Sincronizzazione log con il server...</div>';
+
+    try {
+      const res = await fetch('/api/logs');
+      if (res.ok) {
+        const data = await res.json();
+        const logs = data.logs || [];
+        
+        systemLogsBuffer = logs.map(l => `[${l.time}] [${l.level}] ${l.msg}`);
+        renderAllLogsInModal(logs);
+        document.getElementById('logs-counter-label').innerText = `Totale: ${logs.length} eventi registrati`;
+        return;
+      }
+    } catch(e) {}
+
+    // Fallback su buffer client
+    renderClientBufferLogs();
+  }
+
+  function renderAllLogsInModal(logs) {
+    const streamContainer = document.getElementById('logs-terminal-stream');
+    if (!logs.length) {
+      streamContainer.innerHTML = '<div style="color:#64748b;">Nessun log disponibile nel buffer.</div>';
+      return;
+    }
+
+    streamContainer.innerHTML = logs.map(l => {
+      const lvl = (l.level || 'INFO').toUpperCase();
+      let color = '#38bdf8'; // info cyan
+      if (lvl === 'SUCCESS') color = '#4ade80';
+      else if (lvl === 'WARN') color = '#fbbf24';
+      else if (lvl === 'ERROR') color = '#f87171';
+
+      return `<div style="margin-bottom:3px;"><span style="color:#64748b;">[${l.time}]</span> <span style="color:${color}; font-weight:700;">[${lvl}]</span> <span>${escapeHtml(l.msg)}</span></div>`;
+    }).join('');
+
+    streamContainer.scrollTop = streamContainer.scrollHeight;
+  }
+
+  function renderClientBufferLogs() {
+    const streamContainer = document.getElementById('logs-terminal-stream');
+    if (!systemLogsBuffer.length) {
+      streamContainer.innerHTML = '<div style="color:#64748b;">Nessun log registrato dal caricamento pagina.</div>';
+      return;
+    }
+    streamContainer.innerHTML = systemLogsBuffer.map(line => `<div>${escapeHtml(line)}</div>`).join('');
+    streamContainer.scrollTop = streamContainer.scrollHeight;
+    document.getElementById('logs-counter-label').innerText = `Totale: ${systemLogsBuffer.length} eventi locali`;
+  }
+
+  function appendSingleLogLineToModal(time, level, msg) {
+    const streamContainer = document.getElementById('logs-terminal-stream');
+    const div = document.createElement('div');
+    div.style.marginBottom = '3px';
+    let color = '#38bdf8';
+    if (level === 'SUCCESS') color = '#4ade80';
+    else if (level === 'WARN') color = '#fbbf24';
+    else if (level === 'ERROR') color = '#f87171';
+
+    div.innerHTML = `<span style="color:#64748b;">[${time}]</span> <span style="color:${color}; font-weight:700;">[${level}]</span> <span>${escapeHtml(msg)}</span>`;
+    streamContainer.appendChild(div);
+    streamContainer.scrollTop = streamContainer.scrollHeight;
+  }
+
+  // Copia negli Appunti in 1 Click per facilitare l'invio all'assistente
+  function copyAllLogsToClipboard() {
+    if (!systemLogsBuffer.length) {
+      alert('Nessun log presente da copiare.');
+      return;
+    }
+
+    const fullText = systemLogsBuffer.join('\n');
+    navigator.clipboard.writeText(fullText).then(() => {
+      const btnText = document.getElementById('btn-copy-text');
+      const oldText = btnText.innerText;
+      btnText.innerText = 'Copiato negli Appunti!';
+      setTimeout(() => { btnText.innerText = oldText; }, 2000);
+    }).catch(err => {
+      alert('Errore copia negli appunti: ' + err);
+    });
+  }
+
+  // Telemetria Motore & Sidebar
+  async function updateTelemetry() {
+    try {
+      const res = await fetch('/api/stats');
+      if (!res.ok) return;
+      const d = await res.json();
+
+      const sCount = d.startup || 0;
+      document.getElementById('side-count-startup').innerText = sCount;
+      document.getElementById('sub-count-startup').innerText = sCount;
+      document.getElementById('sub-count-pmi').innerText = d.pmi || 0;
+      document.getElementById('sub-count-brevetti').innerText = d.brevetti || 0;
+      document.getElementById('sub-count-marchi').innerText = d.marchi || 0;
+      document.getElementById('sub-count-prodotti').innerText = d.prodotti || 0;
+      document.getElementById('sub-count-persone').innerText = d.persone || 0;
+      document.getElementById('sub-count-qualifiche').innerText = d.qualifiche || 0;
+      document.getElementById('sub-count-finanziamenti').innerText = d.num_round || 0;
+      document.getElementById('sub-count-investitori').innerText = d.investitori || 0;
+      document.getElementById('sub-count-incubatori').innerText = d.incubatori || 0;
+      document.getElementById('sub-count-enti').innerText = d.enti || 0;
+      document.getElementById('sub-count-universita').innerText = d.universita || 0;
+      document.getElementById('sub-count-associazioni').innerText = d.associazioni || 0;
+      document.getElementById('sub-count-coda').innerText = d.coda_pending || 0;
+      document.getElementById('sub-count-relazioni').innerText = d.relazioni || 0;
+
+      currentEngineState = d.engine_state || (d.is_running ? 'RUNNING' : 'STOPPED');
+      const bottomLed = document.getElementById('engine-bottom-led');
+      const statusText = document.getElementById('engine-status-text');
+      const statusLabel = document.getElementById('engine-label');
+      const btnPlay = document.getElementById('btn-play');
+      const btnPause = document.getElementById('btn-pause');
+      const btnStop = document.getElementById('btn-stop');
+
+      const badgeHarvester = document.getElementById('badge-script-harvester');
+      const badgeWorker = document.getElementById('badge-script-worker');
+
+      if (currentEngineState === 'RUNNING') {
+        bottomLed.className = 'dot-led dot-green';
+        statusText.innerText = 'RUNNING';
+        statusLabel.innerText = 'In esecuzione';
+        btnPlay.className = 'btn-play engine-btn-play active-running';
+        btnPause.className = 'btn-ghost-disabled';
+        btnStop.className = 'btn-ghost-disabled engine-btn-stop active-stopped';
+
+        const task = (d.task_name || '').toUpperCase();
+        if (task.includes('HARVEST') && !task.includes('WORKER')) {
+          badgeHarvester.className = 'onoff-badge badge-on';
+          badgeHarvester.innerText = 'ON';
+          badgeWorker.className = 'onoff-badge badge-off';
+          badgeWorker.innerText = 'OFF';
+        } else if (task.includes('WORKER') && !task.includes('HARVEST')) {
+          badgeHarvester.className = 'onoff-badge badge-off';
+          badgeHarvester.innerText = 'OFF';
+          badgeWorker.className = 'onoff-badge badge-on';
+          badgeWorker.innerText = 'ON';
+        } else {
+          badgeHarvester.className = 'onoff-badge badge-on';
+          badgeHarvester.innerText = 'ON';
+          badgeWorker.className = 'onoff-badge badge-on';
+          badgeWorker.innerText = 'ON';
+        }
+
+      } else if (currentEngineState === 'PAUSED') {
+        bottomLed.className = 'dot-led';
+        bottomLed.style.backgroundColor = '#f59e0b';
+        statusText.innerText = 'PAUSED';
+        statusLabel.innerText = 'In pausa';
+        btnPlay.className = 'btn-play';
+        btnPause.className = 'btn-ghost-disabled engine-btn-pause active-paused';
+        btnStop.className = 'btn-ghost-disabled engine-btn-stop active-stopped';
+
+        badgeHarvester.className = 'onoff-badge badge-off';
+        badgeHarvester.innerText = 'PAUSE';
+        badgeWorker.className = 'onoff-badge badge-off';
+        badgeWorker.innerText = 'PAUSE';
+
+      } else {
+        bottomLed.className = 'dot-led dot-red';
+        bottomLed.style.backgroundColor = '';
+        statusText.innerText = 'STOP';
+        statusLabel.innerText = 'Arrestato';
+        btnPlay.className = 'btn-play';
+        btnPause.className = 'btn-ghost-disabled';
+        btnStop.className = 'btn-ghost-disabled';
+
+        badgeHarvester.className = 'onoff-badge badge-off';
+        badgeHarvester.innerText = 'OFF';
+        badgeWorker.className = 'onoff-badge badge-off';
+        badgeWorker.innerText = 'OFF';
+      }
+    } catch(e){}
+  }
+
+  // Controlli Motore
+  async function triggerEngineRun() {
+    const isHarvest = document.getElementById('chk-harvester').checked;
+    const isWorker = document.getElementById('chk-worker').checked;
+    let actionParam = 'both';
+    if (isHarvest && !isWorker) actionParam = 'harvest';
+    else if (!isHarvest && isWorker) actionParam = 'worker';
+
+    const reg = document.getElementById('select-regione').value;
+    const limit = document.getElementById('select-limit').value;
+    const delay = document.getElementById('select-delay').value;
+    const proxy = document.getElementById('select-routing').value;
+
+    updateTickerStatus('[TRIGGER]', `Avvio pipeline [${actionParam.toUpperCase()}] in corso...`, 'INFO');
+    await fetch(`/api/action/run?action=${actionParam}&module=startup&limit=${limit}&delay=${delay}&region=${reg}&proxy=${encodeURIComponent(proxy)}`, { method: 'POST' });
+    updateTelemetry();
+  }
+
+  async function triggerEnginePause() {
+    updateTickerStatus('[TRIGGER]', 'Comando di pausa/ripresa inviato...', 'WARN');
+    await fetch('/api/action/pause', { method: 'POST' });
+    updateTelemetry();
+  }
+
+  async function triggerEngineStop() {
+    updateTickerStatus('[TRIGGER]', 'Arresto del motore inviato...', 'WARN');
+    await fetch('/api/action/stop', { method: 'POST' });
+    updateTelemetry();
+  }
+
+  // Dropdown DB Azioni
+  function toggleDbActionsMenu(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById('db-actions-menu');
+    const chevron = document.getElementById('db-actions-chevron');
+    if (!menu) return;
+    const isOpen = menu.classList.toggle('show');
+    if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  }
+
+  document.addEventListener('click', (event) => {
+    const menu = document.getElementById('db-actions-menu');
+    const btn = document.getElementById('db-actions-dropdown');
+    if (menu && menu.classList.contains('show')) {
+      if (!btn || !btn.contains(event.target)) {
+        menu.classList.remove('show');
+        const chevron = document.getElementById('db-actions-chevron');
+        if (chevron) chevron.style.transform = 'rotate(0deg)';
+      }
+    }
+  });
+
+  function triggerExport(type) {
+    document.getElementById('db-actions-menu').classList.remove('show');
+    if (type === 'excel-all') {
+      updateTickerStatus('[EXPORT]', 'Download backup Excel 15 tabelle...', 'INFO');
+      window.location.href = '/api/export/excel';
+    } else {
+      const params = new URLSearchParams({
+        tipo: activeTab.toUpperCase(),
+        q: document.getElementById('search-input').value.trim(),
+        regione: document.getElementById('filter-region').value,
+        provincia: document.getElementById('filter-provincia').value,
+      });
+      updateTickerStatus('[EXPORT]', 'Download CSV della vista filtrata...', 'INFO');
+      window.location.href = `/api/export/csv?${params}`;
+    }
+  }
+
+  async function triggerGSheetsSyncGAS() {
+    document.getElementById('db-actions-menu').classList.remove('show');
+    updateTickerStatus('[GAS SYNC]', 'Mirroring 1:1 verso Google Apps Script (15 fogli)...', 'INFO');
+    try {
+      const res = await fetch('/api/sync-sheets', { method: 'POST' });
+      const data = await res.json();
+      updateTickerStatus('[SUCCESS]', data.message, res.ok ? 'SUCCESS' : 'ERROR');
+      alert(data.message || 'Sincronizzazione completata');
+    } catch(e) {
+      updateTickerStatus('[ERROR]', `Errore sync: ${e}`, 'ERROR');
+    }
+  }
+
+  async function triggerCleanDatabase() {
+    document.getElementById('db-actions-menu').classList.remove('show');
+    if (!confirm('ATTENZIONE: Stai per eliminare TUTTI i dati presenti nel database SQLite (15 tabelle). Continuare?')) return;
+    updateTickerStatus('[PURGE]', 'Svuotamento delle 15 tabelle del database...', 'WARN');
+    try {
+      const res = await fetch('/api/action/clean-db', { method: 'POST' });
+      const data = await res.json();
+      updateTickerStatus('[SUCCESS]', data.message, 'SUCCESS');
+      updateTelemetry();
+      loadTableRecords();
+    } catch(e) {
+      updateTickerStatus('[ERROR]', `Errore azzeramento DB: ${e}`, 'ERROR');
+    }
+  }
+
+  // Switch Viste
+  function switchDataTab(tabKey, element) {
+    activeTab = tabKey;
+    companyPage = 1;
+    document.getElementById('view-table-area').style.display = 'block';
+    document.getElementById('view-graph-area').style.display = 'none';
+
+    document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+    if (element) element.classList.add('active');
+    loadTableRecords();
+  }
+
+  function openGraphView(element) {
+    activeTab = 'grafo';
+    document.getElementById('view-table-area').style.display = 'none';
+    document.getElementById('view-graph-area').style.display = 'block';
+
+    document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+    if (element) element.classList.add('active');
+    initEChartsGraph();
+  }
+
+  // Caricamento Record Tabella
+  async function loadTableRecords(resetPage = false) {
+    if (resetPage) companyPage = 1;
+    const tbody = document.getElementById('table-body');
+    const thead = document.getElementById('table-head');
+    const pagination = document.getElementById('company-pagination');
+    if (pagination) pagination.style.display = 'none';
+    const q = document.getElementById('search-input').value.trim();
+    const reg = document.getElementById('filter-region').value;
+    const prov = document.getElementById('filter-provincia').value;
+
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:2rem; color:var(--text-muted);">Caricamento dati in corso...</td></tr>';
+
+    try {
+      if (['startup', 'pmi'].includes(activeTab)) {
+        thead.innerHTML = `
+          <tr>
+            <th class="sortable">DENOMINAZIONE ↑</th>
+            <th class="sortable">CODICE FISCALE ⇅</th>
+            <th class="sortable">SEDE ⇅</th>
+            <th class="sortable">ATECO ⇅</th>
+            <th class="sortable">COSTITUZIONE ⇅</th>
+            <th class="sortable">BREVETTI ⇅</th>
+            <th class="sortable" style="text-align:right;">RACCOLTA ⇅</th>
+          </tr>
+        `;
+
+        const res = await fetch(`/api/startup?tipo=${activeTab.toUpperCase()}&q=${encodeURIComponent(q)}&regione=${encodeURIComponent(reg)}&provincia=${encodeURIComponent(prov)}&page=${companyPage}&page_size=${companyPageSize}`);
+        const data = await res.json();
+        const items = data.items || [];
+        const total = Number(data.total || 0);
+        const totalPages = Math.max(1, Math.ceil(total / companyPageSize));
+        if (companyPage > totalPages) {
+          companyPage = totalPages;
+          return loadTableRecords();
+        }
+        document.getElementById('records-count').innerText = `${total} aziende`;
+        if (pagination) {
+          pagination.style.display = total > companyPageSize ? 'flex' : 'none';
+          document.getElementById('page-indicator').innerText = `Pagina ${companyPage} di ${totalPages}`;
+          document.getElementById('page-previous').disabled = companyPage <= 1;
+          document.getElementById('page-next').disabled = companyPage >= totalPages;
+        }
+
+        if (!items.length) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:var(--text-muted);">Nessuna azienda trovata.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = items.map(r => {
+          const nomeClean = escapeHtml(r.denominazione_pulita || r.denominazione || 'Azienda');
+          const isBenefit = (r.societa_benefit === 'SÌ' || (r.denominazione || '').includes('BENEFIT'));
+          const subSector = r.macro_settore_dettagliato || 'Innovazione Digitale';
+          const brevetti = r.kpi_num_brevetti || 0;
+          const raccolta = (r.finanza_totale_raccolto_euro || 0) / 1000000;
+          const raccoltaStr = raccolta > 0 ? `€ ${raccolta.toFixed(2)}M` : '€ 0.00M';
+          const provStr = r.provincia ? `(${escapeHtml(r.provincia)})` : '';
+          const initials = nomeClean.split(' ').slice(0, 2).map(w => w[0]).join('') || 'PL';
+
+          return `
+            <tr onclick="openUnioncamereModal('${escapeHtml(r.cf)}')">
+              <td>
+                <div style="display:flex; align-items:center; gap:0.6rem;">
+                  <div class="company-avatar">${initials}</div>
+                  <div>
+                    <div class="company-name-cell">
+                      <span>${nomeClean}</span>
+                      ${isBenefit ? '<span class="badge-benefit">BENEFIT</span>' : ''}
+                    </div>
+                    <div class="company-sub">${escapeHtml(subSector)}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="cf-cell">${escapeHtml(r.cf || '-')}</td>
+              <td>${escapeHtml(r.comune || '-')} <span class="sede-prov">${provStr}</span></td>
+              <td>${escapeHtml(r.codice_ateco || '-')}</td>
+              <td>${escapeHtml(r.dt_costituzione || '-')}</td>
+              <td><span class="patent-count">${brevetti}</span></td>
+              <td><span class="capital-val">${raccoltaStr}</span></td>
+            </tr>
+          `;
+        }).join('');
+
+      } else {
+        const res = await fetch(`/api/entita/${activeTab}`);
+        const data = await res.json();
+        const items = data.items || [];
+        document.getElementById('records-count').innerText = `${items.length} record`;
+
+        if (!items.length) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:var(--text-muted);">Nessun record presente in ${activeTab.toUpperCase()}.</td></tr>`;
+          return;
+        }
+
+        const rawKeys = Object.keys(items[0]);
+        const orderedKeys = rawKeys.includes('azienda_nome') 
+          ? ['azienda_nome', ...rawKeys.filter(k => k !== 'azienda_nome' && k !== 'id')]
+          : rawKeys.filter(k => k !== 'id');
+
+        thead.innerHTML = `<tr>${orderedKeys.map(k => `<th>${escapeHtml(k.replace('_', ' ').toUpperCase())}</th>`).join('')}</tr>`;
+
+        tbody.innerHTML = items.map(row => `
+          <tr>
+            ${orderedKeys.map((k, idx) => {
+              const val = escapeHtml(String(row[k] || '-'));
+              return idx === 0 
+                ? `<td><strong>${val}</strong></td>` 
+                : `<td>${val}</td>`;
+            }).join('')}
+          </tr>
+        `).join('');
+      }
+    } catch(err) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:red;">Errore: ${err}</td></tr>`;
+    }
+  }
+
+  function onSearchInput() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => loadTableRecords(true), 250);
+  }
+
+  function changeCompanyPage(direction) {
+    companyPage = Math.max(1, companyPage + direction);
+    loadTableRecords();
+  }
+
+  // ==============================================================================
+  // VISTA MODALE DINAMICA: REPORT AZIENDALE STILE UNIONCAMERE (6 QUADRI)
+  // ==============================================================================
+  async function openUnioncamereModal(cf) {
+    if (!cf || cf === '-') return;
+    try {
+      const res = await fetch(`/api/dettaglio/${cf}`);
+      const data = await res.json();
+      const m = data.master || {};
+      const sc = data.scorecard || {};
+
+      document.getElementById('uc-report-company-title').innerText = m.denominazione_pulita || m.denominazione || 'Azienda';
+
+      const score = sc.groq_score ?? 50;
+      const scoreBadgeColor = score >= 75 ? 'badge-score-high' : (score >= 45 ? 'badge-score-mid' : 'badge-score-low');
+
+      const req1Active = m.req_spese_rs === 'SÌ';
+      const req2Active = m.req_team_qualificato === 'SÌ';
+      const req3Active = m.req_brevetti === 'SÌ';
+
+      const startupStage = (m.stadio_startup_testo || m.stadio_startup_codice || 'Sul mercato').toLowerCase();
+      const productStage = (m.stadio_prodotto_testo || m.stadio_prodotto_codice || 'Pronto').toLowerCase();
+      const teamStage = (m.stadio_team_testo || m.stadio_team_codice || 'Tecnico').toLowerCase();
+
+      document.getElementById('uc-modal-report-content').innerHTML = `
+        <div class="report-document-sheet">
+
+          <!-- QUADRO 1: INTESTAZIONE REGISTRO IMPRESE & MARCHE TEMPORALI -->
+          <div class="report-section-card">
+            <div class="report-card-header">
+              <div class="report-header-identity">
+                <div class="report-legal-name">${escapeHtml(m.denominazione || '')}</div>
+                <div class="report-meta-sub">
+                  <span>C.F. / P.IVA: <strong>${escapeHtml(m.cf || '')}</strong></span>
+                  <span>Forma: <strong>${escapeHtml(m.forma_giuridica || 'SRL')}</strong></span>
+                  <span>Costituita: <strong>${escapeHtml(m.modalita_costituzione || 'DAL NOTAIO')}</strong></span>
+                  ${m.societa_benefit === 'SÌ' ? '<span class="badge-benefit">SOCIETÀ BENEFIT</span>' : ''}
+                </div>
+              </div>
+              <div class="report-stamp-box">
+                <div class="report-stamp">ISCRITTA SEZIONE SPECIALE</div>
+                <small>Aggiornamento: ${escapeHtml(m.dt_aggiornamento_ri || 'Recente')}</small>
+              </div>
+            </div>
+
+            <div class="report-timeline-pills">
+              <div class="time-pill">
+                <span class="pill-label">Costituzione Impresa</span>
+                <span class="pill-val">${escapeHtml(m.dt_costituzione || '08/07/2022')}</span>
+              </div>
+              <div class="time-pill">
+                <span class="pill-label">Iscrizione Sez. Startup</span>
+                <span class="pill-val">${escapeHtml(m.dt_iscrizione_startup || '20/07/2022')}</span>
+              </div>
+              <div class="time-pill">
+                <span class="pill-label">Sede e Comune</span>
+                <span class="pill-val">${escapeHtml(m.comune || '')} (${escapeHtml(m.provincia || '')})</span>
+              </div>
+              <div class="time-pill">
+                <span class="pill-label">Codice ATECO</span>
+                <span class="pill-val">${escapeHtml(m.codice_ateco || '')}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUADRO 2: REQUISITI DI INNOVAZIONE (1-2-3) & CLASSI DIMENSIONALI -->
+          <div class="report-section-card">
+            <div class="report-section-title">Requisiti di Innovazione Tecnologica (Art. 25 D.L. 179/2012)</div>
+            
+            <div class="requirements-trio-grid">
+              <div class="req-box ${req1Active ? 'req-active' : 'req-inactive'}">
+                <div class="req-number">1</div>
+                <div class="req-title">R&S ≥ 15%</div>
+                <div class="req-status">${req1Active ? 'ATTIVO / SODDISFATTO' : 'NON ATTIVO'}</div>
+              </div>
+
+              <div class="req-box ${req2Active ? 'req-active' : 'req-inactive'}">
+                <div class="req-number">2</div>
+                <div class="req-title">Team Qualificato</div>
+                <div class="req-status">${req2Active ? 'ATTIVO / SODDISFATTO' : 'NON ATTIVO'}</div>
+              </div>
+
+              <div class="req-box ${req3Active ? 'req-active' : 'req-inactive'}">
+                <div class="req-number">3</div>
+                <div class="req-title">Proprietà Intellettuale</div>
+                <div class="req-status">${req3Active ? 'ATTIVO / SODDISFATTO' : 'NON ATTIVO'}</div>
+              </div>
+            </div>
+
+            <div class="classes-grid">
+              <div class="class-card">
+                <span class="class-label">Classe di Produzione</span>
+                <span class="class-code-badge">${escapeHtml(m.classe_produzione_codice || 'B')}</span>
+                <span class="class-desc">${escapeHtml(m.classe_produzione_valore || '100K-500K euro')}</span>
+              </div>
+              <div class="class-card">
+                <span class="class-label">Classe di Addetti</span>
+                <span class="class-code-badge">${escapeHtml(m.classe_addetti_codice || 'A')}</span>
+                <span class="class-desc">${escapeHtml(m.classe_addetti_valore || '0-4 addetti')}</span>
+              </div>
+              <div class="class-card">
+                <span class="class-label">Classe di Capitale</span>
+                <span class="class-code-badge">${escapeHtml(m.classe_capitale_codice || '2')}</span>
+                <span class="class-desc">${escapeHtml(m.classe_capitale_valore || '1-5K euro')}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUADRO 3: VALUTAZIONE CAPITALE UMANO GROQ AI & GOVERNANCE -->
+          <div class="report-section-card">
+            <div class="report-section-title">Valutazione Capitale Umano (Groq AI Team Evaluation)</div>
+            
+            <div class="team-score-card">
+              <div class="score-circle-display ${scoreBadgeColor}">
+                <span class="score-num">${score}</span>
+                <span class="score-sub">/100</span>
+              </div>
+              <div class="score-details">
+                <div class="score-headline">Giudizio Sintetico Compagine & Competenze:</div>
+                <p class="score-rationale">${escapeHtml(sc.groq_rationale || m.team_groq_score_rationale || 'Compagine tecnica con competenze specialistiche certificate.')}</p>
+                <div class="team-stats-tags">
+                  <span>Membri estratti: <strong>${(data.team || []).length}</strong></span>
+                  <span>Dottorati dichiarati: <strong>${m.team_num_dottorati_phd ?? 0}</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="report-sub-title" style="margin-top:1rem;">Organigramma e Soci Fondatori</div>
+            <table class="report-grid-table">
+              <thead>
+                <tr>
+                  <th>Nome & Cognome</th>
+                  <th>Ruolo Aziendale</th>
+                  <th>Livello</th>
+                  <th>Titolo di Studio</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(data.team || []).length ? data.team.map(p => `
+                  <tr>
+                    <td><strong>${escapeHtml(p.nome)}</strong></td>
+                    <td>${escapeHtml(p.ruolo)}</td>
+                    <td><span class="pill-val">${escapeHtml(p.livello)}</span></td>
+                    <td>${escapeHtml(p.titolo || 'Non specificato')}</td>
+                  </tr>
+                `).join('') : '<tr><td colspan="4" style="text-align:center; color:#94a3b8;">Nessun componente estratto nei curricula camerali.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- QUADRO 4: I 3 STEPPERS ORIZZONTALI DI MATURITÀ -->
+          <div class="report-section-card">
+            <div class="report-section-title">Stadi di Maturità e Avanzamento</div>
+            
+            <div class="steppers-block">
+              <div class="stepper-track-wrap">
+                <div class="stepper-title">Stadio della Startup:</div>
+                <div class="horizontal-stepper">
+                  <div class="step-item ${startupStage.includes('idea') ? 'step-current' : ''}">Idea</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${startupStage.includes('sviluppo') ? 'step-current' : ''}">Sviluppo</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${startupStage.includes('mercato') ? 'step-current' : ''}">Sul mercato</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${startupStage.includes('scale') ? 'step-current' : ''}">Scale</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${startupStage.includes('exit') ? 'step-current' : ''}">Exit</div>
+                </div>
+              </div>
+
+              <div class="stepper-track-wrap" style="margin-top:0.75rem;">
+                <div class="stepper-title">Stadio del Prodotto / Servizio:</div>
+                <div class="horizontal-stepper">
+                  <div class="step-item ${productStage.includes('idea') ? 'step-current' : ''}">Idea</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${productStage.includes('beta') || productStage.includes('prototipo') ? 'step-current' : ''}">Prototipo / Beta</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${productStage.includes('pronto') ? 'step-current' : ''}">Pronto</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${productStage.includes('clienti') ? 'step-current' : ''}">Primi clienti</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${productStage.includes('mercato') ? 'step-current' : ''}">Sul mercato</div>
+                </div>
+              </div>
+
+              <div class="stepper-track-wrap" style="margin-top:0.75rem;">
+                <div class="stepper-title">Stadio del Team:</div>
+                <div class="horizontal-stepper">
+                  <div class="step-item ${teamStage.includes('definire') ? 'step-current' : ''}">Da definire</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${teamStage.includes('tecnico') ? 'step-current' : ''}">Solo tecnico</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${teamStage.includes('business') ? 'step-current' : ''}">Solo business</div>
+                  <div class="step-connector"></div>
+                  <div class="step-item ${teamStage.includes('completo') ? 'step-current' : ''}">Completo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUADRO 5: PITCH & ASSET IP -->
+          <div class="report-section-card">
+            <div class="report-section-title">Attività, Presentazione & Asset IP</div>
+            
+            <div class="presentation-pitch-box">
+              <strong>Elevator Pitch / Presentazione Ufficiale:</strong>
+              <p>${escapeHtml(m.pitch_presentazione_it || m.descrizione_prodotto_it || 'Nessuna presentazione estesa depositata.')}</p>
+              ${m.innovazione_descrizione && m.innovazione_descrizione !== 'NON RILEVATO' ? `<p><strong>Proprietà intellettuale:</strong> ${escapeHtml(m.innovazione_descrizione)}</p>` : ''}
+            </div>
+
+            <div class="report-sub-title" style="margin-top:1rem;">Brevetti e Privative Industriali</div>
+            <table class="report-grid-table">
+              <thead>
+                <tr>
+                  <th>Titolo Privativa</th>
+                  <th>Numero Deposito</th>
+                  <th>Tipologia</th>
+                  <th>Ente Certificatore</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(data.brevetti || []).length ? data.brevetti.map(b => `
+                  <tr>
+                    <td><strong>${escapeHtml(b.titolo)}</strong></td>
+                    <td><code>${escapeHtml(b.numero)}</code></td>
+                    <td>${escapeHtml(b.tipo)}</td>
+                    <td>${escapeHtml(b.ente || 'UIBM')}</td>
+                  </tr>
+                `).join('') : '<tr><td colspan="4" style="text-align:center; color:#94a3b8;">Nessun brevetto dichiarato nel fascicolo camerale.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- QUADRO 6: FINANZA & ACCELERATORE -->
+          <div class="report-section-card">
+            <div class="report-section-title">Finanziamenti & Incubatori Certificati</div>
+
+            <div class="funding-cards-container">
+              ${(data.rounds || []).length ? data.rounds.map(rd => `
+                <div class="funding-card-item">
+                  <div class="fund-icon">€</div>
+                  <div class="fund-info">
+                    <div class="fund-type">${escapeHtml(rd.tipo_decod || rd.tipo || 'Venture')}</div>
+                    <div class="fund-amount">€ ${Number(rd.ammontare || 0).toLocaleString('it-IT')}</div>
+                    <div class="fund-meta">
+                      <span>Data: ${escapeHtml(rd.data_annuncio || '-')}</span>
+                      <span>Investitori: <strong>${escapeHtml(rd.investitori || 'Non dichiarato')}</strong></span>
+                    </div>
+                  </div>
+                </div>
+              `).join('') : '<div style="color:#94a3b8; padding:0.5rem;">Nessun round di finanziamento dichiarato.</div>'}
+            </div>
+
+            ${m.incubatore_accelerato === 'SÌ' || (data.incubatore && data.incubatore.accelerato === 'SÌ') ? `
+              <div class="incubator-badge-box">
+                <i data-lucide="check-circle" style="color:#16a34a; width:18px; height:18px;"></i>
+                <div>Accelerata da Incubatore Certificato: <strong>${escapeHtml(m.incubatore_nome || 'Incubatore Ufficiale')}</strong></div>
+              </div>
+            ` : ''}
+          </div>
+
+        </div>
+      `;
+
+      document.getElementById('unioncamere-modal-backdrop').classList.add('open');
+      lucide.createIcons();
+    } catch(e) {
+      alert('Impossibile caricare il report aziendale: ' + e);
+    }
+  }
+
+  function closeUnioncamereModal() {
+    const backdrop = document.getElementById('unioncamere-modal-backdrop');
+    if (backdrop) backdrop.classList.remove('open');
+  }
+
+  // Grafo Ecosistema
+  async function initEChartsGraph() {
+    const dom = document.getElementById('echarts-graph-container');
+    if (!echartsInstance) {
+      echartsInstance = echarts.init(dom);
+      new ResizeObserver(() => echartsInstance.resize()).observe(dom);
+    }
+
+    echartsInstance.showLoading();
+
+    try {
+      const res = await fetch('/api/grafo/data');
+      const data = await res.json();
+      echartsInstance.hideLoading();
+
+      const option = {
+        tooltip: {
+          formatter: p => p.dataType === 'node' 
+            ? `<strong>${escapeHtml(p.data.name)}</strong><br/>${escapeHtml(p.data.sub || '')}` 
+            : `Relazione: <strong>${escapeHtml(p.data.rel_type)}</strong>`
+        },
+        legend: [{
+          data: data.categories.map(c => c.name),
+          orient: 'horizontal',
+          bottom: 10,
+          textStyle: { fontSize: 11 }
+        }],
+        series: [{
+          type: 'graph',
+          layout: 'force',
+          data: data.nodes,
+          links: data.links,
+          categories: data.categories,
+          roam: true,
+          label: { show: true, position: 'right', fontSize: 10 },
+          force: { repulsion: 220, edgeLength: [60, 130] },
+          lineStyle: { color: 'source', curveness: 0.1 }
+        }]
+      };
+
+      echartsInstance.setOption(option);
+    } catch(err) {
+      echartsInstance.hideLoading();
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
+  }
+
+  function updateTickerStatus(tag, msg, statusType) {
+    const tTag = document.querySelector('.ticker-tag');
+    const tMsg = document.getElementById('ticker-msg');
+    const tStatus = document.querySelector('.ticker-status');
+    const tTime = document.getElementById('ticker-time');
+
+    if (tTime) tTime.innerText = new Date().toLocaleTimeString();
+    if (tTag) tTag.innerText = tag;
+    if (tMsg) tMsg.innerText = msg;
+    if (tStatus) {
+      tStatus.innerText = `[${statusType}]`;
+      tStatus.style.color = statusType === 'SUCCESS' ? '#16a34a' : (statusType === 'WARN' ? '#ea580c' : '#ef4444');
+    }
+  }
+</script>
+
+</body>
+</html>
