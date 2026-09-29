@@ -1,7 +1,3 @@
-Ecco un file **`README.md`** completo, professionale e strutturato, pronto per essere inserito nella root del tuo repository Git.
-
-***
-
 ```markdown
 # 🇮🇹 Italian Startup & Innovation Ecosystem Knowledge Graph
 
