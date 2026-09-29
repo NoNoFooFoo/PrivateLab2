@@ -26,9 +26,9 @@ async def run_piva_pipeline_standalone(
         piva_zip: str,
         tipo: str = "STARTUP",
 ):
-    from harvester import DB_PATH as HARVESTER_DB_PATH, ZENROWS_API_KEY
+    from harvester import DB_PATH as HARVESTER_DB_PATH, ZENROWS_API_KEYS
 
-    if not ZENROWS_API_KEY:
+    if not ZENROWS_API_KEYS:
         raise RuntimeError("ZENROWS_API_KEY mancante: il ciclo richiede ZenRows.")
     if not os.path.isfile(piva_zip):
         raise FileNotFoundError(f"Archivio ministeriale non trovato: {piva_zip}")

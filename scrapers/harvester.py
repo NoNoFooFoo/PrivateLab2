@@ -30,15 +30,23 @@ else:
   load_dotenv()
 
 try:
-  from scrapers.proxy_manager import get_playwright_proxy_config
+  from scrapers.proxy_manager import (
+      connect_zenrows_browser,
+      get_playwright_proxy_config,
+      get_zenrows_api_keys,
+  )
 except ModuleNotFoundError:
-  from proxy_manager import get_playwright_proxy_config
+  from proxy_manager import (
+      connect_zenrows_browser,
+      get_playwright_proxy_config,
+      get_zenrows_api_keys,
+  )
 
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
 if not os.path.isabs(DB_PATH):
   DB_PATH = os.path.join(PROJECT_ROOT, DB_PATH)
 
-ZENROWS_API_KEY = os.getenv("ZENROWS_API_KEY", "").strip()
+ZENROWS_API_KEYS = get_zenrows_api_keys()
 
 # Mappa Ufficiale Registro Imprese CCIAA (0 - 19)
 MAPPA_REGIONI = {
@@ -930,11 +938,11 @@ async def run_harvester_standalone(
       f" Regione: {regione}, Route: {proxy_mode}) ===",
   )
 
-  if piva_zip and not ZENROWS_API_KEY:
+  if piva_zip and not ZENROWS_API_KEYS:
     log("ERROR", "[PIVA PIPELINE] ZENROWS_API_KEY mancante: la modalità P.IVA richiede ZenRows.")
     raise RuntimeError("ZENROWS_API_KEY mancante per la pipeline P.IVA")
 
-  use_zenrows = "zenrows" in proxy_mode.lower() and bool(ZENROWS_API_KEY)
+  use_zenrows = "zenrows" in proxy_mode.lower() and bool(ZENROWS_API_KEYS)
   if piva_zip and not use_zenrows:
     log("ERROR", "[PIVA PIPELINE] Routing non valido: richiesto ZenRows.")
     raise RuntimeError("La pipeline P.IVA accetta esclusivamente il routing ZenRows")
@@ -951,8 +959,7 @@ async def run_harvester_standalone(
             log("INFO", "🌐 Connessione a Browser Residenziale ZenRows (WAF Bypass)...")
           else:
             log("INFO", f"[PIVA PIPELINE] Nuovo tentativo ZenRows {attempt}/{connection_attempts}.")
-          ws_endpoint = f"wss://browser.zenrows.com?apikey={ZENROWS_API_KEY}&proxy_country=it"
-          browser = await asyncio.wait_for(p.chromium.connect_over_cdp(ws_endpoint), timeout=15.0)
+          browser = await connect_zenrows_browser(p)
           # USA DIRETTAMENTE IL BROWSER NATIVO SENZA CREARE NEW_CONTEXT CHE DISATTIVA IL PROXY
           page = await browser.new_page()
           log("SUCCESS", "✅ Connessione ZenRows stabilita.")

@@ -41,7 +41,12 @@ else:
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
 WEBSHARE_API_KEY = os.getenv("WEBSHARE_API_KEY", "").strip()
-ZENROWS_API_KEY = os.getenv("ZENROWS_API_KEY", "").strip()
+ZENROWS_API_KEYS = tuple(dict.fromkeys(
+  key for key in (
+    os.getenv("ZENROWS_API_KEY", "").strip(),
+    os.getenv("ZENROWS_API_KEY_2", "").strip(),
+  ) if key
+))
 DEFAULT_GS_WEBHOOK = os.getenv("GS_WEBHOOK_URL", "").strip()
 
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
@@ -816,7 +821,7 @@ async def trigger_run(
         status_code=404,
         content={"status": "error", "message": "Archivio ZIP ministeriale non trovato."},
     )
-  if not ZENROWS_API_KEY:
+  if not ZENROWS_API_KEYS:
     return JSONResponse(
         status_code=503,
         content={"status": "error", "message": "ZenRows non configurato; pipeline non avviata."},

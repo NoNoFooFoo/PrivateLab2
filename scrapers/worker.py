@@ -36,9 +36,17 @@ except ModuleNotFoundError:
     from groq_ai import analyze_dossier_with_groq
 
 try:
-    from scrapers.proxy_manager import get_playwright_proxy_config
+    from scrapers.proxy_manager import (
+        connect_zenrows_browser,
+        get_playwright_proxy_config,
+        get_zenrows_api_keys,
+    )
 except ModuleNotFoundError:
-    from proxy_manager import get_playwright_proxy_config
+    from proxy_manager import (
+        connect_zenrows_browser,
+        get_playwright_proxy_config,
+        get_zenrows_api_keys,
+    )
 
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
 if not os.path.isabs(DB_PATH):
@@ -47,7 +55,7 @@ WORKER_OUTPUT_DIR = os.getenv(
     "WORKER_OUTPUT_DIR", os.path.join(PROJECT_ROOT, "output")
 )
 
-ZENROWS_API_KEY = os.getenv("ZENROWS_API_KEY", "").strip()
+ZENROWS_API_KEYS = get_zenrows_api_keys()
 IMGBB_API_KEY = os.getenv("IMGBB_API_KEY", "").strip()
 
 INSTITUTIONAL_KEYWORDS = [
@@ -1499,8 +1507,7 @@ async def create_browser_and_page(p, use_zenrows, proxy_cfg):
     if use_zenrows:
         try:
             log("INFO", "🌐 Connessione a Browser Residenziale ZenRows (Italia)...")
-            ws = f"wss://browser.zenrows.com?apikey={ZENROWS_API_KEY}&proxy_country=it"
-            browser = await asyncio.wait_for(p.chromium.connect_over_cdp(ws), timeout=15.0)
+            browser = await connect_zenrows_browser(p)
             page = await browser.new_page()
             return browser, page
         except Exception as e:
@@ -1530,7 +1537,7 @@ async def run_worker_standalone(
     conn = get_db()
     cur = conn.cursor()
 
-    if "zenrows" in (proxy_mode or "").lower() and not ZENROWS_API_KEY:
+    if "zenrows" in (proxy_mode or "").lower() and not ZENROWS_API_KEYS:
         log("ERROR", "ZenRows richiesto ma ZENROWS_API_KEY non configurata.")
         conn.close()
         return

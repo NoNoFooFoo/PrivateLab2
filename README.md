@@ -29,31 +29,33 @@ Pipeline asincrona avanzata di **Web Scraping Stealth**, **Data Enrichment con L
 
 ## 🏗 Panoramica dell'Architettura
 
-Il sistema si articola su una **pipeline a due stadi disaccoppiati**, coordinata da un orchestratore centrale:
+Il repository contiene una dashboard web e una pipeline CLI. La dashboard usa il backend FastAPI per leggere SQLite e avviare l'orchestratore come processo separato. La pipeline può lavorare in due fasi (`harvest` e `worker`) oppure elaborare i codici fiscali estratti dall'archivio ministeriale (`piva`):
 
 ```
-[ Registro Imprese CCIAA ]
-           │
-           ▼  (WAF Bypass / ZenRows Residential Proxy)
-┌──────────────────────┐
-│  Fase 1: HARVESTER   │ ──> Popola la tabella 'coda' (Stato: PENDING)
-└──────────────────────┘
-           │
-           ▼
-┌──────────────────────┐
-│   Fase 2: WORKER     │ <── Lettura in-memory dell'XML camerale
-└──────────┬───────────┘
-           │
-           ├─► Upload Logo Base64 su ImgBB (CDN Permanente)
-           ├─► Interrogazione Unica Groq AI (Entity Extraction, Normalizzazione, Score)
-           ├─► Deduplicazione Anagrafica a Vocaboli (Anti-Doppioni)
-           │
-           ▼
-┌──────────────────────────────────────────────────────────────┐
-│      KNOWLEDGE GRAPH RELAZIONALE (database.db in SQLite)     │
-│  Tabelle Master + Satelliti + Nodi Condivisi + 'relazioni'   │
-└──────────────────────────────────────────────────────────────┘
+┌────────────────────┐     HTTP / SSE      ┌───────────────────────┐
+│ Dashboard HTML/CSS │ ◄─────────────────► │ FastAPI: app.py       │
+│ JavaScript vanilla │                     │ API, SQLite, controlli│
+└────────────────────┘                     └───────────┬───────────┘
+                                                       │ subprocess
+                                                       ▼
+                                           ┌───────────────────────┐
+                                           │ scrapers/startup.py   │
+                                           │ harvest / worker /    │
+                                           │ both / piva           │
+                                           └───────────┬───────────┘
+                                                       │
+                        ┌──────────────────────────────┴────────────────────────┐
+                        ▼                                                       ▼
+             ┌─────────────────────┐                               ┌─────────────────────┐
+             │ Harvester: ricerca  │                               │ Worker: XML, Groq,  │
+             │ schede e coda       │                               │ SQLite ed export    │
+             └──────────┬──────────┘                               └──────────┬──────────┘
+                        └──────────────────────────┬──────────────────────────┘
+                                                   ▼
+                                     SQLite (data/database.db) + output/
 ```
+
+La modalità `piva` parte dai codici fiscali contenuti nello ZIP ministeriale; le modalità `harvest`, `worker` e `both` consentono invece di usare direttamente la ricerca regionale e la coda.
 
 ---
 
@@ -119,7 +121,9 @@ Il database SQLite (`database.db`) è strutturato come un vero e proprio **Prope
 
 ## 🛠 Stack Tecnologico
 
-* **Linguaggio**: Python 3.10+ (Asincrono con `asyncio`)
+* **Linguaggio**: Python 3.10+ (asincrono con `asyncio`)
+* **Backend**: FastAPI e Uvicorn
+* **Interfaccia**: HTML/CSS e JavaScript vanilla; Apache ECharts e Lucide via CDN
 * **Browser Automation**: Playwright (Async API)
 * **WAF Bypass & Proxies**: ZenRows (Browser Residenziale via CDP over WebSocket) + Webshare API v2
 * **Intelligenza Artificiale**: Groq API (SDK/REST, modelli Llama 3.3 / Qwen)
@@ -132,20 +136,26 @@ Il database SQLite (`database.db`) è strutturato come un vero e proprio **Prope
 ## 📁 Struttura del Repository
 
 ```text
+├── app.py                      # Backend FastAPI e API della dashboard
+├── index.html                  # Dashboard e logica JavaScript
+├── style.css                   # Stili della dashboard
 ├── data/
-│   ├── database.db             # Database SQLite principale (WAL mode)
-│   └── ...
+│   ├── database.db             # Creato/aggiornato all'avvio (percorso predefinito)
+│   └── proxies.txt             # Cache locale dei proxy
 ├── output/
-│   ├── startup_estratte.csv    # Export tabellare CSV (separatore ';', UTF-8 BOM)
-│   └── startup_estratte.xlsx   # Export Microsoft Excel pronto per Google Sheets
+│   ├── startup_estratte.csv    # Export startup
+│   ├── startup_estratte.xlsx   # Export startup
+│   ├── pmi_estratte.csv        # Export PMI, se presenti
+│   └── pmi_estratte.xlsx       # Export PMI, se presenti
 ├── scrapers/
-│   ├── harvester.py            # Fase 1: Scansione stealth ed estrazione link
-│   ├── worker.py               # Fase 2: Deep extraction, Groq AI e Knowledge Graph
-│   ├── groq_ai.py              # Modulo LLM con prompt engineering e dynamic discovery
-│   └── proxy_manager.py        # Gestione proxy Webshare e route ZenRows
-├── startup.py                  # Orchestratore master (CLI sia per Fase 1 che per Fase 2)
+│   ├── startup.py              # Orchestratore CLI: harvest, worker, both, piva
+│   ├── harvester.py            # Ricerca delle schede e popolamento della coda
+│   ├── worker.py               # Estrazione XML, arricchimento e persistenza
+│   ├── groq_ai.py              # Integrazione Groq
+│   ├── proxy_manager.py        # Gestione proxy
+│   ├── ocr_service.py          # Servizio OCR opzionale
+│   └── elenco_startup_ministero/ # Archivio ministeriale usato dalla modalità piva
 ├── requirements.txt            # Dipendenze Python
-├── .env.example                # Template per le chiavi d'ambiente
 └── README.md
 ```
 
@@ -167,11 +177,24 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
+### Avvio della dashboard
+Avvia il backend dalla root del repository:
+
+```bash
+python app.py
+```
+
+La dashboard è disponibile su `http://localhost:8000`. In alternativa, con Uvicorn:
+
+```bash
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+```
+
 ---
 
 ## 🔑 Configurazione (.env)
 
-Copia il file di esempio e configura le tue credenziali nel file `.env`:
+Configura le variabili in un file `.env` nella root del progetto. In assenza di `.env`, il codice cerca anche `env.taziovettori`. `DB_PATH` può essere assoluto o relativo alla root del repository; il valore predefinito è `data/database.db`.
 
 ```ini
 # Database Path
@@ -182,28 +205,42 @@ GROQ_API_KEY=gsk_...
 
 # ZenRows API Key (per connessioni CDP e bypass WAF)
 ZENROWS_API_KEY=...
+ZENROWS_API_KEY_2=... # Fallback se la prima chiave non riesce a connettersi
 
 # ImgBB API Key (per hosting loghi CDN)
 IMGBB_API_KEY=...
 
-# Webshare Proxy Token (opzionale se si usa ZenRows)
+# Webshare Proxy Token (opzionale)
 WEBSHARE_API_KEY=...
+
+# URL webhook Google Apps Script (opzionale, per la sincronizzazione Sheets)
+GS_WEBHOOK_URL=...
 ```
+
+Groq e ImgBB servono rispettivamente per l'arricchimento AI e l'hosting dei loghi; Webshare è un proxy alternativo. ZenRows prova `ZENROWS_API_KEY` e, se la connessione fallisce, passa a `ZENROWS_API_KEY_2`. La funzione Play della dashboard richiede almeno una delle due chiavi e l'archivio ministeriale nel percorso `scrapers/elenco_startup_ministero/startup (1).zip` (oppure il percorso passato con `--piva-zip` da CLI).
 
 ---
 
 ## 💻 Guida all'Uso
 
-### Pipeline Completa (Orchestratore Master)
-Esegue automaticamente sia la Fase 1 (Harvesting dei link) che la Fase 2 (Deep Worker):
+### Dashboard
+La dashboard avvia la modalità `piva`: legge i CF dallo ZIP ministeriale, cerca ciascuna scheda con l'harvester, la elabora con il worker e verifica il risultato. I controlli Play/Pause/Stop agiscono sul processo avviato dal backend.
+
+### Pipeline CLI
+Esegui i comandi dalla root del repository. L'orchestratore si trova in `scrapers/startup.py`:
 
 ```bash
-# Esegui scansione per una specifica regione (es. 8 = Lombardia, target 20 startup)
-python startup.py --action both --regione 8 --limit 20 --delay 2.5 --proxy zenrows
+# Pipeline completa: ricerca regionale seguita dall'elaborazione della coda
+python scrapers/startup.py --action both --regione 8 --limit 20 --delay 2.5 --proxy zenrows
 
-# Esegui scansione su tutte le regioni italiane
-python startup.py --action both --regione ALL --limit 50 --delay 3.0 --proxy zenrows
+# Pipeline basata sui CF nell'archivio ministeriale
+python scrapers/startup.py --action piva --limit 20 --delay 2.5 --proxy zenrows
+
+# Tutte le regioni (per la modalità harvest/both)
+python scrapers/startup.py --action both --regione ALL --limit 50 --delay 3.0 --proxy zenrows
 ```
+
+Le azioni CLI disponibili sono `harvest`, `worker`, `both` e `piva`; i parametri principali sono `--regione`, `--limit`, `--delay`, `--proxy`, `--tipo` e `--piva-zip`. Usare `python scrapers/startup.py --help` per i valori ammessi.
 
 ### Esecuzione Modulare
 
@@ -223,10 +260,10 @@ python scrapers/worker.py --limit 10 --delay 2.0 --proxy zenrows --tipo STARTUP
 
 ## 📈 Esportazione e Compatibilità Google Sheets
 
-Al termine di ogni esecuzione del worker, i dati vengono automaticamente salvati nella cartella `output/` sia in formato `.csv` (codifica `utf-8-sig` compatibile con Excel italiano) sia in formato `.xlsx`.
+Al termine dell'elaborazione, il worker esporta le tabelle master startup e PMI (quando presenti) in `output/`, in formato CSV `utf-8-sig` e XLSX. La dashboard offre inoltre export del database in Excel e CSV e un endpoint di sincronizzazione Google Sheets configurabile con `GS_WEBHOOK_URL`.
 
 ### Visualizzazione dei Loghi in Google Sheets
-Grazie all'integrazione di ImgBB, è possibile visualizzare l'anteprima grafica del logo direttamente all'interno delle celle di Google Sheets inserendo la formula:
+Quando è disponibile `logo_url`, è possibile mostrare il logo in una cella di Google Sheets con:
 
 ```text
 =IMAGE(V2)
@@ -235,16 +272,13 @@ Grazie all'integrazione di ImgBB, è possibile visualizzare l'anteprima grafica 
 
 ---
 
-## 🗺 Roadmap
+## 🗺 Stato e limiti noti
 
-- [x] Neutralizzazione F5 BIG-IP WAF e sessioni Wicket.
-- [x] Lettura asincrona dell'XML camerale in-session via JavaScript context.
-- [x] Integrazione API ImgBB per l'hosting dei loghi in CDN.
-- [x] Named Entity Recognition con Groq AI a chiamata singola.
-- [x] Costruzione del Knowledge Graph su SQLite (Nodi + Archi pesati).
-- [x] Deduplicazione anagrafica a vocaboli e risoluzione dello zero iniziale con prefisso `IT`.
-- [ ] Estensione dell'estrazione avanzata a 85 colonne alla categoria **PMI Innovative** *(Work in progress)*.
-- [ ] Frontend Dashboard interattivo con visualizzazione del grafo tramite Cytoscape.js / D3.js.
+- La dashboard e la visualizzazione del grafo sono già presenti; il grafo usa Apache ECharts.
+- Il backend crea/aggiorna lo schema SQLite all'avvio e usa il database configurato da `DB_PATH`.
+- L'interfaccia Play è vincolata alla modalità P.IVA e al relativo ZIP ministeriale; la scansione per regione è disponibile via CLI.
+- Il controllo del processo e lo storico dei log sono in memoria nel backend: eseguire una sola istanza per mantenere coerenti stato e controlli.
+- Le API non implementano autenticazione e il server di sviluppo ascolta su tutte le interfacce. Non esporre la dashboard a reti non fidate senza aggiungere autenticazione, limitare CORS e configurare un deployment appropriato.
 
 ---
 

@@ -1,3 +1,4 @@
+import asyncio
 import concurrent.futures
 import json
 import os
@@ -29,6 +30,43 @@ os.makedirs(os.path.dirname(PROXY_FILE), exist_ok=True)
 
 TOR_SOCKS5 = "socks5://127.0.0.1:9050"
 CONNECTIVITY_TEST_URL = "https://api.ipify.org"
+
+
+def get_zenrows_api_keys() -> tuple:
+  return tuple(dict.fromkeys(
+      key for key in (
+          os.getenv("ZENROWS_API_KEY", "").strip(),
+          os.getenv("ZENROWS_API_KEY_2", "").strip(),
+      ) if key
+  ))
+
+
+async def connect_zenrows_browser(playwright, timeout: float = 15.0):
+  api_keys = get_zenrows_api_keys()
+  if not api_keys:
+    raise RuntimeError("Nessuna chiave ZenRows configurata.")
+
+  last_error = None
+  for index, api_key in enumerate(api_keys, start=1):
+    endpoint = f"wss://browser.zenrows.com?apikey={api_key}&proxy_country=it"
+    try:
+      browser = await asyncio.wait_for(
+          playwright.chromium.connect_over_cdp(endpoint), timeout=timeout
+      )
+      if index > 1:
+        print(f"[SUCCESS] [ZenRows] Connessione riuscita con chiave fallback #{index}.")
+      return browser
+    except Exception as error:
+      last_error = error
+      if index < len(api_keys):
+        print(
+            f"[WARN] [ZenRows] Chiave #{index} non disponibile; "
+            f"provo la chiave fallback #{index + 1}."
+        )
+
+  raise RuntimeError(
+      f"Connessione ZenRows fallita con tutte le {len(api_keys)} chiavi configurate."
+  ) from last_error
 
 
 def parse_proxy_dict(proxy_str: str):
