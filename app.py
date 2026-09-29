@@ -47,6 +47,7 @@ ZENROWS_API_KEYS = tuple(dict.fromkeys(
     os.getenv("ZENROWS_API_KEY_2", "").strip(),
   ) if key
 ))
+APIFY_API_KEY = os.getenv("APIFY_API_KEY", "").strip()
 DEFAULT_GS_WEBHOOK = os.getenv("GS_WEBHOOK_URL", "").strip()
 
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
@@ -821,10 +822,10 @@ async def trigger_run(
         status_code=404,
         content={"status": "error", "message": "Archivio ZIP ministeriale non trovato."},
     )
-  if not ZENROWS_API_KEYS:
+  if not ZENROWS_API_KEYS and not APIFY_API_KEY:
     return JSONResponse(
         status_code=503,
-        content={"status": "error", "message": "ZenRows non configurato; pipeline non avviata."},
+        content={"status": "error", "message": "Configurare ZenRows o Apify; pipeline non avviata."},
     )
 
   script_file = "startup.py"

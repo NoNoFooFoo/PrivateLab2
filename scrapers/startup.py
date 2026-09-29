@@ -12,6 +12,8 @@ sys.path.insert(0, PROJECT_ROOT)
 
 from harvester import load_piva_candidates, run_harvester_standalone
 from worker import run_worker_standalone
+from apify_fallback import APIFY_API_KEY, ApifyFallbackError, run_apify_piva_candidate
+from proxy_manager import ZenRowsUnavailableError
 
 
 def log(level: str, message: str):
@@ -28,8 +30,8 @@ async def run_piva_pipeline_standalone(
 ):
     from harvester import DB_PATH as HARVESTER_DB_PATH, ZENROWS_API_KEYS
 
-    if not ZENROWS_API_KEYS:
-        raise RuntimeError("ZENROWS_API_KEY mancante: il ciclo richiede ZenRows.")
+    if not ZENROWS_API_KEYS and not APIFY_API_KEY:
+        raise RuntimeError("Configurare ZenRows o APIFY_API_KEY per la pipeline P.IVA.")
     if not os.path.isfile(piva_zip):
         raise FileNotFoundError(f"Archivio ministeriale non trovato: {piva_zip}")
 
@@ -41,9 +43,9 @@ async def run_piva_pipeline_standalone(
     target = len(candidates) if limit == -1 else max(limit, 0)
     attempt_limit = len(candidates) if limit == -1 else min(len(candidates), max(target * 3, target))
     log(
-            "INFO",
-            f"[PIPELINE PIVA] CF nuovi={len(candidates)}; obiettivo={target}; "
-            f"tentativi massimi={attempt_limit}; routing=ZenRows.",
+        "INFO",
+        f"[PIPELINE PIVA] CF nuovi={len(candidates)}; obiettivo={target}; "
+        f"tentativi massimi={attempt_limit}; routing=ZenRows con fallback Apify.",
     )
 
     processed = 0
@@ -59,19 +61,59 @@ async def run_piva_pipeline_standalone(
                 f"{candidate['name']} [CF finale {cf[-4:]}].",
         )
 
-        try:
-            await run_harvester_standalone(
-                  regione="ALL",
+        apify_payload = None
+        use_apify = not ZENROWS_API_KEYS
+        if ZENROWS_API_KEYS:
+            try:
+                await run_harvester_standalone(
+                    regione="ALL",
                     limit=1,
                     delay_sec=delay_sec,
                     proxy_mode="zenrows",
                     tipo=tipo,
                     piva_zip=piva_zip,
                     piva_cf=cf,
-            )
-        except Exception as error:
-            log("ERROR", f"[PIPELINE PIVA] Harvester interrotto: {type(error).__name__}: {error}")
-            break
+                )
+            except ZenRowsUnavailableError as error:
+                log("WARN", f"[PIPELINE PIVA] ZenRows non disponibile ({type(error).__name__}); provo Apify.")
+                use_apify = True
+            except Exception as error:
+                log("ERROR", f"[PIPELINE PIVA] Harvester interrotto: {type(error).__name__}: {error}")
+                break
+
+        if use_apify:
+            try:
+                apify_payload = await run_apify_piva_candidate(cf, tipo)
+            except ApifyFallbackError as fallback_error:
+                log("ERROR", f"[PIPELINE PIVA] Fallback Apify interrotto ({fallback_error.outcome}); nessun altro provider verrà provato.")
+                break
+            with sqlite3.connect(HARVESTER_DB_PATH) as conn:
+                conn.execute(
+                    "INSERT OR IGNORE INTO coda "
+                    "(url, denominazione, cf, tipo, regione, stato) "
+                    "VALUES (?, ?, ?, ?, ?, 'PENDING')",
+                    (
+                        apify_payload["detailUrl"],
+                        apify_payload.get("name") or candidate["name"],
+                        cf,
+                        tipo,
+                        candidate["region"],
+                    ),
+                )
+                if conn.total_changes == 0:
+                    conn.execute(
+                        "UPDATE coda SET denominazione = ?, cf = ?, tipo = ?, "
+                        "regione = ?, stato = 'PENDING' WHERE url = ? "
+                        "AND UPPER(stato) = 'FAILED'",
+                        (
+                            apify_payload.get("name") or candidate["name"],
+                            cf,
+                            tipo,
+                            candidate["region"],
+                            apify_payload["detailUrl"],
+                        ),
+                    )
+                conn.commit()
 
         with sqlite3.connect(HARVESTER_DB_PATH) as conn:
             conn.row_factory = sqlite3.Row
@@ -101,6 +143,7 @@ async def run_piva_pipeline_standalone(
                     proxy_mode="zenrows",
                     tipo_filter=tipo,
                     only_url=url,
+                    remote_detail=apify_payload,
             )
         except Exception as error:
             log("ERROR", f"[PIPELINE PIVA] Worker interrotto: {type(error).__name__}: {error}")

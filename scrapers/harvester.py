@@ -14,6 +14,11 @@ import zipfile
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
+try:
+  from scrapers.piva_diagnostics import SearchOutcome, classify_search_response
+except ModuleNotFoundError:
+  from piva_diagnostics import SearchOutcome, classify_search_response
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 sys.path.insert(0, SCRIPT_DIR)
@@ -34,12 +39,14 @@ try:
       connect_zenrows_browser,
       get_playwright_proxy_config,
       get_zenrows_api_keys,
+      ZenRowsUnavailableError,
   )
 except ModuleNotFoundError:
   from proxy_manager import (
       connect_zenrows_browser,
       get_playwright_proxy_config,
       get_zenrows_api_keys,
+      ZenRowsUnavailableError,
   )
 
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
@@ -152,7 +159,141 @@ async def find_card_by_cf(cards, cf_digits: str):
   return None
 
 
-async def search_card_by_piva(page, search_input, search_button, cf_digits: str):
+async def _search_card_by_piva_legacy(page, search_input, search_button, cf_digits: str, tipo: str = "STARTUP"):
+  async def find_matching_card(timeout_ms: int):
+    cards = page.locator(".searchCompanyCard")
+    try:
+      await page.wait_for_function(
+          """({selector, cf}) => Array.from(document.querySelectorAll(selector)).some(card => {
+            const match = card.textContent.match(/Codice fiscale\\s*([A-Z0-9]{11,16})/i);
+            return match && match[1].replace(/[^A-Z0-9]/gi, '').toUpperCase() === cf;
+          })""",
+          arg={"selector": ".searchCompanyCard", "cf": cf_digits},
+          timeout=timeout_ms,
+      )
+    except Exception:
+      return None
+    return await find_card_by_cf(cards, cf_digits)
+
+  async def inspect_response(response, strategy: int):
+    if response is None:
+      return
+    content_type = response.headers.get("content-type", "tipo sconosciuto")
+    try:
+      response_body = await response.text()
+      result = await page.evaluate(
+          """({body, cf}) => {
+            const parseHtml = value => new DOMParser().parseFromString(value, 'text/html');
+            const matches = doc => Array.from(doc.querySelectorAll('.searchCompanyCard')).some(card => {
+              const match = card.textContent.match(/Codice fiscale\\s*([A-Z0-9]{11,16})/i);
+              return match && match[1].replace(/[^A-Z0-9]/gi, '').toUpperCase() === cf;
+            });
+            const diagnostics = doc => {
+              const text = doc.body?.textContent || '';
+              const input = doc.querySelector('input[name="parolaChiaveFld"]');
+              const form = doc.querySelector('form[action*="vetrinaSearchForm"]');
+              return {
+                title: doc.title,
+                cards: doc.querySelectorAll('.searchCompanyCard').length,
+                challenge: /captcha|access denied|verifica di sicurezza|request rejected|forbidden|rejected/i.test(text + ' ' + doc.documentElement.outerHTML) || /TSPD\\//i.test(doc.documentElement.outerHTML),
+                form: !!form,
+                inputSuffix: (input?.value || '').slice(-4),
+                startupChecked: !!doc.querySelector('input[name="startupChk:chkFld"]:checked'),
+                pmiChecked: !!doc.querySelector('input[name="pmiChk:chkFld"]:checked'),
+                message: text.replace(/\\s+/g, ' ').trim().slice(0, 180),
+                bodyLength: text.length,
+              };
+            };
+            const htmlDoc = parseHtml(body);
+            const htmlDiagnostics = diagnostics(htmlDoc);
+            if (matches(htmlDoc)) return {kind: 'document', html: body, componentId: '', diagnostics: htmlDiagnostics};
+            const xmlDoc = new DOMParser().parseFromString(body, 'text/xml');
+            for (const component of xmlDoc.getElementsByTagName('component')) {
+              const fragment = component.textContent || '';
+              const fragmentDoc = parseHtml(fragment);
+              if (matches(fragmentDoc)) return {kind: 'component', html: fragment, componentId: component.getAttribute('id') || '', diagnostics: diagnostics(fragmentDoc)};
+            }
+            return {kind: 'none', html: '', componentId: '', diagnostics: htmlDiagnostics};
+          }""",
+          {"body": response_body, "cf": cf_digits},
+      )
+      log(
+          "INFO",
+          f"[PIVA] Fallback {strategy}/5: body Wicket esaminato "
+            f"(HTTP {response.status}, {content_type}, kind={result['kind']}, "
+          f"path={urllib.parse.urlsplit(response.url).path}, "
+            f"title={result['diagnostics']['title']!r}, "
+            f"card={result['diagnostics']['cards']}, "
+            f"form={result['diagnostics']['form']}, "
+            f"CF_finale={result['diagnostics']['inputSuffix'] or 'assente'}, "
+          f"tipo=STARTUP:{result['diagnostics']['startupChecked']}/PMI:{result['diagnostics']['pmiChecked']}, "
+            f"challenge={result['diagnostics']['challenge']}, "
+          f"body={result['diagnostics']['bodyLength']} caratteri, "
+          f"messaggio={result['diagnostics']['message']!r}).",
+      )
+      if result["kind"] == "document":
+        await page.set_content(result["html"], wait_until="domcontentloaded")
+      elif result["kind"] == "component" and result["componentId"]:
+        installed = await page.evaluate(
+            """({id, html, cf}) => {
+              const target = document.getElementById(id);
+              if (!target) return false;
+              target.innerHTML = html;
+              return Array.from(target.querySelectorAll('.searchCompanyCard')).some(card => {
+                const match = card.textContent.match(/Codice fiscale\\s*([A-Z0-9]{11,16})/i);
+                return match && match[1].replace(/[^A-Z0-9]/gi, '').toUpperCase() === cf;
+              });
+            }""",
+            {"id": result["componentId"], "html": result["html"], "cf": cf_digits},
+        )
+        log(
+            "INFO",
+            f"[PIVA] Fallback {strategy}/5: componente Wicket "
+            f"{'applicato' if installed else 'non applicabile al DOM corrente'}.",
+        )
+    except Exception as error:
+      log(
+          "WARN",
+          f"[PIVA] Fallback {strategy}/5: lettura payload Wicket fallita "
+          f"({type(error).__name__}: {error}).",
+      )
+
+  async def submit_and_check(strategy: int, label: str, action, timeout_ms: int = 7000):
+    log("INFO", f"[PIVA] Fallback {strategy}/5: {label}.")
+    response = None
+    try:
+      async with page.expect_response(
+          lambda candidate: (
+            "searchBtn" in candidate.url
+            or (
+              candidate.request.method == "POST"
+              and "vetrinaSearchForm" in candidate.url
+            )
+          ),
+          timeout=timeout_ms,
+      ) as response_info:
+        await action()
+      response = await response_info.value
+      log(
+          "INFO",
+          f"[PIVA] Fallback {strategy}/5: risposta ricevuta "
+          f"(HTTP {response.status}, {response.headers.get('content-type', 'tipo sconosciuto')}).",
+      )
+    except Exception as error:
+      log(
+          "WARN",
+          f"[PIVA] Fallback {strategy}/5: risposta non osservata "
+          f"({type(error).__name__}); controllo DOM/payload.",
+      )
+    await inspect_response(response, strategy)
+    card = await find_matching_card(2500)
+    if card:
+      log("SUCCESS", f"[PIVA] Strategia {strategy}/5 riuscita: CF verificato nel DOM.")
+      return card
+    log("WARN", f"[PIVA] Strategia {strategy}/5 senza card col CF esatto.")
+    return None
+
+  log("INFO", f"[PIVA] Aggiornamento campo CF per {cf_digits[-4:]}.")
   try:
     async with page.expect_response(
         lambda response: "parolaChiaveFld" in response.url, timeout=6000
@@ -160,75 +301,165 @@ async def search_card_by_piva(page, search_input, search_button, cf_digits: str)
       await search_input.fill(cf_digits)
       await search_input.press("Tab")
     response = await response_info.value
-    log(
-        "INFO",
-        f"[PIVA] Campo CF aggiornato via Wicket: HTTP {response.status} "
-        f"({response.headers.get('content-type', 'tipo sconosciuto')}).",
-    )
+    log("INFO", f"[PIVA] ACK campo CF: HTTP {response.status}.")
   except Exception as error:
+    try:
+      current_value = await search_input.input_value(timeout=1500)
+    except Exception:
+      current_value = ""
     log(
         "WARN",
         f"[PIVA] ACK Wicket del CF {cf_digits[-4:]} non ricevuto: "
-        f"{type(error).__name__}: {error}; scarto questo tentativo.",
+      f"{type(error).__name__}; valore campo {'corretto' if current_value == cf_digits else 'non verificato'}.",
     )
-    return None
+    if current_value != cf_digits:
+      return None
+  else:
+    try:
+      current_value = await search_input.input_value(timeout=1500)
+    except Exception:
+      current_value = ""
+    if not response.ok and current_value != cf_digits:
+      log("WARN", f"[PIVA] ACK HTTP {response.status} e campo CF non coerente; interrompo la ricerca.")
+      return None
 
-  if not response.ok:
-    log("WARN", f"[PIVA] ACK Wicket del campo CF non riuscito: HTTP {response.status}.")
-    return None
-
-  log("INFO", "[PIVA] Invio ricerca con il binding click Wicket.")
-  try:
-    async with page.expect_response(
-        lambda candidate: "searchBtn" in candidate.url, timeout=10000
-    ) as response_info:
-      await search_button.click(force=True)
-    response = await response_info.value
-  except Exception as error:
-    log(
-      "WARN",
-      f"[PIVA] Risposta Wicket della ricerca non ricevuta: "
-      f"{type(error).__name__}: {error}; scarto questo tentativo.",
-    )
-    return None
-
-  content_type = response.headers.get("content-type", "tipo sconosciuto")
-  log(
-      "INFO",
-      f"[PIVA] Ricerca Wicket: HTTP {response.status} ({content_type}).",
+  match_card = await submit_and_check(
+      1, "click binding Wicket e ispezione body XML/HTML", lambda: search_button.click(force=True)
   )
-  if not response.ok:
-    log("WARN", f"[PIVA] Ricerca Wicket fallita: HTTP {response.status}.")
-    return None
-  if "xml" not in content_type.lower():
+  if match_card:
+    return match_card
+
+  log("INFO", "[PIVA] Fallback 2/5: attesa estesa dell'aggiornamento asincrono del DOM.")
+  match_card = await find_matching_card(7000)
+  if match_card:
+    log("SUCCESS", "[PIVA] Strategia 2/5 riuscita: CF comparso nel DOM in ritardo.")
+    return match_card
+  log("WARN", "[PIVA] Strategia 2/5 senza card col CF esatto.")
+
+  match_card = await submit_and_check(
+      3, "nuovo dispatch del binding Wicket", lambda: search_button.dispatch_event("click")
+  )
+  if match_card:
+    return match_card
+
+  match_card = await submit_and_check(
+      4, "invio alternativo con Enter dal campo CF", lambda: search_input.press("Enter")
+  )
+  if match_card:
+    return match_card
+
+  log("INFO", "[PIVA] Fallback 5/5: ricarico il form e ripeto la ricerca da sessione pulita.")
+  try:
+    await page.goto(
+        "https://startup.registroimprese.it/isin/home",
+        wait_until="domcontentloaded",
+        timeout=35000,
+    )
+    await neutralize_f5_shield(page)
+    await search_input.wait_for(state="attached", timeout=10000)
+    await search_button.wait_for(state="attached", timeout=5000)
+    target_box = page.locator(f".field:has-text('{tipo}') .ui.checkbox").first
+    if await target_box.count() and "checked" not in (await target_box.get_attribute("class") or ""):
+      await target_box.dispatch_event("click")
+    async with page.expect_response(
+        lambda candidate: "parolaChiaveFld" in candidate.url, timeout=6000
+    ) as response_info:
+      await search_input.fill(cf_digits)
+      await search_input.press("Tab")
+    ack = await response_info.value
+    log("INFO", f"[PIVA] Fallback 5/5: form ripristinato, ACK HTTP {ack.status}.")
+  except Exception as error:
+    try:
+      current_value = await search_input.input_value(timeout=1500)
+    except Exception:
+      current_value = ""
     log(
         "WARN",
-        "[PIVA] Risposta Wicket inattesa per la ricerca "
-        f"(HTTP {response.status}, content-type={content_type}); "
-        "interrompo questo tentativo senza inviare altri submit.",
+        f"[PIVA] Fallback 5/5: ripristino form/ACK non completo "
+        f"({type(error).__name__}); campo {'corretto' if current_value == cf_digits else 'non verificato'}.",
     )
-    return None
+    if current_value != cf_digits:
+      return None
+  match_card = await submit_and_check(
+      5, "click Wicket dopo reload del form", lambda: search_button.click(force=True), 10000
+  )
+  if match_card:
+    return match_card
+
+  log("ERROR", f"[PIVA] Esaurite 5 strategie; CF {cf_digits[-4:]} non verificato.")
+  return None
+
+
+class PivaSearchFailure(RuntimeError):
+  def __init__(self, outcome: SearchOutcome, phase: str):
+    self.outcome = outcome
+    self.phase = phase
+    super().__init__(f"Ricerca P.IVA non verificata ({outcome.value}, fase={phase}).")
+
+
+async def search_card_by_piva(page, search_input, search_button, cf_digits: str, tipo: str = "STARTUP"):
+  try:
+    async with page.expect_response(
+        lambda response: "parolaChiaveFld" in response.url, timeout=10000
+    ) as response_info:
+      await search_input.fill(cf_digits)
+      await search_input.press("Tab")
+    field_ack = await response_info.value
+  except Exception as error:
+    raise PivaSearchFailure(SearchOutcome.UNKNOWN, "cf_ack") from error
+
+  if not field_ack.ok:
+    raise PivaSearchFailure(SearchOutcome.HTTP_ERROR, "cf_ack")
+
+  log("INFO", f"[PIVA] ACK campo CF ricevuto per {cf_digits[-4:]}; invio un solo submit Wicket.")
+  try:
+    async with page.expect_response(
+        lambda response: (
+          response.request.method == "POST" and "searchBtn" in response.url
+        ),
+        timeout=15000,
+    ) as response_info:
+      await search_button.click()
+    response = await response_info.value
+  except Exception as error:
+    raise PivaSearchFailure(SearchOutcome.UNKNOWN, "search_submit") from error
+
+  try:
+    body = await response.text()
+  except Exception as error:
+    raise PivaSearchFailure(SearchOutcome.UNKNOWN, "response_body") from error
+
+  diagnostics = classify_search_response(
+      response.status,
+      response.headers.get("content-type", ""),
+      body,
+      cf_digits,
+  )
+  log(
+      "INFO",
+      f"[PIVA] Esito ricerca={diagnostics.outcome.value}; card={diagnostics.card_count}; "
+      f"form={diagnostics.has_search_form}.",
+  )
+
+  if diagnostics.outcome != SearchOutcome.FOUND:
+    raise PivaSearchFailure(diagnostics.outcome, "search_response")
 
   cards = page.locator(".searchCompanyCard")
   try:
     await page.wait_for_function(
-        """({selector, cf}) => Array.from(document.querySelectorAll(selector)).some(card => {
-          const match = card.innerText.match(/Codice fiscale\\s*([A-Z0-9]{11,16})/i);
+        """cf => Array.from(document.querySelectorAll('.searchCompanyCard')).some(card => {
+          const match = card.textContent.match(/Codice\\s*fiscale\\s*([A-Z0-9]{11,16})/i);
           return match && match[1].replace(/[^A-Z0-9]/gi, '').toUpperCase() === cf;
         })""",
-        arg={"selector": ".searchCompanyCard", "cf": cf_digits},
-        timeout=8000,
+        arg=cf_digits,
+        timeout=5000,
     )
-  except Exception:
-    log("WARN", f"[PIVA] Nessuna card con CF esatto {cf_digits[-4:]} dopo la risposta Wicket.")
-    return None
+  except Exception as error:
+    raise PivaSearchFailure(SearchOutcome.UNKNOWN, "matching_card_not_rendered") from error
 
   match_card = await find_card_by_cf(cards, cf_digits)
   if not match_card:
-    log("WARN", f"[PIVA] CF {cf_digits[-4:]} non presente nelle card aggiornate.")
-    return None
-
-  log("SUCCESS", "[PIVA] CF cercato verificato con click Wicket.")
+    raise PivaSearchFailure(SearchOutcome.UNKNOWN, "matching_card_not_readable")
   return match_card
 
 
@@ -833,9 +1064,21 @@ async def harvest_piva_list(
     )
     return 0
 
+  checkbox_name = "startupChk:chkFld" if tipo.upper() == "STARTUP" else "pmiChk:chkFld"
   target_box = page.locator(f".field:has-text('{tipo}') .ui.checkbox").first
-  if await target_box.count() and "checked" not in (await target_box.get_attribute("class") or ""):
-    await target_box.dispatch_event("click")
+  checkbox_input = page.locator(f'input[name="{checkbox_name}"]').first
+  if not await checkbox_input.is_checked():
+    try:
+      async with page.expect_response(
+          lambda response: f"{checkbox_name.split(':')[0]}-chkFld" in response.url,
+          timeout=10000,
+      ) as response_info:
+        await target_box.click()
+      type_ack = await response_info.value
+    except Exception as error:
+      raise PivaSearchFailure(SearchOutcome.UNKNOWN, "type_ack") from error
+    if not type_ack.ok or not await checkbox_input.is_checked():
+      raise PivaSearchFailure(SearchOutcome.HTTP_ERROR, "type_ack")
 
   conn = get_db()
   cur = conn.cursor()
@@ -847,7 +1090,7 @@ async def harvest_piva_list(
       cf_digits = candidate["cf"][2:]
       try:
         match_card = await search_card_by_piva(
-            page, search_input, search_button, cf_digits
+          page, search_input, search_button, cf_digits, tipo
         )
         if match_card is None:
           log("WARN", f"Nessuna card verificabile per {candidate['name']} [{candidate['cf']}]; passo al CF successivo.")
@@ -940,12 +1183,12 @@ async def run_harvester_standalone(
 
   if piva_zip and not ZENROWS_API_KEYS:
     log("ERROR", "[PIVA PIPELINE] ZENROWS_API_KEY mancante: la modalità P.IVA richiede ZenRows.")
-    raise RuntimeError("ZENROWS_API_KEY mancante per la pipeline P.IVA")
+    raise ZenRowsUnavailableError("ZENROWS_API_KEY mancante per la pipeline P.IVA")
 
   use_zenrows = "zenrows" in proxy_mode.lower() and bool(ZENROWS_API_KEYS)
   if piva_zip and not use_zenrows:
     log("ERROR", "[PIVA PIPELINE] Routing non valido: richiesto ZenRows.")
-    raise RuntimeError("La pipeline P.IVA accetta esclusivamente il routing ZenRows")
+    raise ZenRowsUnavailableError("La pipeline P.IVA accetta esclusivamente il routing ZenRows")
   proxy_cfg = None if use_zenrows else get_playwright_proxy_config(proxy_mode)
 
   async with async_playwright() as p:
@@ -981,7 +1224,7 @@ async def run_harvester_standalone(
             continue
           if piva_zip:
             log("ERROR", f"[PIVA PIPELINE] Connessione ZenRows fallita; nessun fallback diretto: {type(e).__name__}.")
-            raise RuntimeError("Connessione ZenRows non disponibile") from e
+            raise ZenRowsUnavailableError("Connessione ZenRows non disponibile") from e
           log("WARN", f"ZenRows non disponibile ({e}). Fallback su locale...")
           browser = None
           break

@@ -814,31 +814,228 @@ async def fetch_xml_in_session(page, timeout_ms=6000) -> str:
     return None
 
 
-async def extract_complete_company(page, card_url: str, fallback_name: str = ""):
+async def load_detail_with_fallbacks(page, card_url: str):
+    ready_selector = "#downloadPnl a:has-text('XML'), #downloadPnl, #companyNameForGA, h2.roundedtop span"
+
+    async def wait_until_ready(candidate, strategy: int, timeout_ms: int):
+        try:
+            await candidate.locator(ready_selector).first.wait_for(
+                state="attached", timeout=timeout_ms
+            )
+            path = urllib.parse.urlsplit(candidate.url).path
+            log(
+                "SUCCESS",
+                f"[NAV] Strategia {strategy}/5 riuscita: DOM dettaglio pronto "
+                f"(titolo={await candidate.title()!r}, path={path}).",
+            )
+            return True
+        except Exception as error:
+            log(
+                "WARN",
+                f"[NAV] Strategia {strategy}/5: marker dettaglio non trovato "
+                f"({type(error).__name__}).",
+            )
+            return False
+
+    async def navigate(candidate, strategy: int, wait_until: str, timeout_ms: int, ready_ms: int):
+        log(
+            "INFO",
+            f"[NAV] Strategia {strategy}/5: page.goto wait_until={wait_until}, "
+            f"timeout={timeout_ms}ms.",
+        )
+        try:
+            response = await candidate.goto(
+                card_url, wait_until=wait_until, timeout=timeout_ms
+            )
+            status = response.status if response else "nessuna risposta HTTP"
+            log("INFO", f"[NAV] Strategia {strategy}/5: navigazione terminata ({status}).")
+        except Exception as error:
+            log(
+                "WARN",
+                f"[NAV] Strategia {strategy}/5: goto non concluso "
+                f"({type(error).__name__}: {error}); verifico comunque il DOM.",
+            )
+        if await wait_until_ready(candidate, strategy, ready_ms):
+            return candidate
+        return None
+
+    loaded = await navigate(page, 1, "domcontentloaded", 45000, 8000)
+    if loaded:
+        return loaded
+
+    log("INFO", "[NAV] Strategia 2/5: retry sulla stessa pagina, attesa commit e poi marker DOM.")
+    loaded = await navigate(page, 2, "commit", 35000, 20000)
+    if loaded:
+        return loaded
+
+    log("INFO", "[NAV] Strategia 3/5: reload completo della pagina dettaglio.")
+    try:
+        response = await page.reload(wait_until="domcontentloaded", timeout=60000)
+        log(
+            "INFO",
+            f"[NAV] Strategia 3/5: reload terminato "
+            f"({response.status if response else 'nessuna risposta HTTP'}).",
+        )
+    except Exception as error:
+        log("WARN", f"[NAV] Strategia 3/5: reload non concluso ({type(error).__name__}: {error}).")
+    if await wait_until_ready(page, 3, 15000):
+        return page
+
+    log("INFO", "[NAV] Strategia 4/5: nuova pagina nello stesso contesto/cookie ZenRows.")
+    retry_page = None
+    try:
+        retry_page = await page.context.new_page()
+        loaded = await navigate(retry_page, 4, "commit", 45000, 20000)
+        if loaded:
+            try:
+                await page.close()
+            except Exception:
+                pass
+            return loaded
+    except Exception as error:
+        log("WARN", f"[NAV] Strategia 4/5: nuova pagina non disponibile ({type(error).__name__}: {error}).")
+    if retry_page:
+        try:
+            await retry_page.close()
+        except Exception:
+            pass
+
+    log("INFO", "[NAV] Strategia 5/5: fetch autenticato in-session e caricamento HTML nel browser.")
+    try:
+        parsed_target = urllib.parse.urlsplit(card_url)
+        parsed_current = urllib.parse.urlsplit(page.url)
+        if parsed_current.netloc.lower() != parsed_target.netloc.lower():
+            await page.goto(
+                f"{parsed_target.scheme}://{parsed_target.netloc}/isin/home",
+                wait_until="commit",
+                timeout=30000,
+            )
+        result = await page.evaluate(
+            """async ({url}) => {
+              const controller = new AbortController();
+              const timer = setTimeout(() => controller.abort(), 45000);
+              try {
+                const response = await fetch(url, {credentials: 'same-origin', signal: controller.signal});
+                return {
+                  status: response.status,
+                  contentType: response.headers.get('content-type') || '',
+                  html: await response.text()
+                };
+              } catch (error) {
+                return {error: String(error), html: ''};
+              } finally {
+                clearTimeout(timer);
+              }
+            }""",
+            {"url": card_url},
+        )
+        diagnostics = await page.evaluate(
+            """html => {
+              const doc = new DOMParser().parseFromString(html, 'text/html');
+              const text = doc.body?.textContent || '';
+              return {
+                title: doc.title,
+                xmlControl: !!doc.querySelector('#downloadPnl, a[href*="downloadXmlLnk"]'),
+                company: !!doc.querySelector('#companyNameForGA, h2.roundedtop span'),
+                challenge: /captcha|access denied|verifica di sicurezza|request rejected/i.test(text),
+                bodyLength: text.length
+              };
+            }""",
+            result.get("html", ""),
+        )
+        log(
+            "INFO",
+            f"[NAV] Strategia 5/5: fetch HTTP {result.get('status', 'n/d')} "
+            f"({result.get('contentType', 'tipo sconosciuto')}), "
+            f"titolo={diagnostics['title']!r}, XML={diagnostics['xmlControl']}, "
+            f"azienda={diagnostics['company']}, challenge={diagnostics['challenge']}, "
+            f"testo={diagnostics['bodyLength']} caratteri.",
+        )
+        if (
+            result.get("status") is not None
+            and 200 <= result["status"] < 300
+            and (diagnostics["xmlControl"] or diagnostics["company"])
+            and not diagnostics["challenge"]
+        ):
+            await page.evaluate(
+                """({html, url}) => {
+                  const doc = new DOMParser().parseFromString(html, 'text/html');
+                  let base = doc.querySelector('base');
+                  if (!base) {
+                    base = doc.createElement('base');
+                    doc.head.prepend(base);
+                  }
+                  base.href = url;
+                  history.replaceState(null, '', url);
+                  document.open();
+                  document.write('<!doctype html>' + doc.documentElement.outerHTML);
+                  document.close();
+                }""",
+                {"html": result["html"], "url": card_url},
+            )
+            if await wait_until_ready(page, 5, 15000):
+                return page
+    except Exception as error:
+        log("WARN", f"[NAV] Strategia 5/5: fetch/render fallito ({type(error).__name__}: {error}).")
+
+    log("ERROR", "[NAV] Esaurite le 5 strategie di caricamento del dettaglio.")
+    raise RuntimeError("Navigazione dettaglio non riuscita dopo 5 strategie")
+
+
+async def extract_complete_company(
+    page,
+    card_url: str,
+    fallback_name: str = "",
+    page_holder: dict = None,
+    supplied_html: str = None,
+    supplied_xml: str = None,
+    expected_cf: str = None,
+):
     if "startup.registroimprese.it" not in card_url:
         raise ValueError(f"URL non appartenente al Registro Imprese: {card_url}")
 
-    await page.goto(card_url, wait_until="domcontentloaded", timeout=45000)
+    if supplied_html is not None:
+        async def abort_remote_request(route):
+            await route.abort()
+
+        await page.route("**/*", abort_remote_request)
+        safe_html = re.sub(
+            r"<script\b[^>]*>.*?</script\s*>",
+            "",
+            supplied_html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        await page.set_content(safe_html, wait_until="domcontentloaded")
+    else:
+        page = await load_detail_with_fallbacks(page, card_url)
+    if page_holder is not None:
+        page_holder["page"] = page
     await asyncio.sleep(1.5)
-    await neutralize_f5_shield(page)
+    if supplied_html is None:
+        await neutralize_f5_shield(page)
 
     full_text = await page.inner_text("body")
 
     # Acquisizione rapida XML in memoria (senza timeout disco ZenRows)
-    xml_content = None
-    for attempt in range(2):
-        xml_content = await fetch_xml_in_session(page)
-        if xml_content:
-            break
-        if attempt == 0:
-            log("WARN", "[XML] Primo tentativo incompleto; ricarico una volta la scheda e riprovo.")
-            await page.goto(card_url, wait_until="domcontentloaded", timeout=45000)
-            await asyncio.sleep(1.0)
-            await neutralize_f5_shield(page)
+    xml_content = supplied_xml
+    if xml_content is None:
+        for attempt in range(2):
+            xml_content = await fetch_xml_in_session(page)
+            if xml_content:
+                break
+            if attempt == 0:
+                log("WARN", "[XML] Primo tentativo incompleto; riprovo il dettaglio con le 5 strategie di navigazione.")
+                page = await load_detail_with_fallbacks(page, card_url)
+                if page_holder is not None:
+                    page_holder["page"] = page
+                await asyncio.sleep(1.0)
+                await neutralize_f5_shield(page)
     if not xml_content:
         log("ERROR", "XML non disponibile; il dossier non verrà salvato come completo.")
         raise RuntimeError("Download XML della scheda non riuscito")
     xml_data = parse_xml_payload(xml_content)
+    if expected_cf and format_piva(xml_data["cf_dichiarato"]) != format_piva(expected_cf):
+        raise ValueError("Il CF dichiarato nell’XML non coincide con il CF richiesto.")
 
     anag = page.locator(".ui.grid.no-vertical-column-padding .eleven.wide.column")
     c_count = await anag.count()
@@ -1533,11 +1730,12 @@ async def run_worker_standalone(
     proxy_mode: str,
     tipo_filter: str = "STARTUP",
     only_url: str = None,
+    remote_detail: dict = None,
 ):
     conn = get_db()
     cur = conn.cursor()
 
-    if "zenrows" in (proxy_mode or "").lower() and not ZENROWS_API_KEYS:
+    if "zenrows" in (proxy_mode or "").lower() and not ZENROWS_API_KEYS and remote_detail is None:
         log("ERROR", "ZenRows richiesto ma ZENROWS_API_KEY non configurata.")
         conn.close()
         return
@@ -1569,7 +1767,7 @@ async def run_worker_standalone(
         f"=== AVVIO DEEP WORKER: {len(pending)} schede [{tipo_filter.upper()}] da elaborare con Groq (Route: {proxy_mode}) ===",
     )
 
-    use_zenrows = "zenrows" in (proxy_mode or "").lower()
+    use_zenrows = "zenrows" in (proxy_mode or "").lower() and remote_detail is None
     proxy_cfg = None if use_zenrows else get_playwright_proxy_config(proxy_mode)
 
     async with async_playwright() as p:
@@ -1591,11 +1789,24 @@ async def run_worker_standalone(
                     "INFO",
                     f"Elaborazione dossier [{processed+1}/{len(pending)}] [{rec_tipo}]: {raw_name}...",
                 )
+                page_holder = {"page": page}
 
                 # Auto-recovery se scade il timeout WebSocket a 180s
                 try:
-                    data_payload = await extract_complete_company(page, card_url, fallback_name=raw_name)
+                    data_payload = await extract_complete_company(
+                        page,
+                        card_url,
+                        fallback_name=raw_name,
+                        page_holder=page_holder,
+                        supplied_html=remote_detail.get("html") if remote_detail and card_url == remote_detail.get("detailUrl") else None,
+                        supplied_xml=remote_detail.get("xml") if remote_detail and card_url == remote_detail.get("detailUrl") else None,
+                        expected_cf=remote_detail.get("cf") if remote_detail and card_url == remote_detail.get("detailUrl") else None,
+                    )
+                    page = page_holder["page"]
                 except Exception as conn_err:
+                    page = page_holder["page"]
+                    if remote_detail is not None:
+                        raise conn_err
                     if "closed" in str(conn_err).lower() or "target" in str(conn_err).lower():
                         log("WARN", "🔄 Sessione browser interrotta (timeout). Ripristino sessione CDP...")
                         try:
@@ -1603,7 +1814,11 @@ async def run_worker_standalone(
                         except Exception:
                             pass
                         browser, page = await create_browser_and_page(p, use_zenrows, proxy_cfg)
-                        data_payload = await extract_complete_company(page, card_url, fallback_name=raw_name)
+                        page_holder = {"page": page}
+                        data_payload = await extract_complete_company(
+                            page, card_url, fallback_name=raw_name, page_holder=page_holder
+                        )
+                        page = page_holder["page"]
                     else:
                         raise conn_err
 

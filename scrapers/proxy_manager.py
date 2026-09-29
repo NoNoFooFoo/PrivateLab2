@@ -32,6 +32,10 @@ TOR_SOCKS5 = "socks5://127.0.0.1:9050"
 CONNECTIVITY_TEST_URL = "https://api.ipify.org"
 
 
+class ZenRowsUnavailableError(RuntimeError):
+  pass
+
+
 def get_zenrows_api_keys() -> tuple:
   return tuple(dict.fromkeys(
       key for key in (
@@ -44,7 +48,7 @@ def get_zenrows_api_keys() -> tuple:
 async def connect_zenrows_browser(playwright, timeout: float = 15.0):
   api_keys = get_zenrows_api_keys()
   if not api_keys:
-    raise RuntimeError("Nessuna chiave ZenRows configurata.")
+    raise ZenRowsUnavailableError("Nessuna chiave ZenRows configurata.")
 
   last_error = None
   for index, api_key in enumerate(api_keys, start=1):
@@ -64,7 +68,7 @@ async def connect_zenrows_browser(playwright, timeout: float = 15.0):
             f"provo la chiave fallback #{index + 1}."
         )
 
-  raise RuntimeError(
+  raise ZenRowsUnavailableError(
       f"Connessione ZenRows fallita con tutte le {len(api_keys)} chiavi configurate."
   ) from last_error
 
