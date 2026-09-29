@@ -211,51 +211,18 @@
           </button>
         </div>
 
-        <div class="check-options">
-          <label class="check-label" title="Fase 1: Scansione registro e raccolta URL camerali">
-            <input type="checkbox" id="chk-harvester" checked>
-            <span>Harvester</span>
-          </label>
-          <label class="check-label" title="Fase 2: Estrazione XML e inferenza Groq AI">
-            <input type="checkbox" id="chk-worker" checked>
-            <span>Worker</span>
-          </label>
+        <div class="inline-select-group">
+          <span>Fonte:</span>
+          <strong>CSV Startup Ministero</strong>
         </div>
 
         <div class="inline-select-group">
-          <span>Regione:</span>
-          <select class="select-control" id="select-regione">
-            <option value="ALL">Tutte (Italia)</option>
-            <option value="0">00: Abruzzo</option>
-            <option value="1">01: Basilicata</option>
-            <option value="2">02: Calabria</option>
-            <option value="3">03: Campania</option>
-            <option value="4">04: Emilia-Romagna</option>
-            <option value="5">05: Friuli-Venezia Giulia</option>
-            <option value="6">06: Lazio</option>
-            <option value="7">07: Liguria</option>
-            <option value="8">08: Lombardia</option>
-            <option value="9">09: Marche</option>
-            <option value="10">10: Molise</option>
-            <option value="11">11: Piemonte</option>
-            <option value="12">12: Puglia</option>
-            <option value="13">13: Sardegna</option>
-            <option value="14">14: Sicilia</option>
-            <option value="15">15: Toscana</option>
-            <option value="16">16: Trentino-Alto Adige</option>
-            <option value="17">17: Umbria</option>
-            <option value="18">18: Valle d'Aosta</option>
-            <option value="19">19: Veneto</option>
-          </select>
-        </div>
-
-        <div class="inline-select-group">
-          <span>Limite:</span>
+          <span>Nuove startup:</span>
           <select class="select-control" id="select-limit">
-            <option value="10">10 record</option>
-            <option value="50" selected>50 record</option>
-            <option value="100">100 record</option>
-            <option value="500">500 record</option>
+            <option value="1">1 startup</option>
+            <option value="3" selected>3 startup</option>
+            <option value="5">5 startup</option>
+            <option value="10">10 startup</option>
           </select>
         </div>
 
@@ -269,13 +236,13 @@
         </div>
 
         <div class="inline-select-group">
+          <span>Identità:</span>
+          <strong>Partita IVA</strong>
+        </div>
+
+        <div class="inline-select-group">
           <span>Routing:</span>
-          <select class="select-control" id="select-routing">
-            <option value="zenrows,webshare" selected>ZenRows + Webshare</option>
-            <option value="webshare">Solo Webshare</option>
-            <option value="tor">Tor SOCKS5 (9050)</option>
-            <option value="direct">Connessione Diretta</option>
-          </select>
+          <strong>ZenRows</strong>
         </div>
       </section>
 
@@ -785,19 +752,23 @@
 
   // Controlli Motore
   async function triggerEngineRun() {
-    const isHarvest = document.getElementById('chk-harvester').checked;
-    const isWorker = document.getElementById('chk-worker').checked;
-    let actionParam = 'both';
-    if (isHarvest && !isWorker) actionParam = 'harvest';
-    else if (!isHarvest && isWorker) actionParam = 'worker';
-
-    const reg = document.getElementById('select-regione').value;
     const limit = document.getElementById('select-limit').value;
     const delay = document.getElementById('select-delay').value;
-    const proxy = document.getElementById('select-routing').value;
 
-    updateTickerStatus('[TRIGGER]', `Avvio pipeline [${actionParam.toUpperCase()}] in corso...`, 'INFO');
-    await fetch(`/api/action/run?action=${actionParam}&module=startup&limit=${limit}&delay=${delay}&region=${reg}&proxy=${encodeURIComponent(proxy)}`, { method: 'POST' });
+    updateTickerStatus('[PIVA]', `Avvio ciclo CSV ministeriale: ${limit} startup con ZenRows...`, 'INFO');
+    try {
+      const params = new URLSearchParams({ limit, delay });
+      const res = await fetch(`/api/action/run?${params}`, { method: 'POST' });
+      const data = await res.json();
+      updateTickerStatus(
+        res.ok ? '[PIPELINE]' : '[ERRORE]',
+        data.message || 'Richiesta pipeline completata.',
+        res.ok ? 'SUCCESS' : 'ERROR'
+      );
+      if (!res.ok) alert(data.message || 'Avvio pipeline non riuscito.');
+    } catch (error) {
+      updateTickerStatus('[ERRORE]', `Avvio pipeline non riuscito: ${error}`, 'ERROR');
+    }
     updateTelemetry();
   }
 

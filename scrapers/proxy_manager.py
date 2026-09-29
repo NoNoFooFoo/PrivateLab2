@@ -270,8 +270,8 @@ class ProxyManager:
       pass
 
 
-# Istanza singleton globale
-proxy_pool = ProxyManager()
+# Pool inizializzato solo quando viene richiesta esplicitamente una route Webshare.
+proxy_pool = None
 
 
 def get_playwright_proxy_config(proxy_mode: str):
@@ -288,6 +288,9 @@ def get_playwright_proxy_config(proxy_mode: str):
 
   # Priorità Webshare
   if "webshare" in mode:
+    global proxy_pool
+    if proxy_pool is None:
+      proxy_pool = ProxyManager()
     raw_p = proxy_pool.get_proxy()
     return parse_proxy_dict(raw_p)
 

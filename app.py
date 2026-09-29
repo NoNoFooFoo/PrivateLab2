@@ -211,6 +211,7 @@ def init_db_schema():
         CREATE TABLE IF NOT EXISTS coda (
             url TEXT PRIMARY KEY,
             denominazione TEXT,
+          cf TEXT,
             tipo TEXT DEFAULT 'STARTUP',
             regione TEXT,
             stato TEXT DEFAULT 'PENDING',
@@ -492,6 +493,7 @@ def init_db_schema():
     """)
 
   for table, column in [
+      ("coda", "cf"),
       ("startup", "siti_web_esterni"),
       ("startup", "innovazione_descrizione"),
       ("qualifiche", "descrizione_ruolo"),
@@ -781,13 +783,8 @@ async def alias_test_worker():
 @app.post("/api/action/run")
 async def trigger_run(
     bg: BackgroundTasks,
-    action: str = Query("both"),
-    module: str = Query("startup"),
-    limit: int = Query(50),
-    delay: float = Query(2.0),
-    region: Optional[str] = Query(None),
-    regione: Optional[str] = Query(None),
-    proxy: str = Query("zenrows,webshare"),
+    limit: int = Query(3, ge=1, le=50),
+    delay: float = Query(1.0, ge=0.1, le=30.0),
 ):
   global ACTIVE_PROCESS, ENGINE_STATE
   if ACTIVE_PROCESS and ACTIVE_PROCESS.returncode is None:
@@ -808,77 +805,45 @@ async def trigger_run(
         content={"status": "error", "message": "Un job è già in esecuzione!"},
     )
 
-  raw_reg = (region or regione or "ALL").strip()
-  target_region = raw_reg
-  for cod, nom in MAPPA_REGIONI_CCIAA.items():
-    if raw_reg.upper() == nom:
-      target_region = cod
-      break
-
-  target_module = "STARTUP"
-  action_clean = action.lower().strip()
-
-  if action_clean == "both":
-    script_file = "startup.py"
-    args = [
-        "--action",
-        "both",
-        "--regione",
-        target_region,
-        "--limit",
-        str(limit),
-        "--delay",
-        str(delay),
-        "--proxy",
-        proxy.strip() or "direct",
-        "--tipo",
-        target_module,
-    ]
-    task_label = f"HARVESTER + WORKER ({target_module})"
-  elif action_clean == "harvest":
-    script_file = (
-        "harvester.py"
-        if os.path.exists(
-            os.path.join(PROJECT_ROOT, "scrapers", "harvester.py")
-        )
-        else "startup.py"
+  ministero_zip = os.path.join(
+      PROJECT_ROOT,
+      "scrapers",
+      "elenco_startup_ministero",
+      "startup (1).zip",
+  )
+  if not os.path.isfile(ministero_zip):
+    return JSONResponse(
+        status_code=404,
+        content={"status": "error", "message": "Archivio ZIP ministeriale non trovato."},
     )
-    args = [
-        "--regione",
-        target_region,
-        "--limit",
-        str(limit),
-        "--delay",
-        str(delay),
-        "--proxy",
-        proxy.strip() or "direct",
-        "--tipo",
-        target_module,
-    ]
-    task_label = f"HARVESTER ({target_module})"
-  else:
-    script_file = (
-        "worker.py"
-        if os.path.exists(os.path.join(PROJECT_ROOT, "scrapers", "worker.py"))
-        else "startup.py"
+  if not ZENROWS_API_KEY:
+    return JSONResponse(
+        status_code=503,
+        content={"status": "error", "message": "ZenRows non configurato; pipeline non avviata."},
     )
-    args = [
-        "--limit",
-        str(limit),
-        "--delay",
-        str(delay),
-        "--proxy",
-        proxy.strip() or "direct",
-        "--tipo",
-        target_module,
-    ]
-    task_label = f"WORKER ({target_module})"
+
+  script_file = "startup.py"
+  args = [
+      "--action",
+      "piva",
+      "--limit",
+      str(limit),
+      "--delay",
+      str(delay),
+      "--proxy",
+      "zenrows",
+      "--tipo",
+      "STARTUP",
+      "--piva-zip",
+      ministero_zip,
+  ]
+  task_label = "PIVA PIPELINE + HARVESTER + WORKER (STARTUP / ZENROWS)"
 
   bg.add_task(run_external_script, script_file, args, task_label)
   return {
       "status": "ok",
       "state": "RUNNING",
-      "message": f"Avviato {task_label} (Regione: {target_region})",
+      "message": f"Avviato {task_label}: ricerca CF ministeriali non processati.",
   }
 
 

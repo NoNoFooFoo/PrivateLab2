@@ -90,12 +90,16 @@ def get_db():
         CREATE TABLE IF NOT EXISTS coda (
             url TEXT PRIMARY KEY,
             denominazione TEXT,
+          cf TEXT,
             tipo TEXT DEFAULT 'STARTUP',
             regione TEXT,
             stato TEXT DEFAULT 'PENDING',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     """)
+  cur = conn.execute("PRAGMA table_info(coda)")
+  if "cf" not in {row[1] for row in cur.fetchall()}:
+    conn.execute("ALTER TABLE coda ADD COLUMN cf TEXT")
   conn.commit()
   return conn
 
@@ -113,7 +117,9 @@ async def neutralize_f5_shield(page):
     pass
 
 
-async def wait_for_search_page_change(page, selector: str, previous_cards: list):
+async def wait_for_search_page_change(
+  page, selector: str, previous_cards: list, timeout_ms: int = 20000
+):
   await page.wait_for_function(
       """({selector, previous}) => {
           const cards = Array.from(document.querySelectorAll(selector));
@@ -122,8 +128,100 @@ async def wait_for_search_page_change(page, selector: str, previous_cards: list)
           return JSON.stringify(current) !== JSON.stringify(previous);
       }""",
         arg={"selector": selector, "previous": previous_cards},
-      timeout=20000,
+      timeout=timeout_ms,
   )
+
+
+async def find_card_by_cf(cards, cf_digits: str):
+  for idx in range(await cards.count()):
+    card = cards.nth(idx)
+    card_text = await card.inner_text()
+    match_cf = re.search(
+        r"Codice fiscale\s*([A-Z0-9]{11,16})", card_text, re.IGNORECASE
+    )
+    if match_cf and re.sub(r"[^A-Z0-9]", "", match_cf.group(1).upper()) == cf_digits:
+      return card
+  return None
+
+
+async def search_card_by_piva(page, search_input, search_button, cf_digits: str):
+  try:
+    async with page.expect_response(
+        lambda response: "parolaChiaveFld" in response.url, timeout=6000
+    ) as response_info:
+      await search_input.fill(cf_digits)
+      await search_input.press("Tab")
+    response = await response_info.value
+    log(
+        "INFO",
+        f"[PIVA] Campo CF aggiornato via Wicket: HTTP {response.status} "
+        f"({response.headers.get('content-type', 'tipo sconosciuto')}).",
+    )
+  except Exception as error:
+    log(
+        "WARN",
+        f"[PIVA] ACK Wicket del CF {cf_digits[-4:]} non ricevuto: "
+        f"{type(error).__name__}: {error}; scarto questo tentativo.",
+    )
+    return None
+
+  if not response.ok:
+    log("WARN", f"[PIVA] ACK Wicket del campo CF non riuscito: HTTP {response.status}.")
+    return None
+
+  log("INFO", "[PIVA] Invio ricerca con il binding click Wicket.")
+  try:
+    async with page.expect_response(
+        lambda candidate: "searchBtn" in candidate.url, timeout=10000
+    ) as response_info:
+      await search_button.click(force=True)
+    response = await response_info.value
+  except Exception as error:
+    log(
+      "WARN",
+      f"[PIVA] Risposta Wicket della ricerca non ricevuta: "
+      f"{type(error).__name__}: {error}; scarto questo tentativo.",
+    )
+    return None
+
+  content_type = response.headers.get("content-type", "tipo sconosciuto")
+  log(
+      "INFO",
+      f"[PIVA] Ricerca Wicket: HTTP {response.status} ({content_type}).",
+  )
+  if not response.ok:
+    log("WARN", f"[PIVA] Ricerca Wicket fallita: HTTP {response.status}.")
+    return None
+  if "xml" not in content_type.lower():
+    log(
+        "WARN",
+        "[PIVA] Risposta Wicket inattesa per la ricerca "
+        f"(HTTP {response.status}, content-type={content_type}); "
+        "interrompo questo tentativo senza inviare altri submit.",
+    )
+    return None
+
+  cards = page.locator(".searchCompanyCard")
+  try:
+    await page.wait_for_function(
+        """({selector, cf}) => Array.from(document.querySelectorAll(selector)).some(card => {
+          const match = card.innerText.match(/Codice fiscale\\s*([A-Z0-9]{11,16})/i);
+          return match && match[1].replace(/[^A-Z0-9]/gi, '').toUpperCase() === cf;
+        })""",
+        arg={"selector": ".searchCompanyCard", "cf": cf_digits},
+        timeout=8000,
+    )
+  except Exception:
+    log("WARN", f"[PIVA] Nessuna card con CF esatto {cf_digits[-4:]} dopo la risposta Wicket.")
+    return None
+
+  match_card = await find_card_by_cf(cards, cf_digits)
+  if not match_card:
+    log("WARN", f"[PIVA] CF {cf_digits[-4:]} non presente nelle card aggiornate.")
+    return None
+
+  log("SUCCESS", "[PIVA] CF cercato verificato con click Wicket.")
+  return match_card
 
 
 # ==============================================================================
@@ -246,67 +344,151 @@ async def execute_search_sequence(
 # ==============================================================================
 async def extract_camerale_url(page, card, row_num: int, ajax_map: dict, current_page_num: int) -> str:
   ajax_binding = ajax_map.get(row_num)
+  card_name = clean_val(
+      await card.locator("h5 a, h3 span, h5").first.inner_text(timeout=2500), ""
+  )
 
-  # Metodo 1: Fetch in-page autenticata (estrae il redirect Wicket senza cambiare pagina)
+  # Method 1: authenticated in-page request using the binding's declared method.
   if ajax_binding:
     ajax_endpoint, ajax_method = ajax_binding
+    ajax_method = ajax_method if ajax_method in {"GET", "POST"} else "GET"
     try:
-      xml_response = await page.evaluate("""async ({endpoint, method, pageNum}) => {
+      result = await page.evaluate("""async ({endpoint, method, pageNum}) => {
           try {
                 const base = (window.Wicket && window.Wicket.Ajax && window.Wicket.Ajax.baseUrl)
-                  ? window.Wicket.Ajax.baseUrl
+                  ? window.Wicket.Ajax.baseUrl.replaceAll('&amp;', '&')
                   : `search?${pageNum}`;
-                const res = await window.fetch(endpoint, {
+                const response = await window.fetch(endpoint, {
                   method,
+                  credentials: 'same-origin',
                   headers: {
                     'Wicket-Ajax': 'true',
                     'Wicket-Ajax-BaseURL': base,
                     'X-Requested-With': 'XMLHttpRequest'
                   }
                 });
-                return await res.text();
+                return {
+                  status: response.status,
+                  contentType: response.headers.get('content-type') || '',
+                  url: response.url,
+                  text: await response.text()
+                };
           } catch (err) {
-              return '';
+              return {error: String(err), text: ''};
           }
             }""", {
               "endpoint": ajax_endpoint,
               "method": ajax_method,
               "pageNum": current_page_num,
             })
+      if result.get("status") is not None:
+        log(
+            "INFO",
+            f"[LINK] Binding Wicket {ajax_method}: HTTP {result['status']} "
+            f"({result.get('contentType') or 'content-type assente'}).",
+        )
+      if result.get("error"):
+        log("WARN", f"[LINK] Fetch in pagina fallita: {result['error']}")
+      target_url = _detail_url_from_response(
+          result.get("text", ""), result.get("url", page.url)
+      )
+      if target_url:
+        log("SUCCESS", "[LINK] URL scheda recuperata dal binding Wicket.")
+        return target_url
+      log("WARN", "[LINK] Binding Wicket senza redirect a dettaglioStartup.")
+    except Exception as error:
+      log("WARN", f"[LINK] Fetch in pagina fallita: {type(error).__name__}: {error}")
 
-      m_redir = re.search(r"<redirect><!\[CDATA\[(.*?)\]\]></redirect>", xml_response)
-      if m_redir:
-        raw_url = m_redir.group(1).replace("&amp;", "&").replace("./", "")
-        return urllib.parse.urljoin("https://startup.registroimprese.it/isin/", raw_url)
-    except Exception:
-      pass
+  else:
+    log("WARN", f"[LINK] Binding buttonLink non trovato per la card {card_name!r}.")
 
-  # Metodo 2: Click su SCOPRI con intercettazione della risposta di rete
+  # Method 2: click the rendered SCOPRI control in a disposable ZenRows page.
+  probe_page = None
   try:
-    btn = card.locator("div.button:has-text('SCOPRI'), h5 a.link, a.link").first
-    if await btn.count() > 0:
-      async with page.expect_response(lambda r: "dettaglioStartup" in r.url or "buttonLink" in r.url, timeout=3000) as resp_info:
-        await btn.dispatch_event("click")
-      resp = await resp_info.value
-      body = await resp.text()
-      m_redir = re.search(r"<redirect><!\[CDATA\[(.*?)\]\]></redirect>", body)
-      if m_redir:
-        raw_url = m_redir.group(1).replace("&amp;", "&").replace("./", "")
-        return urllib.parse.urljoin("https://startup.registroimprese.it/isin/", raw_url)
-  except Exception:
-    pass
+    if page.url.startswith("http"):
+      probe_page = await page.context.new_page()
+      await probe_page.goto(page.url, wait_until="domcontentloaded", timeout=30000)
+      probe_cards = probe_page.locator(".searchCompanyCard")
+      probe_card = None
+      for idx in range(await probe_cards.count()):
+        candidate_card = probe_cards.nth(idx)
+        candidate_name = clean_val(
+            await candidate_card.locator("h5 a, h3 span, h5").first.inner_text(timeout=2500),
+            "",
+        )
+        if candidate_name.casefold() == card_name.casefold():
+          probe_card = candidate_card
+          break
+      if probe_card:
+        btn = probe_card.locator(
+            "div.button:has-text('SCOPRI'), h5 a.link, a.link"
+        ).first
+        async with probe_page.expect_response(
+            lambda response: "buttonLink" in response.url
+            or "dettaglioStartup" in response.url,
+            timeout=10000,
+        ) as resp_info:
+          await btn.click(force=True, timeout=5000)
+        resp = await resp_info.value
+        log(
+            "INFO",
+            f"[LINK] Click SCOPRI: HTTP {resp.status} "
+            f"({resp.headers.get('content-type', 'content-type assente')}).",
+        )
+        try:
+          response_text = await resp.text()
+        except Exception as error:
+          log("WARN", f"[LINK] Body Wicket non leggibile dopo click: {error}")
+          response_text = ""
+        target_url = _detail_url_from_response(response_text, resp.url)
+        if not target_url and "dettaglioStartup" in probe_page.url:
+          target_url = probe_page.url
+        if target_url:
+          log("SUCCESS", "[LINK] URL scheda recuperata con click SCOPRI.")
+          return target_url
+      else:
+        log("WARN", f"[LINK] Card {card_name!r} non trovata nella pagina di fallback.")
+  except Exception as error:
+    log("WARN", f"[LINK] Click SCOPRI fallito: {type(error).__name__}: {error}")
+  finally:
+    if probe_page:
+      try:
+        await probe_page.close()
+      except Exception:
+        pass
 
-  # Metodo 3: Controllo statico
+  # Method 3: a real detail href, if a portal revision exposes one.
   try:
     card_html = await card.inner_html()
     m_static = re.search(r"(\.?\/?dettaglioStartup\?[^'\"<>\s]+)", card_html)
     if m_static:
       raw_rel = m_static.group(1).replace("&amp;", "&").replace("./", "")
-      return urllib.parse.urljoin("https://startup.registroimprese.it/isin/", raw_rel)
-  except Exception:
-    pass
+      target_url = urllib.parse.urljoin("https://startup.registroimprese.it/isin/", raw_rel)
+      log("SUCCESS", "[LINK] URL scheda recuperata dal markup statico.")
+      return target_url
+  except Exception as error:
+    log("WARN", f"[LINK] Lettura href statico fallita: {type(error).__name__}: {error}")
 
+  log("ERROR", f"[LINK] Esauriti i fallback per {card_name!r}.")
   return None
+
+
+def _detail_url_from_response(response_text: str, base_url: str) -> str:
+  redirect = re.search(
+      r"<redirect><!\[CDATA\[(.*?)\]\]></redirect>", response_text or "", re.DOTALL
+  )
+  if redirect:
+    raw_url = redirect.group(1).replace("&amp;", "&").replace("./", "")
+    return urllib.parse.urljoin(
+        "https://startup.registroimprese.it/isin/", raw_url
+    )
+  match = re.search(
+      r"(?:https?://startup\.registroimprese\.it/isin/)?(?:\.?/)?dettaglioStartup\?[^'\"<>\s]+",
+      response_text or "",
+  )
+  if match:
+    return urllib.parse.urljoin(base_url, match.group(0).replace("&amp;", "&"))
+  return ""
 
 
 # ==============================================================================
@@ -474,7 +656,26 @@ async def harvest_region(
   return collected
 
 
-def load_piva_candidates(zip_path: str, limit: int) -> list:
+def load_piva_candidates(
+  zip_path: str,
+  limit: int,
+  regione: str = "ALL",
+  piva_cf: str = None,
+) -> list:
+  with sqlite3.connect(DB_PATH) as conn:
+    startup_table_exists = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'startup'"
+    ).fetchone()
+
+  if not startup_table_exists:
+    from app import DB_PATH as APP_DB_PATH, init_db_schema
+
+    if os.path.abspath(APP_DB_PATH) != os.path.abspath(DB_PATH):
+      raise RuntimeError(
+          "Lo schema Startup non esiste e app e Harvester puntano a database diversi."
+      )
+    init_db_schema()
+
   with zipfile.ZipFile(zip_path) as archive:
     csv_names = [name for name in archive.namelist() if name.lower().endswith(".csv")]
     if not csv_names:
@@ -508,45 +709,89 @@ def load_piva_candidates(zip_path: str, limit: int) -> list:
   if piva_idx is None or name_idx is None:
     raise ValueError("Il CSV deve contenere denominazione e codice fiscale/P.IVA.")
 
+  region_filter = (regione or "ALL").strip().upper().replace("-", " ")
+  if region_filter not in {"", "ALL", "TUTTE", "NAZIONALE"}:
+    if region_idx is None:
+      raise ValueError("Il CSV non contiene la colonna Regione richiesta dal filtro.")
+    region_filter = MAPPA_REGIONI.get(region_filter, region_filter).replace("-", " ")
+
+  target_cf = re.sub(r"[^A-Z0-9]", "", (piva_cf or "").strip().upper())
+  if target_cf.startswith("IT"):
+    target_cf = target_cf[2:]
+
   conn = get_db()
   cur = conn.cursor()
   existing_cfs = {
       re.sub(r"[^A-Z0-9]", "", str(row[0]).upper())
       for row in cur.execute("SELECT cf FROM startup WHERE cf IS NOT NULL")
   }
-  existing_names = {
-      re.sub(r"\s+", " ", str(row[0]).strip().casefold())
+  existing_cfs.update(
+      re.sub(r"[^A-Z0-9]", "", str(row[0]).upper())
       for row in cur.execute(
-          "SELECT denominazione FROM coda WHERE UPPER(tipo) = 'STARTUP'"
+          "SELECT cf FROM coda WHERE UPPER(tipo) = 'STARTUP' "
+          "AND UPPER(stato) IN ('PENDING', 'COMPLETED') AND cf IS NOT NULL"
       )
       if row[0]
-  }
-  conn.close()
-
-  candidates = []
+  )
   seen_cfs = set()
+  total_rows = 0
+  invalid_rows = 0
+  processed_rows = 0
+  duplicate_rows = 0
+  queued_rows = 0
+  candidates = []
   for row in reader:
-    if len(row) <= max(piva_idx, name_idx):
+    if not row:
       continue
+    total_rows += 1
+    if len(row) <= max(piva_idx, name_idx):
+      invalid_rows += 1
+      continue
+    region = row[region_idx].strip() if region_idx is not None and len(row) > region_idx else ""
+    if region_filter and region_filter not in {"ALL", "TUTTE", "NAZIONALE"}:
+      if region.upper().replace("-", " ") != region_filter:
+        continue
     raw_cf = re.sub(r"[^A-Z0-9]", "", row[piva_idx].strip().upper())
     if raw_cf.startswith("IT"):
       raw_cf = raw_cf[2:]
     if not ((len(raw_cf) == 11 and raw_cf.isdigit()) or (len(raw_cf) == 16 and raw_cf.isalnum())):
+      invalid_rows += 1
+      continue
+    if target_cf and raw_cf != target_cf:
       continue
     cf = f"IT{raw_cf}"
-    name = re.sub(r"\s+", " ", row[name_idx].strip())
-    if cf in existing_cfs or cf in seen_cfs or name.casefold() in existing_names:
+    if cf in seen_cfs:
+      duplicate_rows += 1
       continue
     seen_cfs.add(cf)
-    region = row[region_idx].strip() if region_idx is not None and len(row) > region_idx else "ITALIA"
+    if cf in existing_cfs:
+      processed_rows += 1
+      continue
+    name = re.sub(r"\s+", " ", row[name_idx].strip())
     candidates.append({"cf": cf, "name": name, "region": region or "ITALIA"})
+    queued_rows += 1
     if limit != -1 and len(candidates) >= limit:
       break
+  conn.close()
+  log(
+      "INFO",
+      f"[PIVA] CSV righe lette={total_rows}; CF invalidi={invalid_rows}; "
+      f"già processati/in coda={processed_rows}; duplicati CSV={duplicate_rows}; "
+      f"nuovi candidati selezionati={len(candidates)}.",
+  )
   return candidates
 
 
-async def harvest_piva_list(page, zip_path: str, limit: int, delay_sec: float, tipo: str) -> int:
-  candidates = load_piva_candidates(zip_path, limit)
+async def harvest_piva_list(
+    page,
+    zip_path: str,
+    limit: int,
+    delay_sec: float,
+    tipo: str,
+    regione: str = "ALL",
+    piva_cf: str = None,
+) -> int:
+  candidates = load_piva_candidates(zip_path, limit, regione, piva_cf)
   if not candidates:
     log("WARN", "Nessuna P.IVA nuova da cercare nel CSV.")
     return 0
@@ -593,41 +838,11 @@ async def harvest_piva_list(page, zip_path: str, limit: int, delay_sec: float, t
         break
       cf_digits = candidate["cf"][2:]
       try:
-        cards = page.locator(".searchCompanyCard")
-        previous_cards = await cards.evaluate_all(
-            "elements => elements.map(element => element.innerHTML)"
+        match_card = await search_card_by_piva(
+            page, search_input, search_button, cf_digits
         )
-        await search_input.fill(cf_digits)
-        async with page.expect_response(
-            lambda response: "searchBtn" in response.url,
-            timeout=20000,
-        ) as response_info:
-          await search_button.dispatch_event("click")
-        response = await response_info.value
-        if not response.ok:
-          raise RuntimeError(f"Ricerca P.IVA HTTP {response.status}")
-        response_body = await response.text()
-        if "searchCompanyCard" not in response_body:
-          log("WARN", f"Nessuna card nel risultato Wicket per {candidate['name']}.")
-          await asyncio.sleep(max(delay_sec, 0.5))
-          continue
-        await wait_for_search_page_change(page, ".searchCompanyCard", previous_cards)
-
-        cards_count = await cards.count()
-        match_card = None
-        for idx in range(cards_count):
-          card = cards.nth(idx)
-          card_text = await card.inner_text()
-          match_cf = re.search(
-              r"Codice fiscale\s*([A-Z0-9]{11,16})", card_text, re.IGNORECASE
-          )
-          if match_cf:
-            found_cf = re.sub(r"[^A-Z0-9]", "", match_cf.group(1).upper())
-            if found_cf == cf_digits:
-              match_card = card
-              break
         if match_card is None:
-          log("WARN", f"CF restituito non corrispondente per {candidate['name']}; scarto risultato.")
+          log("WARN", f"Nessuna card verificabile per {candidate['name']} [{candidate['cf']}]; passo al CF successivo.")
           await asyncio.sleep(max(delay_sec, 0.5))
           continue
 
@@ -661,21 +876,36 @@ async def harvest_piva_list(page, zip_path: str, limit: int, delay_sec: float, t
         clean_url = re.sub(r"dettaglioStartup\?\d+&", "dettaglioStartup?", camerale_url)
         cur.execute(
             """
-              INSERT OR IGNORE INTO coda (url, denominazione, tipo, regione, stato)
-              VALUES (?, ?, ?, ?, 'PENDING')
+              INSERT OR IGNORE INTO coda (url, denominazione, cf, tipo, regione, stato)
+              VALUES (?, ?, ?, ?, ?, 'PENDING')
             """,
-            (clean_url, name, tipo, candidate["region"]),
+            (clean_url, name, candidate["cf"], tipo, candidate["region"]),
         )
+        inserted = cur.rowcount == 1
+        if not cur.rowcount:
+          cur.execute(
+              "UPDATE coda SET cf = ?, stato = 'PENDING' "
+              "WHERE url = ? AND UPPER(stato) = 'FAILED'",
+              (candidate["cf"], clean_url),
+          )
+          if not cur.rowcount:
+            cur.execute(
+                "UPDATE coda SET cf = ? WHERE url = ? "
+                "AND (cf IS NULL OR cf = '') AND UPPER(stato) IN ('PENDING', 'COMPLETED')",
+                (candidate["cf"], clean_url),
+            )
         if cur.rowcount:
           conn.commit()
           collected += 1
-          log("SUCCESS", f"P.IVA verificata; target #{collected} accodato: {name} [{candidate['cf']}]")
+          action = "accodato" if inserted else "agganciato alla coda esistente"
+          log("SUCCESS", f"P.IVA verificata; target #{collected} {action}: {name} [{candidate['cf']}]")
         else:
           log("INFO", f"Dossier già presente in coda: {name}")
       except Exception as error:
         log("WARN", f"Ricerca P.IVA non completata per {candidate['name']}: {error}")
-        if "non espone il form Wicket" in str(error):
-          raise
+        raise RuntimeError(
+            f"Ricerca P.IVA interrotta al primo errore per {candidate['cf']}: {error}"
+        ) from error
       await asyncio.sleep(max(delay_sec, 0.5))
   finally:
     conn.close()
@@ -692,6 +922,7 @@ async def run_harvester_standalone(
     proxy_mode: str,
     tipo: str,
     piva_zip: str = None,
+    piva_cf: str = None,
 ):
   log(
       "INFO",
@@ -699,25 +930,59 @@ async def run_harvester_standalone(
       f" Regione: {regione}, Route: {proxy_mode}) ===",
   )
 
+  if piva_zip and not ZENROWS_API_KEY:
+    log("ERROR", "[PIVA PIPELINE] ZENROWS_API_KEY mancante: la modalità P.IVA richiede ZenRows.")
+    raise RuntimeError("ZENROWS_API_KEY mancante per la pipeline P.IVA")
+
   use_zenrows = "zenrows" in proxy_mode.lower() and bool(ZENROWS_API_KEY)
-  proxy_cfg = get_playwright_proxy_config(proxy_mode)
+  if piva_zip and not use_zenrows:
+    log("ERROR", "[PIVA PIPELINE] Routing non valido: richiesto ZenRows.")
+    raise RuntimeError("La pipeline P.IVA accetta esclusivamente il routing ZenRows")
+  proxy_cfg = None if use_zenrows else get_playwright_proxy_config(proxy_mode)
 
   async with async_playwright() as p:
     browser = None
 
     if use_zenrows:
-      try:
-        log("INFO", "🌐 Connessione a Browser Residenziale ZenRows (WAF Bypass)...")
-        ws_endpoint = f"wss://browser.zenrows.com?apikey={ZENROWS_API_KEY}&proxy_country=it"
-        browser = await asyncio.wait_for(p.chromium.connect_over_cdp(ws_endpoint), timeout=15.0)
-        # USA DIRETTAMENTE IL BROWSER NATIVO SENZA CREARE NEW_CONTEXT CHE DISATTIVA IL PROXY
-        page = await browser.new_page()
-        log("SUCCESS", "✅ Connessione ZenRows stabilita.")
-      except Exception as e:
-        log("WARN", f"ZenRows non disponibile ({e}). Fallback su locale...")
-        browser = None
+      connection_attempts = 3 if piva_zip else 1
+      for attempt in range(1, connection_attempts + 1):
+        try:
+          if attempt == 1:
+            log("INFO", "🌐 Connessione a Browser Residenziale ZenRows (WAF Bypass)...")
+          else:
+            log("INFO", f"[PIVA PIPELINE] Nuovo tentativo ZenRows {attempt}/{connection_attempts}.")
+          ws_endpoint = f"wss://browser.zenrows.com?apikey={ZENROWS_API_KEY}&proxy_country=it"
+          browser = await asyncio.wait_for(p.chromium.connect_over_cdp(ws_endpoint), timeout=15.0)
+          # USA DIRETTAMENTE IL BROWSER NATIVO SENZA CREARE NEW_CONTEXT CHE DISATTIVA IL PROXY
+          page = await browser.new_page()
+          log("SUCCESS", "✅ Connessione ZenRows stabilita.")
+          break
+        except Exception as e:
+          if browser:
+            try:
+              await browser.close()
+            except Exception:
+              pass
+            browser = None
+          if piva_zip and attempt < connection_attempts:
+            log(
+                "WARN",
+                f"[PIVA PIPELINE] Connessione ZenRows fallita ({type(e).__name__}); "
+                f"ritento {attempt + 1}/{connection_attempts}.",
+            )
+            await asyncio.sleep(attempt)
+            continue
+          if piva_zip:
+            log("ERROR", f"[PIVA PIPELINE] Connessione ZenRows fallita; nessun fallback diretto: {type(e).__name__}.")
+            raise RuntimeError("Connessione ZenRows non disponibile") from e
+          log("WARN", f"ZenRows non disponibile ({e}). Fallback su locale...")
+          browser = None
+          break
 
     if not browser:
+      if piva_zip:
+        log("ERROR", "[PIVA PIPELINE] Browser ZenRows non disponibile; interrompo senza connessione diretta.")
+        raise RuntimeError("Browser ZenRows non disponibile")
       try:
         browser = await p.chromium.launch(
             headless=True,
@@ -750,24 +1015,25 @@ async def run_harvester_standalone(
         log("ERROR", f"Errore avvio Chromium: {err_launch}")
         return
 
-    codice_regione = str(regione).strip()
-    if codice_regione in ["", "ALL", "TUTTE", "NAZIONALE"]:
-      target_codes = [str(i) for i in range(20)]
-    elif codice_regione in MAPPA_REGIONI:
-      target_codes = [codice_regione]
-    else:
-      target_codes = [
-          k for k, v in MAPPA_REGIONI.items()
-          if v.replace("-", " ") == codice_regione.upper().replace("-", " ")
-      ]
-      if not target_codes:
-        target_codes = [str(i) for i in range(20)]
-
     totale = 0
     try:
       if piva_zip:
-        totale = await harvest_piva_list(page, piva_zip, limit, delay_sec, tipo.upper())
+        totale = await harvest_piva_list(
+            page, piva_zip, limit, delay_sec, tipo.upper(), "ALL", piva_cf
+        )
       else:
+        codice_regione = str(regione).strip()
+        if codice_regione in ["", "ALL", "TUTTE", "NAZIONALE"]:
+          target_codes = [str(i) for i in range(20)]
+        elif codice_regione in MAPPA_REGIONI:
+          target_codes = [codice_regione]
+        else:
+          target_codes = [
+              k for k, v in MAPPA_REGIONI.items()
+              if v.replace("-", " ") == codice_regione.upper().replace("-", " ")
+          ]
+          if not target_codes:
+            target_codes = [str(i) for i in range(20)]
         for code in target_codes:
           if page.is_closed():
             break
@@ -798,11 +1064,12 @@ if __name__ == "__main__":
   parser.add_argument("--delay", type=float, default=1.0)
   parser.add_argument("--proxy", default="zenrows,webshare")
   parser.add_argument("--piva-zip", help="ZIP con CSV startup e colonna codice fiscale/P.IVA")
+  parser.add_argument("--piva-cf", help="P.IVA/CF esatto da cercare dal CSV")
   parser.add_argument("--tipo", default="STARTUP", choices=["STARTUP", "PMI", "startup", "pmi"])
   args = parser.parse_args()
 
   asyncio.run(
         run_harvester_standalone(
-          args.regione, args.limit, args.delay, args.proxy, args.tipo, args.piva_zip
+          args.regione, args.limit, args.delay, args.proxy, args.tipo, args.piva_zip, args.piva_cf
         )
   )

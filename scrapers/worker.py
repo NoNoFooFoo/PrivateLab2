@@ -7,6 +7,7 @@ import random
 import re
 import sqlite3
 import sys
+import tempfile
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -42,6 +43,9 @@ except ModuleNotFoundError:
 DB_PATH = os.getenv("DB_PATH", os.path.join(PROJECT_ROOT, "data", "database.db"))
 if not os.path.isabs(DB_PATH):
     DB_PATH = os.path.join(PROJECT_ROOT, DB_PATH)
+WORKER_OUTPUT_DIR = os.getenv(
+    "WORKER_OUTPUT_DIR", os.path.join(PROJECT_ROOT, "output")
+)
 
 ZENROWS_API_KEY = os.getenv("ZENROWS_API_KEY", "").strip()
 IMGBB_API_KEY = os.getenv("IMGBB_API_KEY", "").strip()
@@ -523,93 +527,283 @@ def parse_xml_payload(xml_content: str):
 
 
 async def fetch_xml_in_session(page, timeout_ms=6000) -> str:
-    """Scarica istantaneamente l'XML in memoria RAM via fetch asincrono nel contesto del browser."""
-    try:
-        xml_btn = page.locator("#downloadPnl a:has-text('XML'), a:has-text('XML')").first
-        if await xml_btn.count() == 0:
-            return None
+    """Try the XML URL, Wicket methods in-browser, then native browser download."""
+    def is_declaration(text):
+        return bool(re.search(r"<(?:[\w.-]+:)?dichiarazione(?:\s|>)", text or ""))
 
-        xml_href = await xml_btn.get_attribute("href")
-        if xml_href and ("http" in xml_href or "wicket" in xml_href or "download" in xml_href):
-            xml_text = await page.evaluate("""async (url) => {
-                try {
-                    const resp = await fetch(url);
-                    if (resp.ok) {
-                        return await resp.text();
-                    }
-                } catch(e) {}
-                return null;
-            }""", xml_href)
-
-            if xml_text and "<dichiarazione" in xml_text:
-                return xml_text
-
-        # Wicket renders the XML action with href="javascript:;" and binds it to an AJAX endpoint.
-        page_html = await page.content()
-        wicket_match = re.search(
-            r'"u":"([^"\n]*downloadXmlLnk[^"\n]*)"', page_html
+    def log_response(stage, status, content_type, url, text):
+        path = urllib.parse.urlsplit(url or "").path.split(";", 1)[0]
+        tags = re.findall(r"<(?:[\w.-]+:)?([\w.-]+)(?:\s|>)", text or "")[:5]
+        markers = [
+            marker for marker, pattern in [
+                ("declaration", r"<(?:[\w.-]+:)?dichiarazione(?:\s|>)"),
+                ("redirect", r"<(?:[\w.-]+:)?redirect\b"),
+                ("ajax-response", r"<(?:[\w.-]+:)?ajax-response\b"),
+                ("exception", r"exception|error|rejected|forbidden"),
+            ] if re.search(pattern, text or "", re.IGNORECASE)
+        ]
+        log(
+            "INFO",
+            f"[XML:{stage}] HTTP {status}; content-type={content_type or 'assente'}; "
+            f"bytes={len(text or '')}; root-tags={','.join(tags) or 'nessuno'}; "
+            f"markers={','.join(markers) or 'nessuno'}; path={path or 'non disponibile'}.",
         )
-        if wicket_match:
-            wicket_url = wicket_match.group(1).replace("&amp;", "&")
-            try:
-                result = await page.evaluate("""async (url) => {
-                    try {
-                        const base = (window.Wicket && window.Wicket.Ajax && window.Wicket.Ajax.baseUrl)
-                            ? window.Wicket.Ajax.baseUrl.replaceAll('&amp;', '&')
-                            : location.pathname + location.search;
-                        const response = await fetch(url, {
-                            method: 'POST',
-                            credentials: 'same-origin',
-                            headers: {
-                                'Wicket-Ajax': 'true',
-                                'Wicket-Ajax-BaseURL': base,
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        });
-                        return {text: await response.text(), url: response.url};
-                    } catch (error) {
-                        return {text: '', url: location.href};
-                    }
-                }""", wicket_url)
-                xml_text = result.get("text", "")
-                if "<dichiarazione" in xml_text:
-                    return xml_text
 
-                redirect_match = re.search(
-                    r"<redirect><!\[CDATA\[(.*?)\]\]></redirect>",
-                    xml_text,
-                    re.DOTALL,
+    def extract_redirect(text, base_url):
+        match = re.search(
+            r"<(?:[\w.-]+:)?redirect\b[^>]*>\s*<!\[CDATA\[(.*?)\]\]>\s*</(?:[\w.-]+:)?redirect>",
+            text or "", re.DOTALL,
+        )
+        if not match:
+            return ""
+        return urllib.parse.urljoin(
+            base_url, match.group(1).replace("&amp;", "&")
+        )
+
+    def extract_evaluate_url(text, base_url):
+        try:
+            root = ET.fromstring(text or "")
+        except ET.ParseError:
+            return ""
+        script = next(
+            ("".join(node.itertext()) for node in root.iter()
+             if node.tag.rsplit("}", 1)[-1] == "evaluate"),
+            "",
+        )
+        patterns = [
+            r"(?:window\.)?location(?:\.href)?\s*=\s*(['\"])(.*?)\1",
+            r"window\.open\(\s*(['\"])(.*?)\1",
+            r"(?:window\.)?location\.(?:assign|replace)\(\s*(['\"])(.*?)\1",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, script, re.IGNORECASE | re.DOTALL)
+            if not match:
+                continue
+            target = urllib.parse.urljoin(
+                base_url, match.group(2).replace("&amp;", "&")
+            )
+            parsed = urllib.parse.urlsplit(target)
+            if parsed.scheme == "https" and parsed.netloc.lower() == "startup.registroimprese.it":
+                return target
+        return ""
+
+    async def fetch_browser_url(url, stage):
+        result = await page.evaluate("""async ({url, timeout}) => {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeout);
+            try {
+                const response = await fetch(url, {
+                    credentials: 'same-origin', signal: controller.signal
+                });
+                return {
+                    status: response.status,
+                    contentType: response.headers.get('content-type') || '',
+                    url: response.url,
+                    text: await response.text()
+                };
+            } catch (error) {
+                return {error: String(error), text: ''};
+            } finally {
+                clearTimeout(timer);
+            }
+        }""", {"url": url, "timeout": timeout_ms})
+        if result.get("status") is not None:
+            log_response(
+                stage, result["status"], result.get("contentType"),
+                result.get("url"), result.get("text"),
+            )
+        elif result.get("error"):
+            log("WARN", f"[XML:{stage}] {result['error']}")
+        return result
+
+    xml_btn = page.locator("#downloadPnl a:has-text('XML'), a:has-text('XML')").first
+    if await xml_btn.count() == 0:
+        log("ERROR", "[XML] Controllo XML assente nel DOM (#downloadPnl / anchor XML).")
+        return None
+
+    xml_href = await xml_btn.get_attribute("href") or ""
+    if xml_href and not xml_href.lower().startswith("javascript:"):
+        try:
+            result = await page.evaluate("""async ({url, timeout}) => {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeout);
+                try {
+                    const response = await fetch(url, {
+                        credentials: 'same-origin', signal: controller.signal
+                    });
+                    return {
+                        status: response.status,
+                        contentType: response.headers.get('content-type') || '',
+                        url: response.url,
+                        text: await response.text()
+                    };
+                } catch (error) {
+                    return {error: String(error), text: ''};
+                } finally {
+                    clearTimeout(timer);
+                }
+            }""", {"url": xml_href, "timeout": timeout_ms})
+            if result.get("status") is not None:
+                log_response(
+                    "url-diretto", result["status"], result.get("contentType"),
+                    result.get("url"), result.get("text"),
                 )
-                if redirect_match:
-                    redirect_url = urllib.parse.urljoin(
-                        result.get("url", page.url),
-                        redirect_match.group(1).replace("&amp;", "&"),
-                    )
-                    redirected_xml = await page.evaluate("""async (url) => {
-                        try {
-                            const response = await fetch(url, {credentials: 'same-origin'});
-                            return response.ok ? await response.text() : '';
-                        } catch (error) {
-                            return '';
-                        }
-                    }""", redirect_url)
-                    if "<dichiarazione" in redirected_xml:
-                        return redirected_xml
-            except Exception:
-                pass
+            if is_declaration(result.get("text")):
+                return result["text"]
+            if result.get("error"):
+                log("WARN", f"[XML:url-diretto] {result['error']}")
+        except Exception as error:
+            log("WARN", f"[XML:url-diretto] {type(error).__name__}: {error}")
+    else:
+        log("INFO", "[XML:url-diretto] href non scaricabile; provo il binding Wicket.")
 
-        # Fallback locale se fetch in sessione non è supportato
+    page_html = ""
+    try:
+        page_html = await page.content()
+    except Exception as error:
+        log("WARN", f"[XML] DOM non leggibile per binding Wicket: {type(error).__name__}: {error}")
+
+    wicket_binding = None
+    for config_text in re.findall(r"Wicket\.Ajax\.ajax\((\{[^)]*\})\)", page_html):
+        try:
+            binding = json.loads(config_text)
+        except json.JSONDecodeError:
+            continue
+        if "downloadXmlLnk" in binding.get("u", ""):
+            wicket_binding = binding
+            break
+
+    if not wicket_binding:
+        log("WARN", "[XML] Binding Wicket downloadXmlLnk assente; proseguo col download nativo.")
+        wicket_url = ""
+        wicket_methods = []
+    else:
+        wicket_url = wicket_binding["u"].replace("&amp;", "&")
+        wicket_method = str(wicket_binding.get("m", "GET")).upper()
+        if wicket_method not in {"GET", "POST"}:
+            log("WARN", "[XML:binding] Metodo Wicket inatteso; uso GET.")
+            wicket_method = "GET"
+        wicket_methods = [wicket_method, "POST" if wicket_method == "GET" else "GET"]
+
+    for method in wicket_methods:
+        try:
+            result = await page.evaluate("""async ({url, method, timeout}) => {
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeout);
+                try {
+                    const base = (window.Wicket && window.Wicket.Ajax && window.Wicket.Ajax.baseUrl)
+                        ? window.Wicket.Ajax.baseUrl.replaceAll('&amp;', '&')
+                        : location.pathname + location.search;
+                    const response = await fetch(url, {
+                        method,
+                        credentials: 'same-origin',
+                        signal: controller.signal,
+                        headers: {
+                            'Wicket-Ajax': 'true',
+                            'Wicket-Ajax-BaseURL': base,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    return {
+                        status: response.status,
+                        contentType: response.headers.get('content-type') || '',
+                        url: response.url,
+                        text: await response.text()
+                    };
+                } catch (error) {
+                    return {error: String(error), text: '', url: location.href};
+                } finally {
+                    clearTimeout(timer);
+                }
+            }""", {"url": wicket_url, "method": method, "timeout": timeout_ms})
+            if result.get("status") is not None:
+                log_response(
+                    f"wicket-{method}", result["status"], result.get("contentType"),
+                    result.get("url"), result.get("text"),
+                )
+            if is_declaration(result.get("text")):
+                return result["text"]
+            if result.get("error"):
+                log("WARN", f"[XML:wicket-{method}] {result['error']}")
+
+            evaluate_url = extract_evaluate_url(
+                result.get("text", ""), result.get("url", page.url)
+            )
+            if evaluate_url:
+                log("INFO", f"[XML:wicket-{method}] evaluate contiene un URL same-origin; provo il download browser.")
+                evaluated = await fetch_browser_url(
+                    evaluate_url, f"evaluate-wicket-{method}"
+                )
+                if is_declaration(evaluated.get("text")):
+                    return evaluated["text"]
+
+            redirect_url = extract_redirect(
+                result.get("text", ""), result.get("url", page.url)
+            )
+            if redirect_url:
+                redirected = await page.evaluate("""async ({url, timeout}) => {
+                    const controller = new AbortController();
+                    const timer = setTimeout(() => controller.abort(), timeout);
+                    try {
+                        const response = await fetch(url, {
+                            credentials: 'same-origin', signal: controller.signal
+                        });
+                        return {
+                            status: response.status,
+                            contentType: response.headers.get('content-type') || '',
+                            url: response.url,
+                            text: await response.text()
+                        };
+                    } catch (error) {
+                        return {error: String(error), text: ''};
+                    } finally {
+                        clearTimeout(timer);
+                    }
+                }""", {"url": redirect_url, "timeout": timeout_ms})
+                if redirected.get("status") is not None:
+                    log_response(
+                        f"redirect-wicket-{method}", redirected["status"],
+                        redirected.get("contentType"), redirected.get("url"),
+                        redirected.get("text"),
+                    )
+                if is_declaration(redirected.get("text")):
+                    return redirected["text"]
+                if redirected.get("error"):
+                    log("WARN", f"[XML:redirect-wicket-{method}] {redirected['error']}")
+        except Exception as error:
+            log("WARN", f"[XML:wicket-{method}] {type(error).__name__}")
+
+    try:
+        if not await xml_btn.is_visible():
+            await page.locator("#downloadPnl").click(force=True, timeout=3000)
+            await xml_btn.wait_for(state="visible", timeout=3000)
         async with page.expect_download(timeout=timeout_ms) as download_info:
-            download_panel = page.locator("#downloadPnl").first
-            if await download_panel.count() > 0:
-                await download_panel.click(force=True, timeout=2000)
             await xml_btn.click(force=True, timeout=timeout_ms)
         download = await download_info.value
-        xml_path = await download.path()
-        with open(xml_path, "r", encoding="utf-8", errors="replace") as f:
-            return f.read()
-    except Exception:
-        return None
+        failure = await download.failure()
+        if failure:
+            log("WARN", "[XML:download-nativo] Download segnalato come fallito.")
+        else:
+            temp_fd, xml_path = tempfile.mkstemp(prefix="privatelab-xml-", suffix=".xml")
+            os.close(temp_fd)
+            try:
+                await download.save_as(xml_path)
+                with open(xml_path, "r", encoding="utf-8", errors="replace") as xml_file:
+                    xml_text = xml_file.read()
+                log("INFO", f"[XML:download-nativo] bytes={len(xml_text)}.")
+                if is_declaration(xml_text):
+                    return xml_text
+                log("WARN", "[XML:download-nativo] File scaricato ma non è una dichiarazione XML.")
+            finally:
+                try:
+                    os.remove(xml_path)
+                except OSError:
+                    pass
+    except Exception as error:
+        log("WARN", f"[XML:download-nativo] {type(error).__name__}")
+
+    log("ERROR", "[XML] Esauriti tutti i metodi; dossier non completo.")
+    return None
 
 
 async def extract_complete_company(page, card_url: str, fallback_name: str = ""):
@@ -623,9 +817,19 @@ async def extract_complete_company(page, card_url: str, fallback_name: str = "")
     full_text = await page.inner_text("body")
 
     # Acquisizione rapida XML in memoria (senza timeout disco ZenRows)
-    xml_content = await fetch_xml_in_session(page)
+    xml_content = None
+    for attempt in range(2):
+        xml_content = await fetch_xml_in_session(page)
+        if xml_content:
+            break
+        if attempt == 0:
+            log("WARN", "[XML] Primo tentativo incompleto; ricarico una volta la scheda e riprovo.")
+            await page.goto(card_url, wait_until="domcontentloaded", timeout=45000)
+            await asyncio.sleep(1.0)
+            await neutralize_f5_shield(page)
     if not xml_content:
-        log("WARN", f"XML non disponibile per {card_url}; estrazione limitata ai dati visibili nella scheda.")
+        log("ERROR", "XML non disponibile; il dossier non verrà salvato come completo.")
+        raise RuntimeError("Download XML della scheda non riuscito")
     xml_data = parse_xml_payload(xml_content)
 
     anag = page.locator(".ui.grid.no-vertical-column-padding .eleven.wide.column")
@@ -1300,8 +1504,8 @@ async def create_browser_and_page(p, use_zenrows, proxy_cfg):
             page = await browser.new_page()
             return browser, page
         except Exception as e:
-            log("WARN", f"⚠️ Connessione ZenRows fallita ({e}). Fallback su Chromium locale...")
-            browser = None
+            log("ERROR", f"Connessione ZenRows fallita ({type(e).__name__}); nessun fallback diretto.")
+            raise RuntimeError("ZenRows richiesto ma non disponibile") from e
 
     browser = await p.chromium.launch(
         headless=True,
@@ -1317,18 +1521,34 @@ async def create_browser_and_page(p, use_zenrows, proxy_cfg):
 
 
 async def run_worker_standalone(
-    limit: int, delay_sec: float, proxy_mode: str, tipo_filter: str = "STARTUP"
+    limit: int,
+    delay_sec: float,
+    proxy_mode: str,
+    tipo_filter: str = "STARTUP",
+    only_url: str = None,
 ):
     conn = get_db()
     cur = conn.cursor()
 
+    if "zenrows" in (proxy_mode or "").lower() and not ZENROWS_API_KEY:
+        log("ERROR", "ZenRows richiesto ma ZENROWS_API_KEY non configurata.")
+        conn.close()
+        return
+
     try:
-        if tipo_filter.upper() == "ALL":
+        limit_value = limit if limit != -1 else 1000
+        if only_url:
+            query = (
+                "SELECT url, denominazione, regione, tipo FROM coda "
+                "WHERE stato = 'PENDING' AND url = ? LIMIT 1"
+            )
+            pending = cur.execute(query, (only_url,)).fetchall()
+        elif tipo_filter.upper() == "ALL":
             query = "SELECT url, denominazione, regione, tipo FROM coda WHERE stato = 'PENDING' ORDER BY created_at ASC, rowid ASC LIMIT ?"
-            pending = cur.execute(query, (limit if limit != -1 else 1000,)).fetchall()
+            pending = cur.execute(query, (limit_value,)).fetchall()
         else:
             query = "SELECT url, denominazione, regione, tipo FROM coda WHERE stato = 'PENDING' AND UPPER(tipo) = ? ORDER BY created_at ASC, rowid ASC LIMIT ?"
-            pending = cur.execute(query, (tipo_filter.upper(), limit if limit != -1 else 1000)).fetchall()
+            pending = cur.execute(query, (tipo_filter.upper(), limit_value)).fetchall()
     except Exception:
         pending = []
 
@@ -1342,8 +1562,8 @@ async def run_worker_standalone(
         f"=== AVVIO DEEP WORKER: {len(pending)} schede [{tipo_filter.upper()}] da elaborare con Groq (Route: {proxy_mode}) ===",
     )
 
-    use_zenrows = "zenrows" in proxy_mode.lower() and bool(ZENROWS_API_KEY)
-    proxy_cfg = get_playwright_proxy_config(proxy_mode)
+    use_zenrows = "zenrows" in (proxy_mode or "").lower()
+    proxy_cfg = None if use_zenrows else get_playwright_proxy_config(proxy_mode)
 
     async with async_playwright() as p:
         browser, page = await create_browser_and_page(p, use_zenrows, proxy_cfg)
@@ -1412,7 +1632,7 @@ async def run_worker_standalone(
         df_p = pd.read_sql_query("SELECT * FROM pmi", conn)
         conn.close()
 
-        out_dir = os.path.join(PROJECT_ROOT, "output")
+        out_dir = WORKER_OUTPUT_DIR
         os.makedirs(out_dir, exist_ok=True)
 
         if not df_s.empty:
